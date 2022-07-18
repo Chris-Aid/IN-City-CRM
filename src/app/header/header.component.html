@@ -2,10 +2,10 @@
     <img src="/assets/img/logo.jpg" alt="">
 
     <div>
-        <button mat-button [matMenuTriggerFor]="aboveMenu">Kunden</button>
+        <button  mat-button [matMenuTriggerFor]="aboveMenu">Kunden</button>
         <mat-menu #aboveMenu="matMenu">
             <button mat-menu-item>Mitglieder</button>
-            <button mat-menu-item>Kunden</button>
+            <button routerLink="/customer" routerLinkActive="active" mat-menu-item>Kunden</button>
         </mat-menu>
 
         <button mat-button [matMenuTriggerFor]="belowMenu">Projekte</button>

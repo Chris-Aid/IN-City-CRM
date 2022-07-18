@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { CustomerComponent } from './customer/customer.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -30,6 +31,7 @@ import { CustomerComponent } from './customer/customer.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatMenuModule,
+    MatCardModule,
   ],
 
   providers: [],
