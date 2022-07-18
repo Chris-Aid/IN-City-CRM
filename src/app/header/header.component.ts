@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-header',
@@ -12,4 +13,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+}
+function hallo() {
+  // my code
 }

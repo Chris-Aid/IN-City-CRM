@@ -1,0 +1,36 @@
+.main-content {
+    height: 100vh;
+    width: 100vw;
+}
+
+.mat-drawer-container {
+    background-color: white !important;
+}
+
+
+.example-container {
+    width: 400px;
+    height: 100vh;
+    border-right: 0.1px;
+}
+
+.example-sidenav-content {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+
+    button {
+        height: auto !important;
+    }
+}
+
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidenav {
+    padding: 20px;
+    width: 200px;
+}
