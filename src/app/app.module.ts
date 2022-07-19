@@ -11,7 +11,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { CustomerComponent } from './customer/customer.component';
 import {MatCardModule} from '@angular/material/card';
-// import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AddCustomerDialogComponent } from './add-customer-dialog/add-customer-dialog.component';
 import {MatInputModule} from '@angular/material/input';
@@ -22,6 +21,8 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore/'; 
+import { AngularFireModule } from '@angular/fire/compat';
 
 
 
@@ -48,6 +49,9 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     MatInputModule,
     MatDialogModule,
     FormsModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase), // compat API
+    
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
