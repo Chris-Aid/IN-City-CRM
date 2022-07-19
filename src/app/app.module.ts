@@ -11,6 +11,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { CustomerComponent } from './customer/customer.component';
 import {MatCardModule} from '@angular/material/card';
+// import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AddCustomerDialogComponent } from './add-customer-dialog/add-customer-dialog.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -20,6 +26,7 @@ import {MatCardModule} from '@angular/material/card';
     AppComponent,
     HeaderComponent,
     CustomerComponent,
+    AddCustomerDialogComponent,
 
   ],
   imports: [
@@ -32,6 +39,10 @@ import {MatCardModule} from '@angular/material/card';
     BrowserAnimationsModule,
     MatMenuModule,
     MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    FormsModule,
   ],
 
   providers: [],

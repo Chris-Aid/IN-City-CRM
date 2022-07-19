@@ -1,0 +1,53 @@
+<div class="dialog-Content" mat-dialog-content>
+  <h1 mat-dialog-title>Neuen Kunden anlegen:</h1>
+  <div class="input-content">
+    <div >
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="data.name">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Firma</mat-label>
+        <input matInput [(ngModel)]="data.adress">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Mitgliedsnummer</mat-label>
+        <input matInput [(ngModel)]="data.membernumber">
+      </mat-form-field>
+    </div>
+    <div class="second-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Tel</mat-label>
+        <input matInput [(ngModel)]="data.tel">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Mobil</mat-label>
+        <input matInput [(ngModel)]="data.mobile">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="data.mail">
+      </mat-form-field>
+    </div>
+    <div class="second-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Straße</mat-label>
+        <input matInput [(ngModel)]="data.street">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Postleitzahl</mat-label>
+        <input matInput [(ngModel)]="data.postcode">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Stadt</mat-label>
+        <input matInput [(ngModel)]="data.town">
+      </mat-form-field>
+    </div>
+  </div>
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Abbrechen</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Hinzufügen</button>
+</div>

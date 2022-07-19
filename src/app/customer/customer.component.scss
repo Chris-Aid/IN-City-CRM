@@ -1,12 +1,20 @@
 .customer-content {
+    display: flex;
+    flex-direction: column;
     height: calc(100vh - 120px);
-    // width: 100vw;
-    background-color: #ff7d0021;
+    background-color: #006bff21;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-left: 128px;
     padding-right: 128px;
+}
+
+.customer-administration {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 12px;
 }
 
 .customers-field {
@@ -24,3 +32,10 @@
         font-weight: 700;
     }
 }
+
+.add-customer-btn {
+    position: absolute;
+    right: 32px;
+    bottom: 32px;
+}
+
