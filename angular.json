@@ -102,6 +102,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "in-city-crm:build:production",
+            "firebaseProject": "in-city-crm",
+            "firebaseHostingSite": "in-city-crm"
+          }
         }
       }
     }

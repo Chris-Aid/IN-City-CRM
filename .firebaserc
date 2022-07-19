@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "in-city-crm": {
+      "hosting": {
+        "in-city-crm": [
+          "in-city-crm"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "in-city-crm"
+  }
+}
