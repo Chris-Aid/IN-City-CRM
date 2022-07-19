@@ -4,43 +4,43 @@
     <div >
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
-        <input matInput [(ngModel)]="data.name">
+        <input matInput [(ngModel)]="name">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Firma</mat-label>
-        <input matInput [(ngModel)]="data.adress">
+        <input matInput [(ngModel)]="company">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Mitgliedsnummer</mat-label>
-        <input matInput [(ngModel)]="data.membernumber">
+        <input matInput [(ngModel)]="membernumber">
       </mat-form-field>
     </div>
     <div class="second-container">
       <mat-form-field appearance="fill">
         <mat-label>Tel</mat-label>
-        <input matInput [(ngModel)]="data.tel">
+        <input matInput [(ngModel)]="tel">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Mobil</mat-label>
-        <input matInput [(ngModel)]="data.mobile">
+        <input matInput [(ngModel)]="mobile">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput [(ngModel)]="data.mail">
+        <input matInput [(ngModel)]="email">
       </mat-form-field>
     </div>
     <div class="second-container">
       <mat-form-field appearance="fill">
         <mat-label>Straße</mat-label>
-        <input matInput [(ngModel)]="data.street">
+        <input matInput [(ngModel)]="street">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Postleitzahl</mat-label>
-        <input matInput [(ngModel)]="data.postcode">
+        <input matInput [(ngModel)]="postcode">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Stadt</mat-label>
-        <input matInput [(ngModel)]="data.town">
+        <input matInput [(ngModel)]="town">
       </mat-form-field>
     </div>
   </div>
@@ -49,5 +49,5 @@
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Abbrechen</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Hinzufügen</button>
+  <button mat-button [mat-dialog-close]="{name, company, membernumber, tel, mobile, email, postcode, street, town}" cdkFocusInitial>Hinzufügen</button>
 </div>

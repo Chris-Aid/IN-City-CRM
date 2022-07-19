@@ -20,16 +20,34 @@
 .customers-field {
     width: 100%;
     height: 60vh;
+    padding-left: 32px;
 }
 
 .customer-info {
     display: flex;
-    gap: 128px;
+    // gap: 128px;
     border-bottom: 0.1px solid lightgrey;
 
     p {
         font-size: 14px;
         font-weight: 700;
+        width: 200px;
+    }
+}
+
+.customer-card {
+    display: flex;
+    align-items: center;
+    border-bottom: 0.1px solid lightgrey;
+    height: 70px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(231, 231, 231, 0.219)
+    }
+
+    p {
+        width: 200px;
     }
 }
 

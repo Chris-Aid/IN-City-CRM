@@ -8,9 +8,22 @@
 
     <mat-card class="customers-field">
         <div class="customer-info">
-            <div><p>Name</p></div>
-            <div><p>Mitglied seit:</p></div>
+            <div><p>Ansprechpartner</p></div>
+            <div><p>Firmenname</p></div>
             <div><p>Mitgliedsnummer:</p> </div>
+            <div><p>E-Mail:</p> </div>
+            <div><p>Telefon:</p> </div>
+            <div><p>Mobil:</p> </div>
+        </div>
+        <div class="customer" *ngFor="let customer of customers; let i = index">
+            <div class="customer-card">
+                <p>{{customer.company}}</p>
+                <p>{{customer.name}}</p>
+                <p>{{customer.membernumber}}</p>
+                <p>{{customer.email}}</p>
+                <p>{{customer.tel}}</p>
+                <p>{{customer.mobile}}</p>
+            </div>
         </div>
         <button class="add-customer-btn" (click)="openDialog()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
             <mat-icon>add</mat-icon>
