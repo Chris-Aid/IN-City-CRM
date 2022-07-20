@@ -16,7 +16,7 @@
             <div><p>Mobil:</p> </div>
         </div>
         <div class="customer" *ngFor="let customer of customers; let i = index">
-            <div class="customer-card">
+            <div (click)="openDialog2(i)" class="customer-card">
                 <p>{{customer.company}}</p>
                 <p>{{customer.name}}</p>
                 <p>{{customer.membernumber}}</p>

@@ -6,7 +6,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './add-customer-dialog.component.html',
   styleUrls: ['./add-customer-dialog.component.scss']
 })
-export class AddCustomerDialogComponent {
+export class AddCustomerDialogComponent implements OnInit {
 
   name: string;
   company: string;
@@ -17,9 +17,17 @@ export class AddCustomerDialogComponent {
   street: string;
   postcode: string;
   town: string;
+  entryDate: string;
 
   constructor(
     public dialogRef: MatDialogRef<AddCustomerDialogComponent>) { }
+
+  ngOnInit(): void {
+    setInterval(() => {
+      console.log(this.entryDate)
+    }, 500)
+
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

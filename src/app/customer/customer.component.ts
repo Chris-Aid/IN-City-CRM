@@ -1,13 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-// import { Firestore } from '@angular/fire/firestore';
 import { MatDialog, } from '@angular/material/dialog';
 import { AddCustomerDialogComponent } from '../add-customer-dialog/add-customer-dialog.component';
-
-// export interface DialogData {
-//   animal: string;
-//   name: string;
-// }
+import { CustomerCardDialogComponent } from '../customer-card-dialog/customer-card-dialog.component';
 
 @Component({
   selector: 'app-customer',
@@ -17,8 +12,8 @@ import { AddCustomerDialogComponent } from '../add-customer-dialog/add-customer-
 
 export class CustomerComponent implements OnInit {
 
-  customers = [];
-  firma: { name: any; company: any; membernumber: any; tel: any; mobile: any; email: any; street: any; postcode: any; town: any; };
+  public customers = [];
+  firma: { name: any; company: any; membernumber: any; tel: any; mobile: any; email: any; street: any; postcode: any; town: any; entryDate: any; };
 
   constructor(public dialog: MatDialog, public firestore: AngularFirestore) { }
 
@@ -29,15 +24,11 @@ export class CustomerComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(({
-      name,
-      company,
-      membernumber,
-      tel,
-      mobile,
-      email,
-      street,
-      postcode,
-      town, }) => {
+      name, company, membernumber, tel, mobile, email, street, postcode, town, entryDate }) => {
+
+    // let mydate = entryDate;
+    // let latest_date =this.datepipe.transform(mydate, 'yyyy-MM-dd');
+
 
       this.firma = {
         name: name,
@@ -49,10 +40,8 @@ export class CustomerComponent implements OnInit {
         street: street,
         postcode: postcode,
         town: town,
+        entryDate: entryDate,
       };
-
-      // this.customers.push(this.firma);
-      // console.log(this.customers);
 
       this.firestore
         .collection('Kunden')
@@ -60,16 +49,26 @@ export class CustomerComponent implements OnInit {
     });
   }
 
+  openDialog2(i) {
+    const dialogRef = this.dialog.open(CustomerCardDialogComponent);
+    dialogRef.componentInstance.i = i;
+    console.log(i)
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   ngOnInit(): void {
     this.firestore
       .collection('Kunden')
-      // .doc(this.myGameId)
       .valueChanges()
       .subscribe((customer: any) => {
-        // console.log(customer)
-       this.customers = customer;
-       console.log(this.customers)
+        this.customers = customer;
+        console.log(this.customers)
       });
   }
+}
+
+function moment(date: any) {
+  throw new Error('Function not implemented.');
 }

@@ -1,0 +1,32 @@
+.customer-info {
+    display: flex;
+
+    h3 {
+        font-size: 15px;
+        width: 200px;
+    }
+
+    h2 {
+        font-size: 16px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.date-picker {
+    margin-bottom: 32px;
+}
+
+.mat-radio-button~.mat-radio-button {
+    margin-left: 16px;
+}
+
+.mat-typography {
+    display: flex;
+}
+
+.otherInfos {
+    margin-left: 64px;
+}

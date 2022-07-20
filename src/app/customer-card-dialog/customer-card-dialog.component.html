@@ -1,0 +1,75 @@
+<h2 mat-dialog-title>Kundeninformationen</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="main-info">
+    <div class="customer-info">
+      <h3>Firmenname:</h3>
+      <h2>{{customers[i].company}}</h2>
+    </div>
+
+    <div class="customer-info">
+      <h3>Ansprechpartner:</h3>
+      <h2>{{customers[i].name}}</h2>
+    </div>
+
+    <div class="customer-info">
+      <h3>Adresse:</h3>
+      <h2>{{customers[i].street}}</h2>
+      <h2>{{customers[i].postcode}}</h2>
+      <h2>{{customers[i].town}}</h2>
+    </div>
+
+    <div class="customer-info">
+      <h3>Telefonnummer:</h3>
+      <h2>{{customers[i].tel}}</h2>
+    </div>
+
+    <div class="customer-info">
+      <h3>Mobil:</h3>
+      <h2>{{customers[i].mobile}}</h2>
+    </div>
+
+    <div class="customer-info">
+      <h3>E-mail:</h3>
+      <h2>{{customers[i].email}}</h2>
+    </div>
+  </div>
+  <div class="otherInfos">
+    <div class="customer-info">
+      <h3>Branche:</h3>
+      <h2>Mode</h2>
+    </div>
+
+    <div class="customer-info">
+      <h3>Mitgliedsbeitrag:</h3>
+      <h2>17,50 €</h2>
+    </div>
+
+    <!-- <div class="date-picker customer-info">
+      <h3>Mitglied seit:</h3>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div> -->
+
+    <div class="customer-info">
+      <h3>Mitgliedschaft:</h3>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">aktiv</mat-radio-button>
+        <mat-radio-button value="2">gekündigt</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <!-- <div class="customer-info">
+      <h3>E-mail:</h3>
+      <h2>{{customers[i].email}}</h2>
+    </div> -->
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
+</mat-dialog-actions>

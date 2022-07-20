@@ -42,6 +42,14 @@
         <mat-label>Stadt</mat-label>
         <input matInput [(ngModel)]="town">
       </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Mitglied seit:</mat-label>
+        <input matInput [(ngModel)]="entryDate" [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
     </div>
   </div>
 
