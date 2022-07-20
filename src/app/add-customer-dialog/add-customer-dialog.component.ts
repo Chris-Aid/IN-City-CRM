@@ -17,15 +17,15 @@ export class AddCustomerDialogComponent implements OnInit {
   street: string;
   postcode: string;
   town: string;
-  entryDate: string;
+  entryDate: any;
 
   constructor(
     public dialogRef: MatDialogRef<AddCustomerDialogComponent>) { }
 
   ngOnInit(): void {
-    setInterval(() => {
-      console.log(this.entryDate)
-    }, 500)
+    // setInterval(() => {
+    //   console.log(this.entryDate)
+    // }, 500)
 
   }
 

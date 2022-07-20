@@ -26,10 +26,6 @@ export class CustomerComponent implements OnInit {
     dialogRef.afterClosed().subscribe(({
       name, company, membernumber, tel, mobile, email, street, postcode, town, entryDate }) => {
 
-    // let mydate = entryDate;
-    // let latest_date =this.datepipe.transform(mydate, 'yyyy-MM-dd');
-
-
       this.firma = {
         name: name,
         company: company,
@@ -40,8 +36,10 @@ export class CustomerComponent implements OnInit {
         street: street,
         postcode: postcode,
         town: town,
-        entryDate: entryDate,
+        entryDate: entryDate.toISOString().split('T')[0],
       };
+
+      console.log(entryDate)
 
       this.firestore
         .collection('Kunden')
@@ -64,11 +62,6 @@ export class CustomerComponent implements OnInit {
       .valueChanges()
       .subscribe((customer: any) => {
         this.customers = customer;
-        console.log(this.customers)
       });
   }
-}
-
-function moment(date: any) {
-  throw new Error('Function not implemented.');
 }

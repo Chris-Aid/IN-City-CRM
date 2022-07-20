@@ -43,6 +43,11 @@
         <input matInput [(ngModel)]="town">
       </mat-form-field>
 
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>Stadt</mat-label>
+        <input matInput [(ngModel)]="entryDate">
+      </mat-form-field> -->
+
       <mat-form-field appearance="fill">
         <mat-label>Mitglied seit:</mat-label>
         <input matInput [(ngModel)]="entryDate" [matDatepicker]="picker">
@@ -52,10 +57,9 @@
       </mat-form-field>
     </div>
   </div>
-
 </div>
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Abbrechen</button>
-  <button mat-button [mat-dialog-close]="{name, company, membernumber, tel, mobile, email, postcode, street, town}" cdkFocusInitial>Hinzufügen</button>
+  <button mat-button [mat-dialog-close]="{name, company, membernumber, tel, mobile, email, postcode, street, town, entryDate}" cdkFocusInitial>Hinzufügen</button>
 </div>
