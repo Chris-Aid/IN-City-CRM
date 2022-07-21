@@ -28,6 +28,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
+import { SetTerminationComponent } from './set-termination/set-termination.component';
 
 
 
@@ -39,6 +40,7 @@ import {MatSelectModule} from '@angular/material/select';
     CustomerComponent,
     AddCustomerDialogComponent,
     CustomerCardDialogComponent,
+    SetTerminationComponent,
 
   ],
   imports: [

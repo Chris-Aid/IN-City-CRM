@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
+import { SetTerminationComponent } from '../set-termination/set-termination.component';
 
 
 @Component({
@@ -28,6 +29,11 @@ export class CustomerCardDialogComponent implements OnInit {
 
   changeToTerminated() {
     this.selected = "secondBtn";
-    console.log(this.selected)
+
+    const dialogRef = this.dialog.open(SetTerminationComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

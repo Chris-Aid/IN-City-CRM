@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Kündigung</h2>
+
+<mat-dialog-content class="mat-typography">
+  <form class="example-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Gekündigt am:</mat-label>
+      <input matInput [(ngModel)]="terminationDate" [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Kündigungsgrund</mat-label>
+      <textarea [(ngModel)]="terminationReason" matInput placeholder="Umzug des Unternehmens"></textarea>
+    </mat-form-field>
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions>

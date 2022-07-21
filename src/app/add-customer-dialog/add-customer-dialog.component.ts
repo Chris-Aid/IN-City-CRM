@@ -1,10 +1,5 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
-// interface branches {
-//   value: string;
-//   viewValue: string;
-// }
+import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-customer-dialog',
@@ -26,6 +21,7 @@ export class AddCustomerDialogComponent implements OnInit {
 
   // value: any;
   selectedBranch: any;
+  membershipFee: any;
 
   name: string;
   company: string;

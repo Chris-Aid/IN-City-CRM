@@ -24,11 +24,15 @@
         <mat-label>Mobil</mat-label>
         <input matInput [(ngModel)]="mobile">
       </mat-form-field>
+
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
         <input matInput [(ngModel)]="email">
       </mat-form-field>
     </div>
+
+
+
     <div class="second-container">
       <mat-form-field appearance="fill">
         <mat-label>Straße</mat-label>
@@ -45,20 +49,23 @@
     </div>
     <div class="select-container">
       <mat-form-field appearance="fill">
-        <mat-label>Mitglied seit:</mat-label>
-        <input matInput [(ngModel)]="entryDate" [matDatepicker]="picker">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
         <mat-label>Branche</mat-label>
         <mat-select [(ngModel)]="selectedBranch">
           <mat-option *ngFor="let branch of branches" [value]="branch.value">
             {{branch.viewValue}}
           </mat-option>
         </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Mitgliedsbeitrag</mat-label>
+        <input matInput [(ngModel)]="membershipFee">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Mitglied seit:</mat-label>
+        <input matInput [(ngModel)]="entryDate" [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </div>
   </div>
@@ -67,6 +74,6 @@
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Abbrechen</button>
   <button mat-button
-    [mat-dialog-close]="{name, company, membernumber, tel, mobile, email, postcode, street, town, entryDate, selectedBranch}"
+    [mat-dialog-close]="{name, company, membernumber, tel, mobile, email, postcode, street, town, entryDate, selectedBranch, membershipFee}"
     cdkFocusInitial>Hinzufügen</button>
 </div>

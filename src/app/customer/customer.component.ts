@@ -13,7 +13,7 @@ import { CustomerCardDialogComponent } from '../customer-card-dialog/customer-ca
 export class CustomerComponent implements OnInit {
 
   public customers = [];
-  firma: { name: any; company: any; membernumber: any; tel: any; mobile: any; email: any; street: any; postcode: any; town: any; entryDate: any; selectedBranch: any; };
+  firma: { name: any; company: any; membernumber: any; tel: any; mobile: any; email: any; street: any; postcode: any; town: any; entryDate: any; selectedBranch: any; membershipFee: any; };
 
   constructor(public dialog: MatDialog, public firestore: AngularFirestore) { }
 
@@ -24,7 +24,7 @@ export class CustomerComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(({
-      name, company, membernumber, tel, mobile, email, street, postcode, town, entryDate, selectedBranch }) => {
+      name, company, membernumber, tel, mobile, email, street, postcode, town, entryDate, selectedBranch, membershipFee }) => {
 
       this.firma = {
         name: name,
@@ -38,6 +38,7 @@ export class CustomerComponent implements OnInit {
         town: town,
         entryDate: entryDate.toISOString().split('T')[0],
         selectedBranch: selectedBranch,
+        membershipFee: membershipFee,
       };
 
       this.firestore

@@ -51,7 +51,7 @@
 
     <div class="customer-info">
       <h3>Mitgliedsbeitrag:</h3>
-      <h2>17,50 €</h2>
+      <h2 *ngIf="customers[i]">{{customers[i].membershipFee}}</h2>
     </div>
 
     <div class="customer-info">
