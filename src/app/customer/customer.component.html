@@ -8,12 +8,12 @@
 
     <mat-card class="customers-field">
         <div class="customer-info">
+            <div><p>Firma</p></div>
             <div><p>Ansprechpartner</p></div>
-            <div><p>Firmenname</p></div>
-            <div><p>Mitgliedsnummer:</p> </div>
-            <div><p>E-Mail:</p> </div>
-            <div><p>Telefon:</p> </div>
-            <div><p>Mobil:</p> </div>
+            <div><p>Mitgliedsnummer</p> </div>
+            <div><p>E-Mail</p> </div>
+            <div><p>Telefon</p> </div>
+            <div><p>Mobil</p> </div>
         </div>
         <div class="customer" *ngFor="let customer of customers; let i = index">
             <div (click)="openDialog2(i)" class="customer-card">

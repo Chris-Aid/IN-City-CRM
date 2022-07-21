@@ -1,14 +1,14 @@
 <div class="dialog-Content" mat-dialog-content>
   <h1 mat-dialog-title>Neuen Kunden anlegen:</h1>
   <div class="input-content">
-    <div >
-      <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput [(ngModel)]="name">
-      </mat-form-field>
+    <div>
       <mat-form-field appearance="fill">
         <mat-label>Firma</mat-label>
         <input matInput [(ngModel)]="company">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Ansprechpartner</mat-label>
+        <input matInput [(ngModel)]="name">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Mitgliedsnummer</mat-label>
@@ -42,12 +42,8 @@
         <mat-label>Stadt</mat-label>
         <input matInput [(ngModel)]="town">
       </mat-form-field>
-
-      <!-- <mat-form-field appearance="fill">
-        <mat-label>Stadt</mat-label>
-        <input matInput [(ngModel)]="entryDate">
-      </mat-form-field> -->
-
+    </div>
+    <div class="select-container">
       <mat-form-field appearance="fill">
         <mat-label>Mitglied seit:</mat-label>
         <input matInput [(ngModel)]="entryDate" [matDatepicker]="picker">
@@ -55,11 +51,22 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Branche</mat-label>
+        <mat-select [(ngModel)]="selectedBranch">
+          <mat-option *ngFor="let branch of branches" [value]="branch.value">
+            {{branch.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </div>
 </div>
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Abbrechen</button>
-  <button mat-button [mat-dialog-close]="{name, company, membernumber, tel, mobile, email, postcode, street, town, entryDate}" cdkFocusInitial>Hinzufügen</button>
+  <button mat-button
+    [mat-dialog-close]="{name, company, membernumber, tel, mobile, email, postcode, street, town, entryDate, selectedBranch}"
+    cdkFocusInitial>Hinzufügen</button>
 </div>
