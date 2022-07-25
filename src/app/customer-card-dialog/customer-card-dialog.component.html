@@ -3,21 +3,21 @@
   <div class="main-info">
     <div class="customer-info">
       <h3>Firmenname:</h3>
-      <h2 *ngIf="customers[i]">{{customers[i].company}}</h2>
+      <h2 >{{customers[i]?.company}}</h2>
     </div>
 
     <div class="customer-info">
       <h3>Ansprechpartner:</h3>
-      <h2 *ngIf="customers[i]">{{customers[i].name}}</h2>
+      <h2>{{customers[i]?.name}}</h2>
     </div>
 
     <div class="customer-info">
       <h3>Adresse:</h3>
       <div>
-        <h2 *ngIf="customers[i]">{{customers[i].street}},</h2>
+        <h2>{{customers[i]?.street}},</h2>
         <div style="display: flex; margin-bottom: 12px;">
-          <h2 *ngIf="customers[i]" style="margin-right: 6px;">{{customers[i].postcode}}</h2>
-          <h2 *ngIf="customers[i]">{{customers[i].town}}</h2>
+          <h2 style="margin-right: 6px;">{{customers[i]?.postcode}}</h2>
+          <h2>{{customers[i]?.town}}</h2>
         </div>
       </div>
 
@@ -25,33 +25,33 @@
 
     <div class="customer-info">
       <h3>Telefonnummer:</h3>
-      <h2 *ngIf="customers[i]">{{customers[i].tel}}</h2>
+      <h2>{{customers[i]?.tel}}</h2>
     </div>
 
     <div class="customer-info">
       <h3>Mobil:</h3>
-      <h2 *ngIf="customers[i]">{{customers[i].mobile}}</h2>
+      <h2>{{customers[i]?.mobile}}</h2>
     </div>
 
     <div class="customer-info">
       <h3>E-mail:</h3>
-      <h2 *ngIf="customers[i]">{{customers[i].email}}</h2>
+      <h2>{{customers[i]?.email}}</h2>
     </div>
   </div>
   <div class="otherInfos">
     <div class="customer-info">
       <h3>Branche:</h3>
-      <h2 *ngIf="customers[i]">{{customers[i].selectedBranch}}</h2>
+      <h2>{{customers[i]?.selectedBranch}}</h2>
     </div>
 
     <div class="customer-info">
       <h3>Mitglied seit:</h3>
-      <h2 *ngIf="customers[i]">{{customers[i].entryDate}}</h2>
+      <h2>{{customers[i]?.entryDate}}</h2>
     </div>
 
     <div class="customer-info">
       <h3>Mitgliedsbeitrag:</h3>
-      <h2 *ngIf="customers[i]">{{customers[i].membershipFee}}</h2>
+      <h2>{{customers[i]?.membershipFee}}</h2>
     </div>
 
     <div class="customer-info">
