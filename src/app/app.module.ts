@@ -29,6 +29,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import { SetTerminationComponent } from './set-termination/set-termination.component';
+import { CustomersService } from './customers.service';
 
 
 
@@ -70,7 +71,7 @@ import { SetTerminationComponent } from './set-termination/set-termination.compo
     provideFirestore(() => getFirestore()),
   ],
 
-  providers: [],
+  providers: [CustomersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

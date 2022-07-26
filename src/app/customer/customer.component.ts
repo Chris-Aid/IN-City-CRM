@@ -4,6 +4,7 @@ import { MatDialog, } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddCustomerDialogComponent } from '../add-customer-dialog/add-customer-dialog.component';
 import { CustomerCardDialogComponent } from '../customer-card-dialog/customer-card-dialog.component';
+import { CustomersService } from '../customers.service';
 
 @Component({
   selector: 'app-customer',
@@ -13,12 +14,12 @@ import { CustomerCardDialogComponent } from '../customer-card-dialog/customer-ca
 
 export class CustomerComponent implements OnInit {
 
-  customersID;
+  customersID: any;
 
-  public customers = [];
+  public customers: any[] = [];
   firma: { name: any; company: any; membernumber: any; tel: any; mobile: any; email: any; street: any; postcode: any; town: any; entryDate: any; selectedBranch: any; membershipFee: any; terminationDate: any; terminationReason: any;};
 
-  constructor(private router: Router, public dialog: MatDialog, public firestore: AngularFirestore, private route: ActivatedRoute) { }
+  constructor(private router: Router, public dialog: MatDialog, public firestore: AngularFirestore, private route: ActivatedRoute, private customerInfo: CustomersService) { }
 
   openDialog(): void {
 
@@ -56,7 +57,7 @@ export class CustomerComponent implements OnInit {
           this.firestore
           .collection('Kunden')
           .doc(customerInfo.id)
-          .update({ CustomersID: customerInfo.id });
+          .update({ CustomersID: customerInfo.id});
         });
        
     });
@@ -77,8 +78,10 @@ export class CustomerComponent implements OnInit {
       .collection('Kunden')
       .valueChanges()
       .subscribe((customer: any) => {
+        this.customerInfo.customers = customer;
         this.customers = customer;
       });
+
 
   }
 }

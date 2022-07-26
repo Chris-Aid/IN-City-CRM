@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { CustomersService } from '../customers.service';
 
 @Component({
   selector: 'app-add-customer-dialog',
@@ -8,21 +9,11 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AddCustomerDialogComponent implements OnInit {
 
-  branches: any[] = [
-    {value: 'Gastronomie', viewValue: 'Gastronomie'},
-    {value: 'Modegeschäft', viewValue: 'Modegeschäft'},
-    {value: 'Blumengeschäft', viewValue: 'Blumengeschäft'},
-    {value: 'Versicherungen', viewValue: 'Versicherungen'},
-    {value: 'Buchhandlung', viewValue: 'Buchhandlung'},
-    {value: 'Apotheke', viewValue: 'Apotheke'},
-    {value: 'Drogerie', viewValue: 'Drogerie'},
-    {value: 'Praxis', viewValue: 'Praxis'},
-  ];
+  //branches are stored in customers service
+  branches: any[] = [];
 
-  // value: any;
   selectedBranch: any;
   membershipFee: any;
-
   name: string;
   company: string;
   membernumber: string;
@@ -35,17 +26,15 @@ export class AddCustomerDialogComponent implements OnInit {
   entryDate: any;
   // value: any;
 
-  constructor(
-    public dialogRef: MatDialogRef<AddCustomerDialogComponent>) { }
+  constructor(public dialogRef: MatDialogRef<AddCustomerDialogComponent>, private customerBranches: CustomersService) { }
+
 
   ngOnInit(): void {
-    // setInterval(() => {
-    //   console.log(this.selectedBranch)
-    // }, 500)
+    this.branches = this.customerBranches.getBranches();
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-
+ 
 }

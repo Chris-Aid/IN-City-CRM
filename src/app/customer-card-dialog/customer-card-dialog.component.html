@@ -58,7 +58,7 @@
       <h3>Mitgliedschaft:</h3>
       <mat-radio-group [(ngModel)]="selected" aria-label="Select an option">
         <mat-radio-button value="firstBtn">aktiv</mat-radio-button>
-        <mat-radio-button (click)="changeToTerminated()" value="secondBtn">gekündigt</mat-radio-button>
+        <mat-radio-button (click)="changeToTerminated(i)" value="secondBtn">gekündigt</mat-radio-button>
       </mat-radio-group>
     </div>
 
