@@ -23,7 +23,6 @@ export class SetTerminationComponent implements OnInit {
     this.customersData = this.customers.getCustomers();
 
     console.log(this.customersData[this.i].name)
-
   }
 
   saveTermination() {
@@ -33,17 +32,11 @@ export class SetTerminationComponent implements OnInit {
       .collection('Kunden', ref => ref.where('name', '==', this.customersData[this.i].name))
       .valueChanges()
       .subscribe((a: any) => {
-        console.log(a)
+        
         this.firestore
-      .collection('Kunden')
-      .doc(a[0].CustomersID)
-      .update({status: 'gekündigt', terminationDate: dateOfTermination, terminationReason: this.terminationReason})
+          .collection('Kunden')
+          .doc(a[0].CustomersID)
+          .update({ status: 'gekündigt', terminationDate: dateOfTermination, terminationReason: this.terminationReason })
       })
-
-      
-
-
-    // .doc('B8LCDqi0ZO3i5trNbAey')
-    //   .update({ terminationDate: dateOfTermination, terminationReason: this.terminationReason });
   }
 }

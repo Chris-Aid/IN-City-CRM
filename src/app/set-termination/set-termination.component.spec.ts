@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SetTerminationComponent } from './set-termination.component';
 
 describe('SetTerminationComponent', () => {
