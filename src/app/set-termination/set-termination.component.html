@@ -4,7 +4,7 @@
   <form class="example-form">
     <mat-form-field appearance="fill">
       <mat-label>Gekündigt am:</mat-label>
-      <input matInput [ngModelOptions]="{standalone: true}" [(ngModel)]="terminationDate" [matDatepicker]="picker">
+      <input required matInput [ngModelOptions]="{standalone: true}" [(ngModel)]="terminationDate" [matDatepicker]="picker">
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
@@ -12,7 +12,7 @@
 
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Kündigungsgrund</mat-label>
-      <textarea [ngModelOptions]="{standalone: true}" [(ngModel)]="terminationReason" matInput placeholder="Umzug des Unternehmens"></textarea>
+      <textarea required [ngModelOptions]="{standalone: true}" [(ngModel)]="terminationReason" matInput placeholder="Umzug des Unternehmens"></textarea>
     </mat-form-field>
   </form>
 

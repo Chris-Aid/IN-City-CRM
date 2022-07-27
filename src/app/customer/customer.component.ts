@@ -1,7 +1,9 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FormControl } from '@angular/forms';
 import { MatDialog, } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map, Observable, startWith } from 'rxjs';
 import { AddCustomerDialogComponent } from '../add-customer-dialog/add-customer-dialog.component';
 import { CustomerCardDialogComponent } from '../customer-card-dialog/customer-card-dialog.component';
 import { CustomersService } from '../customers.service';
@@ -15,21 +17,34 @@ import { CustomersService } from '../customers.service';
 export class CustomerComponent implements OnInit {
 
   customersID: any;
+  searchedCustomer;
 
   public customers: any[] = [];
-  firma: { name: any; company: any; membernumber: any; tel: any; mobile: any; email: any; street: any; postcode: any; town: any; entryDate: any; selectedBranch: any; membershipFee: any; terminationDate: any; terminationReason: any;};
+  firma: { name: any; company: any; membernumber: any; tel: any; mobile: any; email: any; street: any; postcode: any; town: any; entryDate: any; selectedBranch: any; membershipFee: any; terminationDate: any; terminationReason: any; };
 
   constructor(private router: Router, public dialog: MatDialog, public firestore: AngularFirestore, private route: ActivatedRoute, private customerInfo: CustomersService) { }
 
+    ngOnInit(): void {
+    this.getCustomer();
+    this.filterOptions();
+  }
+
+  getCustomer() {
+    this.firestore
+    .collection('Kunden')
+    .valueChanges()
+    .subscribe((customer: any) => {
+      this.customerInfo.customers = customer;
+      this.customers = customer;
+    });
+  }
+
   openDialog(): void {
 
-    const dialogRef = this.dialog.open(AddCustomerDialogComponent, {
-      width: '250px',
-    });
+    const dialogRef = this.dialog.open(AddCustomerDialogComponent);
 
     dialogRef.afterClosed().subscribe(({
       name, company, membernumber, tel, mobile, email, street, postcode, town, entryDate, selectedBranch, membershipFee }) => {
-
       let EUdate = entryDate.getDate() + "." + (entryDate.getMonth() + 1) + "." + entryDate.getFullYear()
 
       this.firma = {
@@ -52,14 +67,14 @@ export class CustomerComponent implements OnInit {
       this.firestore
         .collection('Kunden')
         .add(this.firma)
-        .then( (customerInfo:any) => {
+        .then((customerInfo: any) => {
 
           this.firestore
-          .collection('Kunden')
-          .doc(customerInfo.id)
-          .update({ CustomersID: customerInfo.id});
+            .collection('Kunden')
+            .doc(customerInfo.id)
+            .update({ CustomersID: customerInfo.id });
         });
-       
+      // window.location.reload();
     });
   }
 
@@ -73,15 +88,23 @@ export class CustomerComponent implements OnInit {
     // this.router.navigateByUrl('/' + this.customersID)
   }
 
-  ngOnInit(): void {
-    this.firestore
-      .collection('Kunden')
-      .valueChanges()
-      .subscribe((customer: any) => {
-        this.customerInfo.customers = customer;
-        this.customers = customer;
-      });
+  filterOptions() {
+    setTimeout(() => {
+      this.filteredOptions = this.myControl.valueChanges.pipe(
+        startWith(''),
+        map(value => this._filter(value || '')),
+      );
+    }, 600);
 
+  }
 
+  myControl = new FormControl('');
+  options: any[] = this.customers;
+  filteredOptions: Observable<string[]>;
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    console.log(this.options)
+      return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 }

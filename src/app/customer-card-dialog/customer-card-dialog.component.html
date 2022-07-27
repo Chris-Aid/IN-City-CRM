@@ -3,7 +3,7 @@
   <div class="main-info">
     <div class="customer-info">
       <h3>Firmenname:</h3>
-      <h2 >{{customers[i]?.company}}</h2>
+      <h2>{{customers[i]?.company}}</h2>
     </div>
 
     <div class="customer-info">
@@ -57,11 +57,22 @@
     <div class="customer-info">
       <h3>Mitgliedschaft:</h3>
       <mat-radio-group [(ngModel)]="selected" aria-label="Select an option">
-        <mat-radio-button value="firstBtn">aktiv</mat-radio-button>
-        <mat-radio-button (click)="changeToTerminated(i)" value="secondBtn">gekündigt</mat-radio-button>
+        <mat-radio-button (click)="changeToActive()" value="active">aktiv</mat-radio-button>
+        <mat-radio-button (click)="changeToTerminated(i)" value="terminated">gekündigt</mat-radio-button>
       </mat-radio-group>
     </div>
 
+    <div *ngIf="showTerminationInfo">
+      <div class="customer-info">
+        <h3>Kündigungsdatum</h3>
+        <h2>{{customers[i]?.terminationDate}}</h2>
+      </div>
+      <div class="customer-info">
+        <h3>Kündigungsgrund</h3>
+        <h2>{{customers[i]?.terminationReason}}</h2>
+      </div>
+
+    </div>
     <!-- <div class="customer-info">
       <h3>E-mail:</h3>
       <h2>{{customers[i].email}}</h2>

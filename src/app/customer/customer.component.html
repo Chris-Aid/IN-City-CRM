@@ -1,9 +1,21 @@
 <div class="customer-content">
     <div class="customer-administration">
-        <!-- <button (click)="openDialog()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
-            <mat-icon>add</mat-icon>
-          </button> -->
-        <!-- <button mat-raised-button >Pick one</button> -->
+        <form class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Name</mat-label>
+              <input type="text"
+                     placeholder="Pick one"
+                     aria-label="Number"
+                     matInput
+                     [formControl]="myControl"
+                     [matAutocomplete]="auto">
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
     </div>
 
     <mat-card class="customers-field">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CustomersService } from '../customers.service';
 
@@ -8,6 +9,8 @@ import { CustomersService } from '../customers.service';
   styleUrls: ['./add-customer-dialog.component.scss']
 })
 export class AddCustomerDialogComponent implements OnInit {
+
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   //branches are stored in customers service
   branches: any[] = [];

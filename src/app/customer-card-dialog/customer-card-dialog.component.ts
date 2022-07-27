@@ -15,20 +15,35 @@ export class CustomerCardDialogComponent implements OnInit {
   constructor(public dialog: MatDialog, public firestore: AngularFirestore) { }
 
   i: number;
-  selected: string = "firstBtn";
+  selected: string = "active";
   value: any = 1;
+  showTerminationInfo = false;
 
   ngOnInit(): void {
+    this.getCustomerInfo();
+  }
+
+  getCustomerInfo() {
     this.firestore
       .collection('Kunden')
       .valueChanges()
       .subscribe((customer: any) => {
         this.customers = customer;
+        this.checkMembershipStatus();
       });
   }
 
+  checkMembershipStatus() {
+    if (this.customers[this.i].status == 'gekündigt') {
+      this.selected = "terminated";
+      this.showTerminationInfo = true;
+    } else {
+      this.selected = "active";
+    }
+  }
+
   changeToTerminated(i: any) {
-    this.selected = "secondBtn";
+    this.selected = "terminated";
 
     const dialogRef = this.dialog.open(SetTerminationComponent);
     dialogRef.componentInstance.i = i;
@@ -36,4 +51,17 @@ export class CustomerCardDialogComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
+  changeToActive() {
+    this.firestore
+      .collection('Kunden')
+      .doc(this.customers[this.i].CustomersID)
+      .update({ status: 'active' })
+      // this.selected = "active";
+    this.checkMembershipStatus();
+  }
+
+  // reload() {
+  //   window.location.reload();
+  // }
 }

@@ -15,7 +15,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AddCustomerDialogComponent } from './add-customer-dialog/add-customer-dialog.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
@@ -30,6 +30,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import { SetTerminationComponent } from './set-termination/set-termination.component';
 import { CustomersService } from './customers.service';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 
@@ -63,6 +64,8 @@ import { CustomersService } from './customers.service';
     MatNativeDateModule,
     MatRadioModule,
     MatSelectModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
     AngularFireModule.initializeApp(environment.firebase), // compat API
     
     provideFirebaseApp(() => initializeApp(environment.firebase)),
