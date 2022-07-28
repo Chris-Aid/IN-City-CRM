@@ -21,8 +21,6 @@ export class SetTerminationComponent implements OnInit {
 
   ngOnInit(): void {
     this.customersData = this.customers.getCustomers();
-
-    console.log(this.customersData[this.i].name)
   }
 
   saveTermination() {
@@ -32,7 +30,6 @@ export class SetTerminationComponent implements OnInit {
       .collection('Kunden', ref => ref.where('name', '==', this.customersData[this.i].name))
       .valueChanges()
       .subscribe((a: any) => {
-        
         this.firestore
           .collection('Kunden')
           .doc(a[0].CustomersID)

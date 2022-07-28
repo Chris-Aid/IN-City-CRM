@@ -1,22 +1,20 @@
 <div class="customer-content">
     <div class="customer-administration">
-        <form class="example-form">
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Name</mat-label>
-              <input type="text"
-                     placeholder="Pick one"
-                     aria-label="Number"
-                     matInput
-                     [formControl]="myControl"
-                     [matAutocomplete]="auto">
-              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                  {{option}}
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
-          </form>
+      <mat-form-field class="example-form-field" appearance="fill">
+        <div class="search-hero">
+          <input matInput name="search" type="text" [(ngModel)]="searchText" placeholder="Kundensuche">
+        </div>
+      </mat-form-field>
+
     </div>
+
+    <!-- <table>
+      <thead>
+        <th>
+          <td></td>
+        </th>
+      </thead>
+    </table> -->
 
     <mat-card class="customers-field">
         <div class="customer-info">
@@ -27,7 +25,7 @@
             <div><p>Telefon</p> </div>
             <div><p>Mobil</p> </div>
         </div>
-        <div class="customer" *ngFor="let customer of customers; let i = index">
+        <div class="customer" *ngFor="let customer of customers | filter:searchText; let i = index">
             <div (click)="openDialog2(i)" class="customer-card">
                 <p>{{customer.company}}</p>
                 <p>{{customer.name}}</p>
