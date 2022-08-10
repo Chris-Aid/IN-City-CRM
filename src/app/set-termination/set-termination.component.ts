@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { CustomersService } from '../customers.service';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-set-termination',
@@ -31,8 +32,8 @@ export class SetTerminationComponent implements OnInit {
     this.firestore
       .collection('Kunden', ref => ref.where('name', '==', this.customersData[this.i].name))
       .valueChanges()
+      .pipe(first())
       .subscribe((a: any) => {
-        
         this.firestore
           .collection('Kunden')
           .doc(a[0].CustomersID)
