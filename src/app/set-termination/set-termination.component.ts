@@ -22,8 +22,6 @@ export class SetTerminationComponent implements OnInit {
 
   ngOnInit(): void {
     this.customersData = this.customers.getCustomers();
-
-    console.log(this.customersData[this.i].name)
   }
 
   saveTermination() {

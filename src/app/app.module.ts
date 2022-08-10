@@ -31,6 +31,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { SetTerminationComponent } from './set-termination/set-termination.component';
 import { CustomersService } from './customers.service';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -66,6 +67,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatSelectModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
+    Ng2SearchPipeModule,
     AngularFireModule.initializeApp(environment.firebase), // compat API
     
     provideFirebaseApp(() => initializeApp(environment.firebase)),

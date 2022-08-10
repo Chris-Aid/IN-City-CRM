@@ -16,3 +16,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-dialog-actions {
 justify-content: flex-end !important;
 }
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgba(58, 94, 187, 0.178) !important;
+}

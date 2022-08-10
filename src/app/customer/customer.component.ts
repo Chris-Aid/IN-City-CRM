@@ -1,9 +1,10 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormControl } from '@angular/forms';
 import { MatDialog, } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, Observable, startWith } from 'rxjs';
+import { filter, map, Observable, startWith } from 'rxjs';
 import { AddCustomerDialogComponent } from '../add-customer-dialog/add-customer-dialog.component';
 import { CustomerCardDialogComponent } from '../customer-card-dialog/customer-card-dialog.component';
 import { CustomersService } from '../customers.service';
@@ -11,33 +12,41 @@ import { CustomersService } from '../customers.service';
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.scss']
+  styleUrls: ['./customer.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 
 export class CustomerComponent implements OnInit {
 
   customersID: any;
-  searchedCustomer;
+  searchedCustomer: any;
+  searchText: any;
 
   public customers: any[] = [];
   firma: { name: any; company: any; membernumber: any; tel: any; mobile: any; email: any; street: any; postcode: any; town: any; entryDate: any; selectedBranch: any; membershipFee: any; terminationDate: any; terminationReason: any; };
 
   constructor(private router: Router, public dialog: MatDialog, public firestore: AngularFirestore, private route: ActivatedRoute, private customerInfo: CustomersService) { }
 
-    ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.getCustomer();
-    this.filterOptions();
   }
 
-  getCustomer() {
+  async getCustomer() {
     this.firestore
-    .collection('Kunden')
-    .valueChanges()
-    .subscribe((customer: any) => {
-      this.customerInfo.customers = customer;
-      this.customers = customer;
-    });
+      .collection('Kunden')
+      .valueChanges()
+      .subscribe((customer: any) => {
+        this.customerInfo.customers = customer;
+        this.customers = customer;
+      });
   }
+
 
   openDialog(): void {
 
@@ -68,13 +77,14 @@ export class CustomerComponent implements OnInit {
         .collection('Kunden')
         .add(this.firma)
         .then((customerInfo: any) => {
-
+          
           this.firestore
             .collection('Kunden')
             .doc(customerInfo.id)
             .update({ CustomersID: customerInfo.id });
+
         });
-      // window.location.reload();
+
     });
   }
 
@@ -88,23 +98,4 @@ export class CustomerComponent implements OnInit {
     // this.router.navigateByUrl('/' + this.customersID)
   }
 
-  filterOptions() {
-    setTimeout(() => {
-      this.filteredOptions = this.myControl.valueChanges.pipe(
-        startWith(''),
-        map(value => this._filter(value || '')),
-      );
-    }, 600);
-
-  }
-
-  myControl = new FormControl('');
-  options: any[] = this.customers;
-  filteredOptions: Observable<string[]>;
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    console.log(this.options)
-      return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
 }
