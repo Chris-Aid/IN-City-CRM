@@ -1,10 +1,15 @@
 <div class="customer-content">
     <div class="customer-administration">
-      <mat-form-field class="example-form-field" appearance="fill">
+      <!-- <mat-form-field class="example-form-field" appearance="fill">
         <div class="search-hero">
           <input matInput name="search" type="text" [(ngModel)]="searchText" placeholder="Kundensuche">
         </div>
-      </mat-form-field>
+      </mat-form-field> -->
+
+      <div class="form__group field">
+        <input matInput type="input" class="form__field"  matInput name="search" type="text" [(ngModel)]="searchText" placeholder="Kundensuche" id='name' required />
+        <label for="name" class="form__label">Name</label>
+      </div>
 
     </div>
 

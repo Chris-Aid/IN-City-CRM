@@ -36,6 +36,6 @@ export class SetTerminationComponent implements OnInit {
           .collection('Kunden')
           .doc(a[0].CustomersID)
           .update({ status: 'gekündigt', terminationDate: dateOfTermination, terminationReason: this.terminationReason })
-      })
+      });
   }
 }
