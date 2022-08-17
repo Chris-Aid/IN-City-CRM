@@ -38,7 +38,7 @@
             Email ungültig!
           </mat-error>
           <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email ist <strong>benötigt</strong>
+            Email wird <strong>benötigt</strong>
           </mat-error>
           <label class="form__label">Email</label>
         </div>
@@ -76,7 +76,7 @@
       <div class="form__group field">
         <div style="display: flex; flex-direction: column;">
           <label class="form__label">Mitglied seit:</label>
-          <input class="form__field" matInput [(ngModel)]="entryDate" [matDatepicker]="picker">
+          <input [min]="minDate" [max]="maxDate" class="form__field" matInput [(ngModel)]="entryDate" [matDatepicker]="picker">
           <div class="datePicker">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -92,7 +92,6 @@
             <mat-option *ngFor="let branch of branches" [value]="branch.value">
               {{branch.viewValue}}
             </mat-option>
-            <input class="form__field" matInput>
           </mat-select>
 
         </div>

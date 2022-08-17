@@ -1,10 +1,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormControl } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
 import { MatDialog, } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, map, Observable, startWith } from 'rxjs';
 import { AddCustomerDialogComponent } from '../add-customer-dialog/add-customer-dialog.component';
 import { CustomerCardDialogComponent } from '../customer-card-dialog/customer-card-dialog.component';
 import { CustomersService } from '../customers.service';
@@ -23,6 +22,11 @@ import { CustomersService } from '../customers.service';
 })
 
 export class CustomerComponent implements OnInit {
+
+  checked = false;
+  indeterminate = false;
+  labelPosition: 'before' | 'after' = 'after';
+  disabled = false;
 
   customersID: any;
   searchedCustomer: any;
@@ -46,7 +50,6 @@ export class CustomerComponent implements OnInit {
         this.customers = customer;
       });
   }
-
 
   openDialog(): void {
 
@@ -77,7 +80,7 @@ export class CustomerComponent implements OnInit {
         .collection('Kunden')
         .add(this.firma)
         .then((customerInfo: any) => {
-          
+
           this.firestore
             .collection('Kunden')
             .doc(customerInfo.id)

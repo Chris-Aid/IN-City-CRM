@@ -19,7 +19,8 @@ export class CustomersService {
     { value: 'Buchhandlung', viewValue: 'Buchhandlung' },
     { value: 'Apotheke', viewValue: 'Apotheke' },
     { value: 'Drogerie', viewValue: 'Drogerie' },
-    { value: 'Praxis', viewValue: 'Praxis' },];
+    { value: 'Praxis', viewValue: 'Praxis' },
+    { value: 'Praxis', viewValue: 'sonstiges' },];
 
   getBranches(): AddCustomerDialogComponent[] {
     return this.branches;

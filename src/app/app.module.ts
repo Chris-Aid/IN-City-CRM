@@ -32,6 +32,7 @@ import { SetTerminationComponent } from './set-termination/set-termination.compo
 import { CustomersService } from './customers.service';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -68,6 +69,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ReactiveFormsModule,
     MatAutocompleteModule,
     Ng2SearchPipeModule,
+    MatCheckboxModule,
     AngularFireModule.initializeApp(environment.firebase), // compat API
     
     provideFirebaseApp(() => initializeApp(environment.firebase)),

@@ -29,15 +29,27 @@ export class AddCustomerDialogComponent implements OnInit {
   entryDate: any;
   // value: any;
 
+  minDate: Date;
+  maxDate: Date;
+
   constructor(public dialogRef: MatDialogRef<AddCustomerDialogComponent>, private customerBranches: CustomersService) { }
 
 
   ngOnInit(): void {
     this.branches = this.customerBranches.getBranches();
+
+    this.setDate();
   }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  setDate() {
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 26, 0 , 1);
+    this.maxDate = new Date(currentYear + 1, 0, 0);
+    console.log(currentYear)
   }
  
 }

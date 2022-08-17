@@ -1,8 +1,16 @@
 body {
     margin: 0;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .cdk-overlay-pane {
     width: auto !important;
@@ -14,7 +22,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .mat-dialog-actions {
-justify-content: flex-end !important;
+    justify-content: flex-end !important;
 }
 
 .mat-form-field-appearance-fill .mat-form-field-flex {
@@ -42,4 +50,14 @@ justify-content: flex-end !important;
 
 .mat-select-arrow-wrapper {
     display: none !important;
+}
+
+.ng-tns-c146-4 {
+
+    ul {
+        display: flex;
+        width: 40%;
+        justify-content: space-around;
+    }
+
 }

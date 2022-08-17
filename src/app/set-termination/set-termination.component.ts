@@ -17,11 +17,21 @@ export class SetTerminationComponent implements OnInit {
 
   myID: any;
   i: number;
+  minDate: Date;
+  maxDate: Date;
 
   constructor(private route: ActivatedRoute, public firestore: AngularFirestore, private customers: CustomersService) { }
 
   ngOnInit(): void {
     this.customersData = this.customers.getCustomers();
+
+    this.setDate();
+  }
+  setDate() {
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 26, 0 , 1);
+    this.maxDate = new Date(currentYear + 2, 0, 0);
+    console.log(currentYear)
   }
 
   saveTermination() {
