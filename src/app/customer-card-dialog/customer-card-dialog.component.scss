@@ -15,6 +15,20 @@
     }
 }
 
+.customer-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.trash-bin {
+    height: 30px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 .date-picker {
     margin-bottom: 32px;
 }

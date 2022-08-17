@@ -33,6 +33,7 @@ import { CustomersService } from './customers.service';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { DeletingCustomerDialogComponent } from './deleting-customer-dialog/deleting-customer-dialog.component';
 
 
 
@@ -45,6 +46,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AddCustomerDialogComponent,
     CustomerCardDialogComponent,
     SetTerminationComponent,
+    DeletingCustomerDialogComponent,
 
   ],
   imports: [

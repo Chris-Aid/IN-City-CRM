@@ -31,7 +31,6 @@ export class SetTerminationComponent implements OnInit {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 26, 0 , 1);
     this.maxDate = new Date(currentYear + 2, 0, 0);
-    console.log(currentYear)
   }
 
   saveTermination() {

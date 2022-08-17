@@ -1,7 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ThemePalette } from '@angular/material/core';
 import { MatDialog, } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddCustomerDialogComponent } from '../add-customer-dialog/add-customer-dialog.component';
@@ -23,17 +22,14 @@ import { CustomersService } from '../customers.service';
 
 export class CustomerComponent implements OnInit {
 
-  checked = false;
-  indeterminate = false;
-  labelPosition: 'before' | 'after' = 'after';
-  disabled = false;
+  labelPosition: 'gekündigt' | 'aktiv' = 'aktiv';
 
   customersID: any;
   searchedCustomer: any;
   searchText: any;
 
   public customers: any[] = [];
-  firma: { name: any; company: any; membernumber: any; tel: any; mobile: any; email: any; street: any; postcode: any; town: any; entryDate: any; selectedBranch: any; membershipFee: any; terminationDate: any; terminationReason: any; };
+  firma: { name: any; company: any; membernumber: any; tel: any; mobile: any; email: any; street: any; postcode: any; town: any; entryDate: any; selectedBranch: any; membershipFee: any; terminationDate: any; terminationReason: any; status: any; };
 
   constructor(private router: Router, public dialog: MatDialog, public firestore: AngularFirestore, private route: ActivatedRoute, private customerInfo: CustomersService) { }
 
@@ -74,6 +70,7 @@ export class CustomerComponent implements OnInit {
         membershipFee: membershipFee,
         terminationDate: '',
         terminationReason: '',
+        status: 'aktiv',
       };
 
       this.firestore
@@ -97,8 +94,6 @@ export class CustomerComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
-    // console.log(this.customersID)
-    // this.router.navigateByUrl('/' + this.customersID)
   }
 
 }

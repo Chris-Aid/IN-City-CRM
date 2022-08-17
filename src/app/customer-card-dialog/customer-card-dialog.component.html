@@ -79,7 +79,10 @@
     </div> -->
   </div>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
-</mat-dialog-actions>
+<div class="customer-footer">
+  <img  mat-raised-button (click)="openDialog('0ms', '0ms')" (mouseenter)="hovered = 2" (mouseleave)="hovered = 1" class="trash-bin" src="/assets/img/trash-{{hovered}}.png" alt="">
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
+  </mat-dialog-actions>
+</div>

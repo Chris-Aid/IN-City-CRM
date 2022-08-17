@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
+import { DeletingCustomerDialogComponent } from '../deleting-customer-dialog/deleting-customer-dialog.component';
 import { SetTerminationComponent } from '../set-termination/set-termination.component';
 
 
@@ -18,6 +19,9 @@ export class CustomerCardDialogComponent implements OnInit {
   selected: string = "active";
   value: any = 1;
   showTerminationInfo = false;
+
+  hovered: number = 1;
+  // hovered2: number;
 
   ngOnInit(): void {
     this.getCustomerInfo();
@@ -61,7 +65,11 @@ export class CustomerCardDialogComponent implements OnInit {
     this.checkMembershipStatus();
   }
 
-  // reload() {
-  //   window.location.reload();
-  // }
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(DeletingCustomerDialogComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
 }
