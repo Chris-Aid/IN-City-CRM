@@ -17,6 +17,8 @@ export class AddCustomerDialogComponent implements OnInit {
   //branches are stored in customers service
   branches: any[] = [];
 
+
+
   selectedBranch: any;
   membershipFee: any;
   name: string;

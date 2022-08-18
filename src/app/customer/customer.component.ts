@@ -93,7 +93,7 @@ export class CustomerComponent implements OnInit {
         .collection('Kunden')
         .add(this.firma)
         .then((customerInfo: any) => {
-
+          console.log(customerInfo)
           this.firestore
             .collection('Kunden')
             .doc(customerInfo.id)
@@ -108,9 +108,9 @@ export class CustomerComponent implements OnInit {
     const dialogRef = this.dialog.open(CustomerCardDialogComponent);
     dialogRef.componentInstance.i = i;
     dialogRef.componentInstance.member = member;
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+
+    // });
   }
 
 }

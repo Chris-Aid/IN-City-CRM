@@ -20,28 +20,22 @@
         <div class="customer-info">
             <div><p>Firma</p></div>
             <div><p>Ansprechpartner</p></div>
-            <div><p>Mitgliedsnummer</p> </div>
             <div><p>E-Mail</p> </div>
             <div><p>Telefon</p> </div>
-            <div><p>Mobil</p> </div>
         </div>
 <!-- <div *ngIf="labelPosition === 'all'"> -->
   <div class="customer" *ngFor=" let customer of customers | filter: searchText; let i = index">
     <div *ngIf="customer.status === memberStatus" (click)="openDialog2(i, member)" class="customer-card">
         <p>{{customer.company}}</p>
         <p>{{customer.name}}</p>
-        <p>{{customer.membernumber}}</p>
         <p>{{customer.email}}</p>
         <p>{{customer.tel}}</p>
-        <p>{{customer.mobile}}</p>
     </div>
     <div *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'" (click)="openDialog2(i, member)" class="customer-card">
       <p>{{customer.company}}</p>
       <p>{{customer.name}}</p>
-      <p>{{customer.membernumber}}</p>
       <p>{{customer.email}}</p>
       <p>{{customer.tel}}</p>
-      <p>{{customer.mobile}}</p>
   </div>
 <!-- </div> -->
 </div>

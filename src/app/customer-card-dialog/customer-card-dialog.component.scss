@@ -21,8 +21,22 @@
     align-items: flex-end;
 }
 
+.cusotmer-icons {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
+
 .trash-bin {
     height: 30px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.edit-img {
+    height: 25px;
 
     &:hover {
         cursor: pointer;

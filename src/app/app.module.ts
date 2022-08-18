@@ -34,6 +34,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DeletingCustomerDialogComponent } from './deleting-customer-dialog/deleting-customer-dialog.component';
+import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 
 
 
@@ -47,6 +48,7 @@ import { DeletingCustomerDialogComponent } from './deleting-customer-dialog/dele
     CustomerCardDialogComponent,
     SetTerminationComponent,
     DeletingCustomerDialogComponent,
+    EditCustomerComponent,
 
   ],
   imports: [
