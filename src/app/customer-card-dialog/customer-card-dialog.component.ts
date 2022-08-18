@@ -66,10 +66,21 @@ export class CustomerCardDialogComponent implements OnInit {
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(DeletingCustomerDialogComponent, {
+    let dialog = this.dialog.open(DeletingCustomerDialogComponent, {
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
+
+    dialog.afterClosed().subscribe((deleteCustomer) => {
+      if(deleteCustomer) {
+        this.firestore
+        .collection('Kunden')
+        .doc(this.customers[this.i].CustomersID)
+        .delete();
+      }
+
+    });
+
   }
 }
