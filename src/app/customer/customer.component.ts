@@ -22,16 +22,18 @@ import { CustomersService } from '../customers.service';
 
 export class CustomerComponent implements OnInit {
 
-  memberStatus: 'gekündigt' | 'aktiv' = 'aktiv';
+  memberStatus: 'gekündigt' | 'aktiv' | 'all' = 'all';
 
   EUdate: any;
+  member: string;
+  statusOfMembership: string;
 
   customersID: any;
   searchedCustomer: any;
   searchText: any;
 
   public customers: any[] = [];
-  firma: { name: any; company: any; membernumber: any; tel: any; mobile: any; email: any; street: any; postcode: any; town: any; entryDate: any; selectedBranch: any; membershipFee: any; terminationDate: any; terminationReason: any; status: any; };
+  firma: { name: any; company: any; membernumber: any; tel: any; mobile: any; email: any; street: any; postcode: any; town: any; entryDate: any; selectedBranch: any; membershipFee: any; terminationDate: any; terminationReason: any; status: any; member: any; };
 
   constructor(private router: Router, public dialog: MatDialog, public firestore: AngularFirestore, private route: ActivatedRoute, private customerInfo: CustomersService,) { }
 
@@ -54,12 +56,19 @@ export class CustomerComponent implements OnInit {
     const dialogRef = this.dialog.open(AddCustomerDialogComponent);
 
     dialogRef.afterClosed().subscribe(({
-      name, company, membernumber, tel, mobile, email, street, postcode, town, entryDate, selectedBranch, membershipFee }) => {
+      name, company, membernumber, tel, mobile, email, street, postcode, town, entryDate, selectedBranch, membershipFee, member }) => {
+        this.member = member;
         if(entryDate) {
           this.EUdate = entryDate.getDate() + "." + (entryDate.getMonth() + 1) + "." + entryDate.getFullYear()
         } else {
           this.EUdate = '';
         }
+
+        if(member === 'member') {
+          this.statusOfMembership = 'aktiv'
+          } else {
+            this.statusOfMembership = 'inaktiv'
+          }
 
       this.firma = {
         name: name ? name : "",
@@ -76,7 +85,8 @@ export class CustomerComponent implements OnInit {
         membershipFee: membershipFee ? membershipFee : "",
         terminationDate: '',
         terminationReason: '',
-        status: 'aktiv',
+        status: this.statusOfMembership,
+        member: this.member
       };
 
       this.firestore
@@ -94,9 +104,10 @@ export class CustomerComponent implements OnInit {
     });
   }
 
-  openDialog2(i) {
+  openDialog2(i, member) {
     const dialogRef = this.dialog.open(CustomerCardDialogComponent);
     dialogRef.componentInstance.i = i;
+    dialogRef.componentInstance.member = member;
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

@@ -16,6 +16,7 @@ export class CustomerCardDialogComponent implements OnInit {
   constructor(public dialog: MatDialog, public firestore: AngularFirestore) { }
 
   i: number;
+  member: string;
   selected: string = "aktiv";
   value: any = 1;
   showTerminationInfo = false;
