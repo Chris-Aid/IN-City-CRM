@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeletingCustomerDialogComponent implements OnInit {
 
+  a = 1;
+  
   constructor() { }
 
   ngOnInit(): void {

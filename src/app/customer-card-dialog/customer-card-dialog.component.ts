@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DeletingCustomerDialogComponent } from '../deleting-customer-dialog/deleting-customer-dialog.component';
 import { SetTerminationComponent } from '../set-termination/set-termination.component';
 
@@ -61,15 +61,23 @@ export class CustomerCardDialogComponent implements OnInit {
       .collection('Kunden')
       .doc(this.customers[this.i].CustomersID)
       .update({ status: 'active' })
-      // this.selected = "active";
+    // this.selected = "active";
     this.checkMembershipStatus();
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(DeletingCustomerDialogComponent, {
+    const dialogRef = this.dialog.open(DeletingCustomerDialogComponent, {
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
+
+    dialogRef.afterClosed().subscribe((a) => {
+      console.log(a)
+    });
   }
+}
+
+export class DeletingCustomerDialogComponent {
+  constructor(public dialogRef: MatDialogRef<DeletingCustomerDialogComponent>) {}
 }
