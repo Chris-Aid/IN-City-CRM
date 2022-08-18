@@ -1,14 +1,13 @@
 <div class="customer-content">
     <div class="customer-administration">
 
-
       <div class="form__group field">
         <input matInput type="input" class="form__field"  matInput name="search" type="text" [(ngModel)]="searchText" placeholder="Kundensuche" id='name' required />
         <label for="name" class="form__label">Kundensuche</label>
 
         <section class="status-section">
           <label>Mitgliedsstatus:</label>
-          <mat-radio-group [(ngModel)]="labelPosition">
+          <mat-radio-group [(ngModel)]="memberStatus">
             <mat-radio-button value="aktiv">aktiv</mat-radio-button>
             <mat-radio-button value="gekündigt">gekündigt</mat-radio-button>
           </mat-radio-group>
@@ -27,7 +26,7 @@
         </div>
 <!-- <div *ngIf="labelPosition === 'all'"> -->
   <div class="customer" *ngFor=" let customer of customers | filter: searchText; let i = index">
-    <div *ngIf="customer.status === labelPosition" (click)="openDialog2(i)" class="customer-card">
+    <div *ngIf="customer.status === memberStatus" (click)="openDialog2(i)" class="customer-card">
         <p>{{customer.company}}</p>
         <p>{{customer.name}}</p>
         <p>{{customer.membernumber}}</p>

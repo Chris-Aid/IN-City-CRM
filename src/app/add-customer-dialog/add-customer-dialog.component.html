@@ -1,5 +1,14 @@
 <div class="dialog-Content" mat-dialog-content>
   <h1 mat-dialog-title>Neuen Kunden anlegen:</h1>
+
+  <section class="status-section">
+    <label>Mitgliedsstatus:</label>
+    <mat-radio-group [(ngModel)]="member">
+      <mat-radio-button value="member">Mitglied</mat-radio-button>
+      <mat-radio-button value="contact">Kontakt</mat-radio-button>
+    </mat-radio-group>
+  </section>
+
   <div class="input-content">
     <div>
       <div class="form__group field">
@@ -12,10 +21,17 @@
         <label class="form__label">Ansprechpartner</label>
       </div>
 
+
       <div class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="membernumber" />
-        <label class="form__label">Mitgliedsnummer</label>
+        <label class="form__label">Branche</label>
+        <mat-select [(ngModel)]="selectedBranch">
+          <mat-option *ngFor="let branch of branches" [value]="branch.value">
+            {{branch.viewValue}}
+          </mat-option>
+        </mat-select>
       </div>
+
+
     </div>
     <div class="second-container">
 
@@ -66,17 +82,18 @@
 
 
 
-      <div class="form__group field">
+      <div *ngIf="member === 'member'" class="form__group field">
         <!-- <mat-form-field appearance="fill"> -->
         <label class="form__label">Mitgliedsbeitrag</label>
         <input class="form__field" matInput [(ngModel)]="membershipFee">
         <!-- </mat-form-field> -->
       </div>
 
-      <div class="form__group field">
+      <div *ngIf="member === 'member'" class="form__group field">
         <div style="display: flex; flex-direction: column;">
           <label class="form__label">Mitglied seit:</label>
-          <input [min]="minDate" [max]="maxDate" class="form__field" matInput [(ngModel)]="entryDate" [matDatepicker]="picker">
+          <input [min]="minDate" [max]="maxDate" class="form__field" matInput [(ngModel)]="entryDate"
+            [matDatepicker]="picker">
           <div class="datePicker">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -85,16 +102,13 @@
         </div>
       </div>
 
-      
-      <div class="form__group field">
-          <label class="form__label">Branche</label>
-          <mat-select [(ngModel)]="selectedBranch">
-            <mat-option *ngFor="let branch of branches" [value]="branch.value">
-              {{branch.viewValue}}
-            </mat-option>
-          </mat-select>
 
-        </div>
+
+
+      <div *ngIf="member === 'member'" class="form__group field">
+        <input type="input" class="form__field" matInput [(ngModel)]="membernumber" />
+        <label class="form__label">Mitgliedsnummer</label>
+      </div>
 
 
     </div>

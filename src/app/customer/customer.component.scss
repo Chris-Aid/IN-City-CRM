@@ -29,7 +29,7 @@
 
 .customer-info {
     display: flex;
-    // gap: 128px;
+    box-shadow: rgb(0 0 0 / 4%) 0px 3px 5px;
     border-bottom: 0.1px solid lightgrey;
 
     p {
@@ -42,7 +42,7 @@
 .customer-card {
     display: flex;
     align-items: center;
-    border-bottom: 0.1px solid lightgrey;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
     height: 70px;
     cursor: pointer;
 
@@ -136,15 +136,15 @@ $gray: #9b9b9b;
     }
 }
 
-.status-section {
-    display: flex;
-    padding-bottom: 5px;
-    gap: 12px;
-    font-size: 1rem;
-    color: #565656;
-}
+// .status-section {
+//     display: flex;
+//     padding-bottom: 5px;
+//     gap: 12px;
+//     font-size: 1rem;
+//     color: #565656;
+// }
 
-.mat-radio-group {
-    display: flex;
-    gap: 12px;
-}
+// .mat-radio-group {
+//     display: flex;
+//     gap: 12px;
+// }

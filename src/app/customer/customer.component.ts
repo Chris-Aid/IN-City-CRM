@@ -22,7 +22,9 @@ import { CustomersService } from '../customers.service';
 
 export class CustomerComponent implements OnInit {
 
-  labelPosition: 'gekündigt' | 'aktiv' = 'aktiv';
+  memberStatus: 'gekündigt' | 'aktiv' = 'aktiv';
+
+  EUdate: any;
 
   customersID: any;
   searchedCustomer: any;
@@ -53,21 +55,25 @@ export class CustomerComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(({
       name, company, membernumber, tel, mobile, email, street, postcode, town, entryDate, selectedBranch, membershipFee }) => {
-      let EUdate = entryDate.getDate() + "." + (entryDate.getMonth() + 1) + "." + entryDate.getFullYear()
+        if(entryDate) {
+          this.EUdate = entryDate.getDate() + "." + (entryDate.getMonth() + 1) + "." + entryDate.getFullYear()
+        } else {
+          this.EUdate = '';
+        }
 
       this.firma = {
-        name: name,
-        company: company,
-        membernumber: membernumber,
-        tel: tel,
-        mobile: mobile,
-        email: email,
-        street: street,
-        postcode: postcode,
-        town: town,
-        entryDate: EUdate,
-        selectedBranch: selectedBranch,
-        membershipFee: membershipFee,
+        name: name ? name : "",
+        company: company ? company : "",
+        membernumber: membernumber ? membernumber : "",
+        tel: tel ? tel : "",
+        mobile: mobile ? mobile : "",
+        email: email ? email : "",
+        street: street ? street : "",
+        postcode: postcode ? postcode : "",
+        town: town ? town : "",
+        entryDate: this.EUdate,
+        selectedBranch: selectedBranch ? selectedBranch : "",
+        membershipFee: membershipFee ? membershipFee : "",
         terminationDate: '',
         terminationReason: '',
         status: 'aktiv',

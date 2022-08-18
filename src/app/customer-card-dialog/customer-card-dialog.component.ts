@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DeletingCustomerDialogComponent } from '../deleting-customer-dialog/deleting-customer-dialog.component';
 import { SetTerminationComponent } from '../set-termination/set-termination.component';
 
@@ -16,7 +16,7 @@ export class CustomerCardDialogComponent implements OnInit {
   constructor(public dialog: MatDialog, public firestore: AngularFirestore) { }
 
   i: number;
-  selected: string = "active";
+  selected: string = "aktiv";
   value: any = 1;
   showTerminationInfo = false;
 
@@ -39,10 +39,10 @@ export class CustomerCardDialogComponent implements OnInit {
 
   checkMembershipStatus() {
     if (this.customers[this.i].status == 'gekündigt') {
-      this.selected = "terminated";
+      this.selected = "gekündigt";
       this.showTerminationInfo = true;
     } else {
-      this.selected = "active";
+      this.selected = "aktiv";
     }
   }
 
@@ -66,18 +66,27 @@ export class CustomerCardDialogComponent implements OnInit {
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    const dialogRef = this.dialog.open(DeletingCustomerDialogComponent, {
+
+    let dialog = this.dialog.open(DeletingCustomerDialogComponent, {
+
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
 
-    dialogRef.afterClosed().subscribe((a) => {
-      console.log(a)
+    dialog.afterClosed().subscribe((deleteCustomer) => {
+      if(deleteCustomer) {
+        this.firestore
+        .collection('Kunden')
+        .doc(this.customers[this.i].CustomersID)
+        .delete();
+      }
+
     });
+
   }
 }
 
-export class DeletingCustomerDialogComponent {
-  constructor(public dialogRef: MatDialogRef<DeletingCustomerDialogComponent>) {}
-}
+// export class DeletingCustomerDialogComponent {
+//   constructor(public dialogRef: MatDialogRef<DeletingCustomerDialogComponent>) {}
+// }

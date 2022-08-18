@@ -10,6 +10,8 @@ import { CustomersService } from '../customers.service';
 })
 export class AddCustomerDialogComponent implements OnInit {
 
+  member: 'contact' | 'member' = 'member';
+
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   //branches are stored in customers service
