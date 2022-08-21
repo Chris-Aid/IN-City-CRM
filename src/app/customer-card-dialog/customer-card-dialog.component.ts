@@ -113,44 +113,40 @@ export class CustomerCardDialogComponent implements OnInit {
     editCustomer.componentInstance.customers = this.customers;
 
     editCustomer.afterClosed().subscribe(({
-      name, company, membernumber, tel, mobile, email, street, postcode, town, selectedBranch, membershipFee, }) => {
-      console.log(membernumber);
-      this.name = name.model;
-      this.company = company.model;
-      // this.membernumber = membernumber.model;
-      this.tel = tel.model;
-      this.mobile = mobile.model;
-      this.email = email.model;
-      this.street = street.model;
-      this.postcode = postcode.model;
-      this.town = town.model;
-      // this.selectedBranch = selectedBranch.model;
-      // this.membershipFee = membershipFee.model;
-      // this.name = name.model;
-      // this.company = company.model;
+      name, company, membernumber, tel, mobile, email, street, postcode, town, selectedBranch, membershipFee, entryDate }) => {
+      console.log(entryDate);
+      this.name = name.model,
+        this.company = company.model,
+        // this.membernumber = membernumber.model;
+        this.tel = tel.model,
+        this.mobile = mobile.model,
+        this.email = email.model,
+        this.street = street.model,
+        this.postcode = postcode.model,
+        this.town = town.model,
+        this.selectedBranch = selectedBranch;
+        this.membershipFee = membershipFee.model;
 
 
-
-        console.log(this.IDofCustomer)
       this.firestore
         .collection('Kunden')
         .doc(this.IDofCustomer)
         .update({
-          name: this.name ? this.name : "",
-          company: this.company ? this.company : "",
-          // membernumber: membernumber ? this.membernumber : "",
-          tel: tel ? this.tel : "",
-          mobile: mobile ?this. mobile : "",
-          email: email ? this.email : "",
-          street: street ? this.street : "",
-          postcode: postcode ? this.postcode : "",
-          town: town ? this.town : "",
-          // entryDate: entryDate ? this.entryDate : "",
-          // selectedBranch: selectedBranch ? this.selectedBranch : "",
-          // membershipFee: membershipFee? this.membershipFee : "",
-          terminationDate: '',
-          terminationReason: '',
-          // status: this.statusOfMembership,
+          name: this.name,
+          company: this.company,
+          // membernumber: membernumber ? membernumber : "",
+          tel: this.tel,
+          mobile: this.mobile,
+          email: this.email,
+          street: this.street,
+          postcode: this.postcode,
+          town: this.town,
+          // entryDate: entryDate ? entryDate : "",
+          selectedBranch: this.selectedBranch,
+          membershipFee: this.membershipFee,
+          // terminationDate: '',
+          // terminationReason: '',
+          // status: this.statusOfMembership ? status : "",
           // member: this.member
         });
     });

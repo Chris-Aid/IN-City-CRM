@@ -12,12 +12,13 @@
   <div class="input-content">
     <div>
       <div class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].company" name="company" #company="ngModel" type="text" />
+        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].company" 
+          #company="ngModel" />
         <label class="form__label">Firma</label>
       </div>
 
       <div class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].name" name="name" #name="ngModel" />
+        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].name" #name="ngModel" />
         <label class="form__label">Ansprechpartner</label>
       </div>
 
@@ -36,19 +37,20 @@
     <div class="second-container">
 
       <div class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].tel" name="tel" #tel="ngModel" />
+        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].tel"  #tel="ngModel" />
         <label class="form__label">Tel</label>
       </div>
 
       <div class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].mobile" name="mobile" #mobile="ngModel" />
+        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].mobile" 
+          #mobile="ngModel" />
         <label class="form__label">Mobil</label>
       </div>
 
 
       <div class="form__group field">
-        <input type="input" class="form__field" type="email" matInput [(ngModel)]="customers[i].email" name="email" #email="ngModel"
-          placeholder="Ex. pat@example.com" />
+        <input type="input" class="form__field" type="email" matInput [(ngModel)]="customers[i].email" 
+          #email="ngModel" placeholder="Ex. pat@example.com" />
         <label class="form__label">Email</label>
       </div>
     </div>
@@ -56,17 +58,20 @@
     <div class="second-container">
 
       <div class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].street" name="street" #street="ngModel" type="text" />
+        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].street" 
+          #street="ngModel" type="text" />
         <label class="form__label">Straße</label>
       </div>
 
       <div class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].postcode" name="postcode" #postcode="ngModel" type="text" />
+        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].postcode" 
+          #postcode="ngModel" type="text" />
         <label class="form__label">Postleitzahl</label>
       </div>
 
       <div class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].town" name="town" #town="ngModel" type="text" />
+        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].town"  #town="ngModel"
+          type="text" />
         <label class="form__label">Stadt</label>
       </div>
     </div>
@@ -74,28 +79,30 @@
 
 
 
-      <div *ngIf="member === 'member'" class="form__group field">
-      <!-- <mat-form-field appearance="fill"> -->
-      <label class="form__label">Mitgliedsbeitrag</label>
-      <input class="form__field" matInput [(ngModel)]="customers[i].membershipFee" name="membershipFee" #membershipFee="ngModel">
-      <!-- </mat-form-field> -->
+      <div class="form__group field">
+        <!-- <div *ngIf="customers[i].member === 'member'"> -->
+        <label class="form__label">Mitgliedsbeitrag</label>
+        <input class="form__field" matInput [(ngModel)]="customers[i].membershipFee" 
+          #membershipFee="ngModel">
+        <!-- </div> -->
       </div>
 
-      <!-- <div *ngIf="member === 'member'" class="form__group field">
-      <div style="display: flex; flex-direction: column;">
+      <div *ngIf="member === 'member'" class="form__group field">
+        <div style="display: flex; flex-direction: column;">
           <label class="form__label">Mitglied seit:</label>
-          <input [min]="minDate" [max]="maxDate" class="form__field" matInput [(ngModel)]="customers[i].entryDate" name="entryDate" #entryDate="ngModel"
-            [matDatepicker]="picker">
+          <input [min]="minDate" [max]="maxDate" class="form__field" matInput [(ngModel)]="customers[i].entryDate"
+            name="entryDate" #entryDate="ngModel" [matDatepicker]="picker">
           <div class="datePicker">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           </div>
           <mat-datepicker #picker></mat-datepicker>
         </div>
-      </div> -->
+      </div>
 
-      <div *ngIf="member === 'member'" class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].membernumber" name="membernumber" #membernumber="ngModel"/>
+      <div *ngIf="customers[i].member === 'member'" class="form__group field">
+        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].membernumber"
+          #membernumber="ngModel" />
         <label class="form__label">Mitgliedsnummer</label>
       </div>
     </div>
@@ -105,6 +112,6 @@
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Abbrechen</button>
   <button mat-button
-    [mat-dialog-close]="{name, company, tel, mobile, email, postcode, street, town, selectedBranch, membershipFee, membernumber}"
+    [mat-dialog-close]="{name, company, tel, mobile, email, postcode, street, town, selectedBranch, membershipFee, membernumber, entryDate}"
     cdkFocusInitial>Speichern</button>
 </div>

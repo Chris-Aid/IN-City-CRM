@@ -20,7 +20,6 @@ export class EditCustomerComponent implements OnInit {
   maxDate: any;
   minDate: any;
 
-
   membershipFee: any;
   name: string;
   company: string;
@@ -31,9 +30,8 @@ export class EditCustomerComponent implements OnInit {
   street: string;
   postcode: string;
   town: string;
+  entryDate: string;
   // entryDate: any;
-
-
 
   constructor(private customerBranches: CustomersService, public editCustomer: MatDialogRef<CustomerCardDialogComponent>) { }
 
