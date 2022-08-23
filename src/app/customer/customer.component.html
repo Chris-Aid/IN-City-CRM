@@ -1,8 +1,10 @@
 <div class="customer-content">
+  <div class="tableDiv">
     <div class="customer-administration">
 
       <div class="form__group field">
-        <input matInput type="input" class="form__field"  matInput name="search" type="text" [(ngModel)]="searchText" placeholder="Kundensuche" id='name' required />
+        <input matInput type="input" class="form__field" matInput name="search" type="text" [(ngModel)]="searchText"
+          placeholder="Kundensuche" id='name' required />
         <label for="name" class="form__label">Kundensuche</label>
 
         <section class="status-section">
@@ -17,31 +19,46 @@
     </div>
 
     <mat-card class="customers-field">
-        <div class="customer-info">
-            <div><p>Firma</p></div>
-            <div><p>Ansprechpartner</p></div>
-            <div><p>E-Mail</p> </div>
-            <div><p>Telefon</p> </div>
+      <div class="customer-info">
+        <div>
+          <p>Firma</p>
         </div>
-<!-- <div *ngIf="labelPosition === 'all'"> -->
-  <div class="customer" *ngFor=" let customer of customers | filter: searchText; let i = index">
-    <div *ngIf="customer.status === memberStatus" (click)="openDialog2(i, member)" class="customer-card">
-        <p>{{customer.company}}</p>
-        <p>{{customer.name}}</p>
-        <p>{{customer.email}}</p>
-        <p>{{customer.tel}}</p>
-    </div>
-    <div *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'" (click)="openDialog2(i, member)" class="customer-card">
-      <p>{{customer.company}}</p>
-      <p>{{customer.name}}</p>
-      <p>{{customer.email}}</p>
-      <p>{{customer.tel}}</p>
-  </div>
-<!-- </div> -->
-</div>
+        <div>
+          <p>Ansprechpartner</p>
+        </div>
+        <div>
+          <p>E-Mail</p>
+        </div>
+        <div>
+          <p>Telefon</p>
+        </div>
+      </div>
+      <!-- <div *ngIf="labelPosition === 'all'"> -->
+      <div class="customer" *ngFor=" let customer of customers | filter: searchText; let i = index">
+        <div *ngIf="customer.status === memberStatus" (click)="openDialog2(i, member)" class="customer-card">
+          <p>{{customer.company}}</p>
+          <p>{{customer.name}}</p>
+          <p>{{customer.email}}</p>
+          <p>{{customer.tel}}</p>
+        </div>
+        <div *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'" (click)="openDialog2(i, member)"
+          class="customer-card">
+          <p>{{customer.company}}</p>
+          <p>{{customer.name}}</p>
+          <p>{{customer.email}}</p>
+          <p>{{customer.tel}}</p>
+        </div>
+        <!-- </div> -->
+      </div>
 
-        <button class="add-customer-btn" (click)="openDialog()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
-            <mat-icon>add</mat-icon>
-          </button>
+      <button class="add-customer-btn" (click)="openDialog()" mat-mini-fab color="primary"
+        aria-label="Example icon button with a menu icon">
+        <mat-icon>add</mat-icon>
+      </button>
     </mat-card>
+  </div>
+
+  <!-- <angular-file-uploader
+      [config]="afuConfig">
+</angular-file-uploader> -->
 </div>

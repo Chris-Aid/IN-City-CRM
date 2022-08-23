@@ -71,8 +71,8 @@ export class CustomerCardDialogComponent implements OnInit {
     this.firestore
       .collection('Kunden')
       .doc(this.customers[this.i].CustomersID)
-      .update({ status: 'active' })
-    // this.selected = "active";
+      .update({ status: 'aktiv' })
+    // this.selected = "aktiv";
     this.checkMembershipStatus();
   }
 
@@ -106,6 +106,7 @@ export class CustomerCardDialogComponent implements OnInit {
   town: string;
   selectedBranch: string;
   membershipFee: string;
+  entryDate;
 
   openDialog2(i) {
     const editCustomer = this.dialog.open(EditCustomerComponent);

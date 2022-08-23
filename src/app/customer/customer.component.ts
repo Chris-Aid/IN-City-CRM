@@ -22,6 +22,12 @@ import { CustomersService } from '../customers.service';
 
 export class CustomerComponent implements OnInit {
 
+//   afuConfig = {
+//     uploadAPI: {
+//       url:"https://example-file-upload-api"
+//     }
+// };
+
   memberStatus: 'gekündigt' | 'aktiv' | 'all' = 'all';
 
   EUdate: any;
@@ -112,5 +118,7 @@ export class CustomerComponent implements OnInit {
 
     // });
   }
+
+
 
 }
