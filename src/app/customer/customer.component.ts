@@ -22,11 +22,11 @@ import { CustomersService } from '../customers.service';
 
 export class CustomerComponent implements OnInit {
 
-//   afuConfig = {
-//     uploadAPI: {
-//       url:"https://example-file-upload-api"
-//     }
-// };
+  //   afuConfig = {
+  //     uploadAPI: {
+  //       url:"https://example-file-upload-api"
+  //     }
+  // };
 
   memberStatus: 'gekündigt' | 'aktiv' | 'all' = 'all';
 
@@ -59,54 +59,62 @@ export class CustomerComponent implements OnInit {
 
   openDialog(): void {
 
-    const dialogRef = this.dialog.open(AddCustomerDialogComponent);
+    const dialogRef = this.dialog.open(AddCustomerDialogComponent, { disableClose: true });
 
     dialogRef.afterClosed().subscribe(({
       name, company, membernumber, tel, mobile, email, street, postcode, town, entryDate, selectedBranch, membershipFee, member }) => {
+
+      if (company && company.length > 0) {
+
         this.member = member;
-        if(entryDate) {
-          this.EUdate = entryDate.getDate() + "." + (entryDate.getMonth() + 1) + "." + entryDate.getFullYear()
-        } else {
-          this.EUdate = '';
-        }
+        this.setDateAndMemberstatus(entryDate, member);
+        this.firma = {
+          name: name ? name : "",
+          company: company ? company : "",
+          membernumber: membernumber ? membernumber : "",
+          tel: tel ? tel : "",
+          mobile: mobile ? mobile : "",
+          email: email ? email : "",
+          street: street ? street : "",
+          postcode: postcode ? postcode : "",
+          town: town ? town : "",
+          entryDate: this.EUdate,
+          selectedBranch: selectedBranch ? selectedBranch : "",
+          membershipFee: membershipFee ? membershipFee : "",
+          terminationDate: '',
+          terminationReason: '',
+          status: this.statusOfMembership,
+          member: this.member
+        };
+        this.saveToFirestore();
+      }
+    });
+  }
 
-        if(member === 'member') {
-          this.statusOfMembership = 'aktiv'
-          } else {
-            this.statusOfMembership = 'inaktiv'
-          }
+  setDateAndMemberstatus(entryDate, member) {
+    if (entryDate) {
+      this.EUdate = entryDate.getDate() + "." + (entryDate.getMonth() + 1) + "." + entryDate.getFullYear();
+    } else {
+      this.EUdate = '';
+    }
 
-      this.firma = {
-        name: name ? name : "",
-        company: company ? company : "",
-        membernumber: membernumber ? membernumber : "",
-        tel: tel ? tel : "",
-        mobile: mobile ? mobile : "",
-        email: email ? email : "",
-        street: street ? street : "",
-        postcode: postcode ? postcode : "",
-        town: town ? town : "",
-        entryDate: this.EUdate,
-        selectedBranch: selectedBranch ? selectedBranch : "",
-        membershipFee: membershipFee ? membershipFee : "",
-        terminationDate: '',
-        terminationReason: '',
-        status: this.statusOfMembership,
-        member: this.member
-      };
+    if (member === 'member') {
+      this.statusOfMembership = 'aktiv'
+    } else {
+      this.statusOfMembership = 'inaktiv'
+    }
+  }
 
+  saveToFirestore() {
+    this.firestore
+    .collection('Kunden')
+    .add(this.firma)
+    .then((customerInfo: any) => {
+      console.log(customerInfo)
       this.firestore
         .collection('Kunden')
-        .add(this.firma)
-        .then((customerInfo: any) => {
-          console.log(customerInfo)
-          this.firestore
-            .collection('Kunden')
-            .doc(customerInfo.id)
-            .update({ CustomersID: customerInfo.id });
-
-        });
-
+        .doc(customerInfo.id)
+        .update({ CustomersID: customerInfo.id });
     });
   }
 

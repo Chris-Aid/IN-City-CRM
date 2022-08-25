@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
+import { update } from '@firebase/database';
 import { DeletingCustomerDialogComponent } from '../deleting-customer-dialog/deleting-customer-dialog.component';
 import { EditCustomerComponent } from '../edit-customer/edit-customer.component';
 import { SetTerminationComponent } from '../set-termination/set-termination.component';
@@ -109,51 +110,56 @@ export class CustomerCardDialogComponent implements OnInit {
   entryDate;
 
   openDialog2(i) {
-    const editCustomer = this.dialog.open(EditCustomerComponent);
+    const editCustomer = this.dialog.open(EditCustomerComponent, { disableClose: true });
     editCustomer.componentInstance.i = i;
     editCustomer.componentInstance.customers = this.customers;
 
     editCustomer.afterClosed().subscribe(({
       name, company, membernumber, tel, mobile, email, street, postcode, town, selectedBranch, membershipFee, entryDate }) => {
-      console.log(entryDate);
-      this.name = name.model,
-        this.company = company.model,
-        // this.membernumber = membernumber.model;
-        this.tel = tel.model,
-        this.mobile = mobile.model,
-        this.email = email.model,
-        this.street = street.model,
-        this.postcode = postcode.model,
-        this.town = town.model,
-        this.selectedBranch = selectedBranch;
-        this.membershipFee = membershipFee.model;
-
-
-      this.firestore
-        .collection('Kunden')
-        .doc(this.IDofCustomer)
-        .update({
-          name: this.name,
-          company: this.company,
-          // membernumber: membernumber ? membernumber : "",
-          tel: this.tel,
-          mobile: this.mobile,
-          email: this.email,
-          street: this.street,
-          postcode: this.postcode,
-          town: this.town,
-          // entryDate: entryDate ? entryDate : "",
-          selectedBranch: this.selectedBranch,
-          membershipFee: this.membershipFee,
-          // terminationDate: '',
-          // terminationReason: '',
-          // status: this.statusOfMembership ? status : "",
-          // member: this.member
-        });
+      if (company && company.model.length > 0) {
+        
+        this.setCustomerData( name, company, membernumber, tel, mobile, email, street, postcode, town, selectedBranch, membershipFee, entryDate);
+        this.updateFirestore();
+      }
     });
   }
-}
 
-// export class DeletingCustomerDialogComponent {
-//   constructor(public dialogRef: MatDialogRef<DeletingCustomerDialogComponent>) {}
-// }
+  setCustomerData(  name, company, membernumber, tel, mobile, email, street, postcode, town, selectedBranch, membershipFee, entryDate) {
+    this.name = name.model,
+    this.company = company.model,
+      // this.membernumber = membernumber.model;
+    this.tel = tel.model,
+    this.mobile = mobile.model,
+    this.email = email.model,
+    this.street = street.model,
+    this.postcode = postcode.model,
+    this.town = town.model,
+    this.selectedBranch = selectedBranch;
+    this.membershipFee = membershipFee.model;
+  }
+
+  updateFirestore() {
+    this.firestore
+    .collection('Kunden')
+    .doc(this.IDofCustomer)
+    .update({
+      name: this.name,
+      company: this.company,
+      // membernumber: membernumber ? membernumber : "",
+      tel: this.tel,
+      mobile: this.mobile,
+      email: this.email,
+      street: this.street,
+      postcode: this.postcode,
+      town: this.town,
+      // entryDate: entryDate ? entryDate : "",
+      selectedBranch: this.selectedBranch,
+      membershipFee: this.membershipFee,
+      // terminationDate: '',
+      // terminationReason: '',
+      // status: this.statusOfMembership ? status : "",
+      // member: this.member
+    });
+  }
+
+}

@@ -36,6 +36,8 @@ export class AddCustomerDialogComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
 
+  noSub = true;
+
   constructor(public dialogRef: MatDialogRef<AddCustomerDialogComponent>, private customerBranches: CustomersService) { }
 
 
@@ -46,7 +48,7 @@ export class AddCustomerDialogComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+   console.log('true')
   }
 
   setDate() {

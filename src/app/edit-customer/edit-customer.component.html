@@ -104,7 +104,7 @@
 </div>
 
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Abbrechen</button>
+  <button mat-button mat-dialog-close>Abbrechen</button>
   <button mat-button
     [mat-dialog-close]="{name, company, tel, mobile, email, postcode, street, town, selectedBranch, membershipFee, membernumber, entryDate}"
     cdkFocusInitial>Speichern</button>

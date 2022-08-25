@@ -3,14 +3,16 @@
     flex-direction: column;
     height: calc(100vh - 74px);
     // background-color: #006bff21;
-    background-image: url('/assets/img/customer-background.jpg');
+    // background-image: url('/assets/img/customer-background.jpg');
     background-position: center;
-  background-size: cover;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-left: 128px;
     padding-right: 128px;
+    background: rgb(237,127,0);
+    background: linear-gradient(90deg, rgba(237,127,0,0.6727065826330532) 0%, rgba(255,132,0,0.6222864145658263) 29%, rgba(255,184,0,0.6418942577030813) 100%);
 }
 
 // .tableDiv {
@@ -65,10 +67,25 @@
     }
 }
 
+.btnContainer {
+    width: 100%;
+    height: 100px;
+    position: sticky;
+    bottom: 0;
+}
+
+// .card-div {
+//     height: 100%;
+//     width: 100%;
+//     background-color: green;
+//     position: relative;
+// }
+
 .add-customer-btn {
     position: absolute;
     right: 32px;
-    bottom: 32px;
+    bottom: 12px;
+    background-color: #af0606cc;
 }
 
 
@@ -85,7 +102,7 @@ $fontColor: 242424c7;
 
 .form__field {
     color: $fontColor;
-    }
+}
 
 
 .form__label {
@@ -96,4 +113,3 @@ $fontColor: 242424c7;
 .status-section {
     color: #565656;
 }
-

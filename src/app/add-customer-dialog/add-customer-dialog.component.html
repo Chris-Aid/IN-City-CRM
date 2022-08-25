@@ -111,8 +111,8 @@
 </div>
 
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Abbrechen</button>
-  <button mat-button
+  <button mat-button mat-dialog-close>Abbrechen</button>
+  <button mat-button 
     [mat-dialog-close]="{name, company, membernumber, tel, mobile, email, postcode, street, town, entryDate, selectedBranch, membershipFee, member}"
     cdkFocusInitial>Hinzufügen</button>
 </div>
