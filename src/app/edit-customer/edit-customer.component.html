@@ -81,7 +81,7 @@
         <!-- </div> -->
       </div>
 
-      <div *ngIf="member === 'member'" class="form__group field">
+      <!-- <div *ngIf="member === 'member'" class="form__group field">
         <div style="display: flex; flex-direction: column;">
           <label class="form__label">Mitglied seit:</label>
           <input [min]="minDate" [max]="maxDate" class="form__field" matInput [(ngModel)]="customers[i].entryDate"
@@ -92,13 +92,13 @@
           </div>
           <mat-datepicker #picker></mat-datepicker>
         </div>
-      </div>
+      </div> -->
 
-      <div *ngIf="customers[i].member === 'member'" class="form__group field">
+      <!-- <div *ngIf="customers[i].member === 'member'" class="form__group field">
         <input type="input" class="form__field" matInput [(ngModel)]="customers[i].membernumber"
           #membernumber="ngModel" />
-        <!-- <label class="form__label">Mitgliedsnummer</label> -->
-      </div>
+        <label class="form__label">Mitgliedsnummer</label>
+      </div> -->
     </div>
   </div>
 </div>

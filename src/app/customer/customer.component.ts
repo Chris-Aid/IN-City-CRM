@@ -118,10 +118,17 @@ export class CustomerComponent implements OnInit {
     });
   }
 
-  openDialog2(i, member) {
+  openDialog2(member, customer) {
+
     const dialogRef = this.dialog.open(CustomerCardDialogComponent);
-    dialogRef.componentInstance.i = i;
+    let chapterIndex = this.customers.indexOf(customer);
+    dialogRef.componentInstance.i = chapterIndex;
     dialogRef.componentInstance.member = member;
+    dialogRef.componentInstance.customers = this.customers;
+
+
+    
+    // dialogRef.componentInstance.chapter = customer;
     // dialogRef.afterClosed().subscribe(result => {
 
     // });

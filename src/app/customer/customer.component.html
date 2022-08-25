@@ -37,14 +37,14 @@
           </div>
         </div>
         <!-- <div *ngIf="labelPosition === 'all'"> -->
-        <div class="customer" *ngFor=" let customer of customers | filter: searchText; let i = index">
-          <div *ngIf="customer.status === memberStatus" (click)="openDialog2(i, member)" class="customer-card">
+        <div class="customer" *ngFor=" let customer of customers  | filter: searchText; let i = index">
+          <div *ngIf="customer.status === memberStatus" (click)="openDialog2(member, customer)" class="customer-card">
             <p>{{customer.company}}</p>
             <p>{{customer.name}}</p>
             <p>{{customer.email}}</p>
             <p>{{customer.tel}}</p>
           </div>
-          <div *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'" (click)="openDialog2(i, member)"
+          <div *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'" (click)="openDialog2(member, customer)"
             class="customer-card">
             <p>{{customer.company}}</p>
             <p>{{customer.name}}</p>

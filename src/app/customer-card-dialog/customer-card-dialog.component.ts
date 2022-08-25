@@ -1,7 +1,7 @@
+import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { update } from '@firebase/database';
 import { DeletingCustomerDialogComponent } from '../deleting-customer-dialog/deleting-customer-dialog.component';
 import { EditCustomerComponent } from '../edit-customer/edit-customer.component';
 import { SetTerminationComponent } from '../set-termination/set-termination.component';
@@ -20,12 +20,15 @@ export class CustomerCardDialogComponent implements OnInit {
   statusOfMembership: string;
 
 
-  public customers = [];
+  customers;
   IDofCustomer: string;
+  chapter;
 
   constructor(public dialog: MatDialog, public firestore: AngularFirestore) { }
 
   i: number;
+  searchText: any;
+
   // member: string;
   selected: string = "aktiv";
   value: any = 1;
@@ -35,19 +38,29 @@ export class CustomerCardDialogComponent implements OnInit {
   // hovered2: number;
 
   ngOnInit(): void {
-    this.getCustomerInfo();
+
+    this.IDofCustomer = this.customers[this.i].CustomersID;
   }
 
-  getCustomerInfo() {
-    this.firestore
-      .collection('Kunden')
-      .valueChanges()
-      .subscribe((customer: any) => {
-        this.customers = customer;
-        this.IDofCustomer = this.customers[this.i].CustomersID;
-        this.checkMembershipStatus();
-      });
-  }
+  // getMyCus(customer) {
+  //   // customer.filter(a => {
+
+  //       // customer.forEach(function(data) {
+  //       //   data.includes(this.searchText)
+  //       // });
+  //     // });
+  //     let finder = customer.filter(item => 
+  //       item.company.includes(this.searchText) ||
+  //       item.membernumber.includes(this.searchText) ||
+  //       item.EUdate.includes(this.searchText) ||
+  //       item.membershipFee.includes(this.searchText))
+
+  //       // item.name.includes(this.searchText)) ||
+  //     console.log(finder)
+    
+  // }
+
+
 
   checkMembershipStatus() {
     if (this.customers[this.i].status == 'gekündigt') {
@@ -117,49 +130,49 @@ export class CustomerCardDialogComponent implements OnInit {
     editCustomer.afterClosed().subscribe(({
       name, company, membernumber, tel, mobile, email, street, postcode, town, selectedBranch, membershipFee, entryDate }) => {
       if (company && company.model.length > 0) {
-        
-        this.setCustomerData( name, company, membernumber, tel, mobile, email, street, postcode, town, selectedBranch, membershipFee, entryDate);
+
+        this.setCustomerData(name, company, membernumber, tel, mobile, email, street, postcode, town, selectedBranch, membershipFee, entryDate);
         this.updateFirestore();
       }
     });
   }
 
-  setCustomerData(  name, company, membernumber, tel, mobile, email, street, postcode, town, selectedBranch, membershipFee, entryDate) {
+  setCustomerData(name, company, membernumber, tel, mobile, email, street, postcode, town, selectedBranch, membershipFee, entryDate) {
     this.name = name.model,
-    this.company = company.model,
+      this.company = company.model,
       // this.membernumber = membernumber.model;
-    this.tel = tel.model,
-    this.mobile = mobile.model,
-    this.email = email.model,
-    this.street = street.model,
-    this.postcode = postcode.model,
-    this.town = town.model,
-    this.selectedBranch = selectedBranch;
+      this.tel = tel.model,
+      this.mobile = mobile.model,
+      this.email = email.model,
+      this.street = street.model,
+      this.postcode = postcode.model,
+      this.town = town.model,
+      this.selectedBranch = selectedBranch;
     this.membershipFee = membershipFee.model;
   }
 
   updateFirestore() {
     this.firestore
-    .collection('Kunden')
-    .doc(this.IDofCustomer)
-    .update({
-      name: this.name,
-      company: this.company,
-      // membernumber: membernumber ? membernumber : "",
-      tel: this.tel,
-      mobile: this.mobile,
-      email: this.email,
-      street: this.street,
-      postcode: this.postcode,
-      town: this.town,
-      // entryDate: entryDate ? entryDate : "",
-      selectedBranch: this.selectedBranch,
-      membershipFee: this.membershipFee,
-      // terminationDate: '',
-      // terminationReason: '',
-      // status: this.statusOfMembership ? status : "",
-      // member: this.member
-    });
+      .collection('Kunden')
+      .doc(this.IDofCustomer)
+      .update({
+        name: this.name,
+        company: this.company,
+        // membernumber: membernumber ? membernumber : "",
+        tel: this.tel,
+        mobile: this.mobile,
+        email: this.email,
+        street: this.street,
+        postcode: this.postcode,
+        town: this.town,
+        // entryDate: entryDate ? entryDate : "",
+        selectedBranch: this.selectedBranch,
+        membershipFee: this.membershipFee,
+        // terminationDate: '',
+        // terminationReason: '',
+        // status: this.statusOfMembership ? status : "",
+        // member: this.member
+      });
   }
 
 }
