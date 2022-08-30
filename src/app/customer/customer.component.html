@@ -22,21 +22,21 @@
 
     <mat-card class="customers-field">
       <!-- <div class="card-div"> -->
-        <div class="customer-info">
-          <div>
-            <p>Firma</p>
-          </div>
-          <div>
-            <p>Ansprechpartner</p>
-          </div>
-          <div>
-            <p>E-Mail</p>
-          </div>
-          <div>
-            <p>Telefon</p>
-          </div>
+      <div class="customer-info">
+        <div>
+          <p>Firma</p>
         </div>
-        <!-- <div *ngIf="labelPosition === 'all'"> -->
+        <div>
+          <p>Ansprechpartner</p>
+        </div>
+        <div>
+          <p>E-Mail</p>
+        </div>
+        <div>
+          <p>Telefon</p>
+        </div>
+      </div>
+      <div class="card-container">
         <div class="customer" *ngFor=" let customer of customers  | filter: searchText; let i = index">
           <div *ngIf="customer.status === memberStatus" (click)="openDialog2(member, customer)" class="customer-card">
             <p>{{customer.company}}</p>
@@ -51,16 +51,15 @@
             <p>{{customer.email}}</p>
             <p>{{customer.tel}}</p>
           </div>
-          <!-- </div> -->
         </div>
+      </div>
 
-
-        <div class="btnContainer">
-          <button *ngIf="memberStatus != 'gekündigt'" class="add-customer-btn" (click)="openDialog()" mat-mini-fab color="primary"
-            aria-label="Example icon button with a menu icon">
-            <mat-icon>add</mat-icon>
-          </button>
-        </div>
+      <div class="btnContainer">
+        <button *ngIf="memberStatus != 'gekündigt'" class="add-customer-btn" (click)="openDialog()" mat-mini-fab
+          color="primary" aria-label="Example icon button with a menu icon">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
       <!-- </div> -->
     </mat-card>
   </div>

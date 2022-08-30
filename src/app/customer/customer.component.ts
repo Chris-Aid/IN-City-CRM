@@ -66,8 +66,9 @@ export class CustomerComponent implements OnInit {
 
       if (company && company.length > 0) {
 
-        this.member = member;
+        // this.member = member;
         this.setDateAndMemberstatus(entryDate, member);
+
         this.firma = {
           name: name ? name : "",
           company: company ? company : "",
@@ -84,7 +85,7 @@ export class CustomerComponent implements OnInit {
           terminationDate: '',
           terminationReason: '',
           status: this.statusOfMembership,
-          member: this.member
+          member: member
         };
         this.saveToFirestore();
       }
@@ -119,19 +120,11 @@ export class CustomerComponent implements OnInit {
   }
 
   openDialog2(member, customer) {
-
     const dialogRef = this.dialog.open(CustomerCardDialogComponent);
     let chapterIndex = this.customers.indexOf(customer);
     dialogRef.componentInstance.i = chapterIndex;
     dialogRef.componentInstance.member = member;
     dialogRef.componentInstance.customers = this.customers;
-
-
-    
-    // dialogRef.componentInstance.chapter = customer;
-    // dialogRef.afterClosed().subscribe(result => {
-
-    // });
   }
 
 

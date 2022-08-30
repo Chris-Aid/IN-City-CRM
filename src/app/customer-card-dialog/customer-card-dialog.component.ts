@@ -1,11 +1,9 @@
-import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { DeletingCustomerDialogComponent } from '../deleting-customer-dialog/deleting-customer-dialog.component';
 import { EditCustomerComponent } from '../edit-customer/edit-customer.component';
 import { SetTerminationComponent } from '../set-termination/set-termination.component';
-
 
 @Component({
   selector: 'app-customer-card-dialog',
@@ -19,48 +17,40 @@ export class CustomerCardDialogComponent implements OnInit {
   member: string;
   statusOfMembership: string;
 
-
-  customers;
-  IDofCustomer: string;
-  chapter;
-
-  constructor(public dialog: MatDialog, public firestore: AngularFirestore) { }
-
   i: number;
   searchText: any;
 
-  // member: string;
   selected: string = "aktiv";
   value: any = 1;
   showTerminationInfo = false;
-
   hovered: number = 1;
-  // hovered2: number;
+
+
+  customers = [];
+  IDofCustomer: string;
+
+  name: string;
+  company: string;
+  membernumber: string;
+  tel: string;
+  mobile: string;
+  email: string;
+  street: string;
+  postcode: string;
+  town: string;
+  selectedBranch: string;
+  membershipFee: string;
+  entryDate;
+
+  constructor(public dialog: MatDialog, public firestore: AngularFirestore) { }
 
   ngOnInit(): void {
-
-    this.IDofCustomer = this.customers[this.i].CustomersID;
+    this.assigningCustomerID();
   }
 
-  // getMyCus(customer) {
-  //   // customer.filter(a => {
-
-  //       // customer.forEach(function(data) {
-  //       //   data.includes(this.searchText)
-  //       // });
-  //     // });
-  //     let finder = customer.filter(item => 
-  //       item.company.includes(this.searchText) ||
-  //       item.membernumber.includes(this.searchText) ||
-  //       item.EUdate.includes(this.searchText) ||
-  //       item.membershipFee.includes(this.searchText))
-
-  //       // item.name.includes(this.searchText)) ||
-  //     console.log(finder)
-    
-  // }
-
-
+  assigningCustomerID() {
+    this.IDofCustomer = this.customers[this.i].CustomersID;
+  }
 
   checkMembershipStatus() {
     if (this.customers[this.i].status == 'gekündigt') {
@@ -90,14 +80,8 @@ export class CustomerCardDialogComponent implements OnInit {
     this.checkMembershipStatus();
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-
-    let dialog = this.dialog.open(DeletingCustomerDialogComponent, {
-
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
+  openDialog(): void {
+    let dialog = this.dialog.open(DeletingCustomerDialogComponent);
 
     dialog.afterClosed().subscribe((deleteCustomer) => {
       if (deleteCustomer) {
@@ -108,19 +92,6 @@ export class CustomerCardDialogComponent implements OnInit {
       }
     });
   }
-
-  name: string;
-  company: string;
-  membernumber: string;
-  tel: string;
-  mobile: string;
-  email: string;
-  street: string;
-  postcode: string;
-  town: string;
-  selectedBranch: string;
-  membershipFee: string;
-  entryDate;
 
   openDialog2(i) {
     const editCustomer = this.dialog.open(EditCustomerComponent, { disableClose: true });
@@ -139,15 +110,15 @@ export class CustomerCardDialogComponent implements OnInit {
 
   setCustomerData(name, company, membernumber, tel, mobile, email, street, postcode, town, selectedBranch, membershipFee, entryDate) {
     this.name = name.model,
-      this.company = company.model,
-      // this.membernumber = membernumber.model;
-      this.tel = tel.model,
-      this.mobile = mobile.model,
-      this.email = email.model,
-      this.street = street.model,
-      this.postcode = postcode.model,
-      this.town = town.model,
-      this.selectedBranch = selectedBranch;
+    this.company = company.model,
+    // this.membernumber = membernumber.model;
+    this.tel = tel.model,
+    this.mobile = mobile.model,
+    this.email = email.model,
+    this.street = street.model,
+    this.postcode = postcode.model,
+    this.town = town.model,
+    this.selectedBranch = selectedBranch;
     this.membershipFee = membershipFee.model;
   }
 
