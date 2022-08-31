@@ -24,7 +24,7 @@
       <div class="form__group field">
         <label class="form__label">Branche</label>
         <mat-select [(ngModel)]="selectedBranch">
-          <mat-option *ngFor="let branch of branches" [value]="branch.value">
+          <mat-option *ngFor="let branch of cs.branches" [value]="branch.value">
             {{branch.viewValue}}
           </mat-option>
         </mat-select>

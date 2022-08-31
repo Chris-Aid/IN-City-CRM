@@ -109,7 +109,6 @@ $gray: #9b9b9b;
 .form__group {
     position: relative;
     padding: 15px 0 0;
-    margin-top: 55px;
     display: flex;
     flex-direction: column;
 }
@@ -159,7 +158,7 @@ $gray: #9b9b9b;
     padding-bottom: 6px;
     font-weight: 700;
     border-width: 3px;
-    border-image: linear-gradient(to right,  $primary, $secondary);
+    border-image: linear-gradient(to right, $primary, $secondary);
     border-image-slice: 1;
 }
 
@@ -186,19 +185,33 @@ $gray: #9b9b9b;
     overflow: auto;
 }
 
+//this style is for the header component
+.mat-drawer-inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+//this class is for the input design of the components
+.field {
+    margin-top: 50px;
+}
 
 
-  ::-webkit-scrollbar {
+
+::-webkit-scrollbar {
     width: 5px;
     height: 20px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #af0606cc;
-  }
+}
 
-  ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb {
+    background: #af0606cc;
+}
+
+::-webkit-scrollbar-thumb:hover {
     background: #d8035c;
-  }
-  ::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-track {
     background: rgb(255, 255, 255);
-  }
+}

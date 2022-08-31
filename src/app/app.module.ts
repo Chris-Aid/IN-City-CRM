@@ -35,6 +35,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DeletingCustomerDialogComponent } from './deleting-customer-dialog/deleting-customer-dialog.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 
@@ -74,6 +76,8 @@ import { EditCustomerComponent } from './edit-customer/edit-customer.component';
     MatAutocompleteModule,
     Ng2SearchPipeModule,
     MatCheckboxModule,
+    MatToolbarModule,
+    MatTooltipModule,
     AngularFireModule.initializeApp(environment.firebase), // compat API
     
     provideFirebaseApp(() => initializeApp(environment.firebase)),

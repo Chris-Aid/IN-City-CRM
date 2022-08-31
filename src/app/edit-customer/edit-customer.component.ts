@@ -33,11 +33,11 @@ export class EditCustomerComponent implements OnInit {
   entryDate: string;
   // entryDate: any;
 
-  constructor(private customerBranches: CustomersService, public editCustomer: MatDialogRef<CustomerCardDialogComponent>) { }
+  constructor(public cs: CustomersService, public editCustomer: MatDialogRef<CustomerCardDialogComponent>) { }
 
   ngOnInit(): void {
     this.getCustomerInfos();
-    this.branches = this.customerBranches.getBranches();
+    this.branches = this.cs.getBranches();
 
     this.setDate();
   }

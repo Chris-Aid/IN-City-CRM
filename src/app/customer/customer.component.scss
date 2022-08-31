@@ -1,3 +1,62 @@
+.table-card {
+    height: 50vh;
+}
+
+.table-header {
+    width: 100%;
+    border-collapse: collapse;
+
+
+    th {
+        text-align: start;
+        font-size: 16px;
+        color: #7c7c7c;
+        height: 40px;
+
+        &:first-child {
+            padding-left: 16px;
+        }
+    }
+
+    td {
+        height: 60px;
+
+        &:first-child {
+            padding-left: 16px;
+        }
+
+    }
+
+    tr {
+        border-bottom: 1px solid rgb(151, 151, 151);
+
+        &:last-child {
+            border-bottom: 0 !important;
+        }
+
+        &:first-child {
+            // border-bottom: 0;
+
+            &:hover {
+                cursor: unset;
+                background-color: unset;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(209, 209, 209, 0.04);
+        }
+    }
+}
+
+.table-content {
+    width: 100%;
+}
+
+
+
+
 .customer-content {
     display: flex;
     flex-direction: column;
@@ -11,19 +70,8 @@
     align-items: center;
     padding-left: 128px;
     padding-right: 128px;
-    background: rgb(237,127,0);
-    background: linear-gradient(90deg, rgba(237,127,0,0.6727065826330532) 0%, rgba(255,132,0,0.6222864145658263) 29%, rgba(255,184,0,0.6418942577030813) 100%);
+    background: rgb(245, 245, 245);
 }
-
-// .tableDiv {
-//     background-color: rgb(246 212 151 / 56%);
-//     border-radius: 20px;
-//     padding: 12px;
-//     width: 80vw;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-// }
 
 .customer-administration {
     display: flex;
@@ -88,13 +136,6 @@
     position: sticky;
     bottom: 0;
 }
-
-// .card-div {
-//     height: 100%;
-//     width: 100%;
-//     background-color: green;
-//     position: relative;
-// }
 
 .add-customer-btn {
     position: absolute;

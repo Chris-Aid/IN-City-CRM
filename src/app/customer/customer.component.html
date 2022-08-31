@@ -16,12 +16,44 @@
           </mat-radio-group>
         </section>
       </div>
-
-
     </div>
 
-    <mat-card class="customers-field">
-      <!-- <div class="card-div"> -->
+    <mat-card class="table-card">
+      <div>
+        <table class="table-header">
+          <tr>
+            <th>Firma</th>
+            <th>Name</th>
+            <th>E-Mail</th>
+          </tr>
+
+          <tr *ngFor=" let customer of customers  | filter: searchText; let i = index">
+            <td *ngIf="customer.status === memberStatus" (click)="openDialog2(member, customer)">{{customer.company}}</td>
+            <td *ngIf="customer.status === memberStatus" (click)="openDialog2(member, customer)">{{customer.name}}</td>
+            <td *ngIf="customer.status === memberStatus" (click)="openDialog2(member, customer)">{{customer.email}}</td>
+
+            <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
+              (click)="openDialog2(member, customer)">{{customer.company}}</td>
+            <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
+              (click)="openDialog2(member, customer)">{{customer.name}}</td>
+            <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
+              (click)="openDialog2(member, customer)">{{customer.email}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="btnContainer">
+        <button matTooltip="Add customer" *ngIf="memberStatus != 'gekündigt'" class="add-customer-btn"
+          (click)="openDialog()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+
+
+    <!-- <mat-card class="customers-field">
+
       <div class="customer-info">
         <div>
           <p>Firma</p>
@@ -55,16 +87,14 @@
       </div>
 
       <div class="btnContainer">
-        <button *ngIf="memberStatus != 'gekündigt'" class="add-customer-btn" (click)="openDialog()" mat-mini-fab
-          color="primary" aria-label="Example icon button with a menu icon">
+        <button matTooltip="Add customer" *ngIf="memberStatus != 'gekündigt'" class="add-customer-btn"
+          (click)="openDialog()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+
           <mat-icon>add</mat-icon>
         </button>
       </div>
-      <!-- </div> -->
+
     </mat-card>
   </div>
 
-  <!-- <angular-file-uploader
-      [config]="afuConfig">
-</angular-file-uploader> -->
-</div>
+</div> -->
