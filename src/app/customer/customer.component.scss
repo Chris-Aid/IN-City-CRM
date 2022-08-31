@@ -6,7 +6,6 @@
     width: 100%;
     border-collapse: collapse;
 
-
     th {
         text-align: start;
         font-size: 16px;
@@ -20,6 +19,7 @@
 
     td {
         height: 60px;
+        
 
         &:first-child {
             padding-left: 16px;
@@ -28,14 +28,9 @@
     }
 
     tr {
-        border-bottom: 1px solid rgb(151, 151, 151);
-
-        &:last-child {
-            border-bottom: 0 !important;
-        }
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 
         &:first-child {
-            // border-bottom: 0;
 
             &:hover {
                 cursor: unset;
@@ -53,9 +48,6 @@
 .table-content {
     width: 100%;
 }
-
-
-
 
 .customer-content {
     display: flex;
@@ -99,7 +91,6 @@
     position: fixed;
     width:inherit;
     background-color: white;
-
 
     p {
         font-size: 14px;
