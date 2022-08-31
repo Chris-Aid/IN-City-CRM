@@ -4,7 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog, MatDialogRef, } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddCustomerDialogComponent } from '../add-customer-dialog/add-customer-dialog.component';
-import { CustomerCardDialogComponent } from '../customer-card-dialog/customer-card-dialog.component';
+// import { CustomerCardDialogComponent } from '../customer-card-dialog/customer-card-dialog.component';
 import { CustomersService } from '../customers.service';
 
 @Component({
@@ -119,13 +119,13 @@ export class CustomerComponent implements OnInit {
     });
   }
 
-  openDialog2(member, customer) {
-    const dialogRef = this.dialog.open(CustomerCardDialogComponent);
-    let chapterIndex = this.customers.indexOf(customer);
-    dialogRef.componentInstance.i = chapterIndex;
-    dialogRef.componentInstance.member = member;
-    dialogRef.componentInstance.customers = this.customers;
-  }
+  // openDialog2(member, customer) {
+  //   const dialogRef = this.dialog.open(CustomerCardDialogComponent);
+  //   let chapterIndex = this.customers.indexOf(customer);
+  //   dialogRef.componentInstance.i = chapterIndex;
+  //   dialogRef.componentInstance.member = member;
+  //   dialogRef.componentInstance.customers = this.customers;
+  // }
 
 
 

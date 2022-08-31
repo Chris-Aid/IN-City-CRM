@@ -3,7 +3,7 @@
 
   <section class="status-section">
     <label>Mitgliedsstatus:</label>
-    <mat-radio-group [(ngModel)]="member">
+    <mat-radio-group [(ngModel)]="customer['member']">
       <mat-radio-button value="member">Mitglied</mat-radio-button>
       <mat-radio-button value="contact">Kontakt</mat-radio-button>
     </mat-radio-group>
@@ -12,18 +12,18 @@
   <div class="input-content">
     <div>
       <div class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].company" #company="ngModel" />
+        <input type="input" class="form__field" matInput [(ngModel)]="customer['company']" #company="ngModel" />
         <label class="form__label">Firma</label>
       </div>
 
       <div class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].name" #name="ngModel" />
+        <input type="input" class="form__field" matInput [(ngModel)]="customer['name']" #name="ngModel" />
         <label class="form__label">Ansprechpartner</label>
       </div>
 
       <div class="form__group field">
         <label class="form__label">Branche</label>
-        <mat-select [(ngModel)]="selectedBranch">
+        <mat-select [(ngModel)]="customer['selectedBranch']">
           <mat-option *ngFor="let branch of cs.branches" [value]="branch.value">
             {{branch.viewValue}}
           </mat-option>
@@ -34,18 +34,18 @@
     <div class="second-container">
 
       <div class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].tel" #tel="ngModel" />
+        <input type="input" class="form__field" matInput [(ngModel)]="customer['tel']" #tel="ngModel" />
         <label class="form__label">Tel</label>
       </div>
 
       <div class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].mobile" #mobile="ngModel" />
+        <input type="input" class="form__field" matInput [(ngModel)]="customer['mobile']" #mobile="ngModel" />
         <label class="form__label">Mobil</label>
       </div>
 
 
       <div class="form__group field">
-        <input type="input" class="form__field" type="email" matInput [(ngModel)]="customers[i].email" #email="ngModel"
+        <input type="input" class="form__field" type="email" matInput [(ngModel)]="customer['email']" #email="ngModel"
           placeholder="Ex. pat@example.com" />
         <label class="form__label">Email</label>
       </div>
@@ -54,19 +54,19 @@
     <div class="second-container">
 
       <div class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].street" #street="ngModel"
+        <input type="input" class="form__field" matInput [(ngModel)]="customer['street']" #street="ngModel"
           type="text" />
         <label class="form__label">Straße</label>
       </div>
 
       <div class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].postcode" #postcode="ngModel"
+        <input type="input" class="form__field" matInput [(ngModel)]="customer['postcode']" #postcode="ngModel"
           type="text" />
         <label class="form__label">Postleitzahl</label>
       </div>
 
       <div class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].town" #town="ngModel" type="text" />
+        <input type="input" class="form__field" matInput [(ngModel)]="customer['town']" #town="ngModel" type="text" />
         <label class="form__label">Stadt</label>
       </div>
     </div>
@@ -77,7 +77,7 @@
       <div class="form__group field">
         <!-- <div *ngIf="customers[i].member === 'member'"> -->
         <label class="form__label">Mitgliedsbeitrag</label>
-        <input class="form__field" matInput [(ngModel)]="customers[i].membershipFee" #membershipFee="ngModel">
+        <input class="form__field" matInput [(ngModel)]="customer['membershipFee']" #membershipFee="ngModel">
         <!-- </div> -->
       </div>
 
@@ -106,6 +106,6 @@
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Abbrechen</button>
   <button mat-button
-    [mat-dialog-close]="{name, company, tel, mobile, email, postcode, street, town, selectedBranch, membershipFee, membernumber, entryDate}"
+    [mat-dialog-close]="{customer}"
     cdkFocusInitial>Speichern</button>
 </div>

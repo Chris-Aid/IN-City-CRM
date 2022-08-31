@@ -1,4 +1,9 @@
-<mat-card class="mainInfo">
+<mat-card class="mainInfo"> 
+    <div class="cusotmer-icons">
+        <img  mat-raised-button (click)="openDialog()" (mouseenter)="hovered = 2" (mouseleave)="hovered = 1" class="trash-bin" src="/assets/img/trash-{{hovered}}.png" alt="">
+        <mat-icon (click)="editCustomer()" class="edit-icon">more_vert</mat-icon>
+    </div>
+    
     <div class="main-contact-info">
         <h2>{{company}}</h2>
         <div class="infoContainer">

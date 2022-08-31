@@ -33,11 +33,11 @@
             <td *ngIf="customer.status === memberStatus" routerLink="customer/{{customer.CustomersID}}">{{customer.email}}</td>
 
             <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
-              (click)="openDialog2(member, customer)">{{customer.company}}</td>
+              routerLink="customer/{{customer.CustomersID}}">{{customer.company}}</td>
             <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
-              (click)="openDialog2(member, customer)">{{customer.name}}</td>
+              routerLink="customer/{{customer.CustomersID}}">{{customer.name}}</td>
             <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
-              (click)="openDialog2(member, customer)">{{customer.email}}</td>
+              routerLink="customer/{{customer.CustomersID}}">{{customer.email}}</td>
           </tr>
         </table>
       </div>

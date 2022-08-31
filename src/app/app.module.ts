@@ -23,7 +23,6 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore/'; 
 import { AngularFireModule } from '@angular/fire/compat';
-import { CustomerCardDialogComponent } from './customer-card-dialog/customer-card-dialog.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
@@ -48,7 +47,6 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
     HeaderComponent,
     CustomerComponent,
     AddCustomerDialogComponent,
-    CustomerCardDialogComponent,
     SetTerminationComponent,
     DeletingCustomerDialogComponent,
     EditCustomerComponent,

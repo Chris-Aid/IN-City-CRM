@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { DeletingCustomerDialogComponent } from '../deleting-customer-dialog/deleting-customer-dialog.component';
+import { EditCustomerComponent } from '../edit-customer/edit-customer.component';
 import { SetTerminationComponent } from '../set-termination/set-termination.component';
 
 @Component({
@@ -13,6 +15,7 @@ export class CustomerDetailsComponent implements OnInit {
 
   customersID;
   customer = [];
+  hovered: number = 1;
 
   company: string;
   email: string;
@@ -59,11 +62,12 @@ export class CustomerDetailsComponent implements OnInit {
         .doc(this.customersID)
         .valueChanges()
         .subscribe((customer: any) => {
-          this.setCustomerInfos(customer);
+          this.updateCustomerInfos(customer);
+          this.customer = customer;
         });
   }
 
-  setCustomerInfos(customer) {
+  updateCustomerInfos(customer) {
     this.company = customer.company;
     this.email = customer.email;
     this.entryDate = customer.entryDate;
@@ -109,5 +113,56 @@ export class CustomerDetailsComponent implements OnInit {
     } else {
       this.selected = "aktiv";
     }
+  }
+
+  editCustomer() {
+    const editCustomer = this.dialog.open(EditCustomerComponent, { disableClose: true });
+    editCustomer.componentInstance.customer = this.customer;
+
+    editCustomer.afterClosed().subscribe(({
+      customer }) => {
+
+        console.log(customer)
+        this.updateCustomerInfos(customer);
+        this.updateFirestore();
+
+    });
+  }
+
+  updateFirestore() {
+    this.firestore
+      .collection('Kunden')
+      .doc(this.customersID)
+      .update({
+        name: this.name,
+        company: this.company,
+        membernumber: this.membernumber,
+        tel: this.tel,
+        mobile: this.mobile,
+        email: this.email,
+        street: this.street,
+        postcode: this.postcode,
+        town: this.town,
+        entryDate: this.entryDate,
+        selectedBranch: this.selectedBranch,
+        membershipFee: this.membershipFee,
+        // terminationDate: '',
+        // terminationReason: '',
+        // status: this.statusOfMembership,
+        member: this.member
+      });
+  }
+
+  openDialog(): void {
+    let dialog = this.dialog.open(DeletingCustomerDialogComponent);
+
+    dialog.afterClosed().subscribe((deleteCustomer) => {
+      if (deleteCustomer) {
+        this.firestore
+          .collection('Kunden')
+          .doc(this.customersID)
+          .delete();
+      }
+    });
   }
 }

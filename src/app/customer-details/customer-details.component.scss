@@ -86,3 +86,46 @@
     display: flex;
     gap: 8px;
 }
+
+.edit-icon {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    color: white;
+    height: auto;
+    font-size: 32px;
+
+    &:hover {
+        cursor: pointer;
+        color: rgb(196, 196, 196);
+    }
+}
+
+.trash-bin {
+    height: 30px;
+    position: absolute;
+    right: 32px;
+    bottom: 32px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.edit-img {
+    height: 25px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+// .cusotmer-icons {
+//         position: absolute;
+//     right: 32px;
+//     top: 32px;
+//     display: flex;
+//     align-items: flex-end;
+//     gap: 12px;
+// }
+
