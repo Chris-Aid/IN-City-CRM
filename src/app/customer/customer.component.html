@@ -28,9 +28,9 @@
           </tr>
 
           <tr *ngFor=" let customer of customers  | filter: searchText; let i = index">
-            <td *ngIf="customer.status === memberStatus" (click)="openDialog2(member, customer)">{{customer.company}}</td>
-            <td *ngIf="customer.status === memberStatus" (click)="openDialog2(member, customer)">{{customer.name}}</td>
-            <td *ngIf="customer.status === memberStatus" (click)="openDialog2(member, customer)">{{customer.email}}</td>
+            <td *ngIf="customer.status === memberStatus" routerLink="customer/{{customer.CustomersID}}">{{customer.company}}</td>
+            <td *ngIf="customer.status === memberStatus" routerLink="customer/{{customer.CustomersID}}">{{customer.name}}</td>
+            <td *ngIf="customer.status === memberStatus" routerLink="customer/{{customer.CustomersID}}">{{customer.email}}</td>
 
             <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
               (click)="openDialog2(member, customer)">{{customer.company}}</td>

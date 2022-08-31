@@ -37,6 +37,7 @@ import { DeletingCustomerDialogComponent } from './deleting-customer-dialog/dele
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 
 
 
@@ -51,6 +52,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     SetTerminationComponent,
     DeletingCustomerDialogComponent,
     EditCustomerComponent,
+    CustomerDetailsComponent,
 
   ],
   imports: [

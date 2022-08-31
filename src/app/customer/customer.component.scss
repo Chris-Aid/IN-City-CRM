@@ -60,17 +60,11 @@
 .customer-content {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 74px);
-    // background-color: #006bff21;
-    // background-image: url('/assets/img/customer-background.jpg');
     background-position: center;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 128px;
-    padding-right: 128px;
-    background: rgb(245, 245, 245);
 }
 
 .customer-administration {
