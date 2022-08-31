@@ -67,11 +67,13 @@
         </div>
 
 
-
-        <!-- <h3>Mitgliedsnummer</h3>
-        <p>{{membernumber}}</p>
-        <h3>Mitgliedsnummer</h3>
-        <p>{{membernumber}}</p> -->
+        <div *ngIf="member ==='member'">
+            <h3>Mitgliedschaft:</h3>
+            <mat-radio-group [(ngModel)]="selected" aria-label="Select an option">
+              <mat-radio-button (click)="changeToActive()" value="aktiv">aktiv</mat-radio-button>
+              <mat-radio-button (click)="changeToTerminated()" value="gekündigt">gekündigt</mat-radio-button>
+            </mat-radio-group>
+          </div>
 
 
     </div>
