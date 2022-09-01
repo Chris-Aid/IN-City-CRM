@@ -12,7 +12,7 @@
 .routerContainer {
     display: flex;
     justify-content: center;
-    padding-top: 64px;
+    // padding-top: 64px;
 }
 
 .mat-inner-sidenav {
@@ -63,4 +63,17 @@
 .set-bgc {
     background-color: rgba(123, 255, 255, 0.363) !important;
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+
+//for small devices, espacially phones
+@media screen and (min-width: 300px) {
+
+    .mat-drawer-content {
+        width: 100%;
+    }
+
+    .routerContainer {
+        display: block;
+        padding: 0;
+    }
 }

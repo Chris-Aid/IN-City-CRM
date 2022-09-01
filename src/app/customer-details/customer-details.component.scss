@@ -1,3 +1,11 @@
+.customer-details-component {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .mg-top-32 {
     margin-top: 32px;
 }
@@ -12,7 +20,7 @@
         display: flex;
         align-items: flex-end;
         gap: 8px;
-        
+
     }
 }
 
@@ -120,12 +128,77 @@
     }
 }
 
-// .cusotmer-icons {
-//         position: absolute;
-//     right: 32px;
-//     top: 32px;
-//     display: flex;
-//     align-items: flex-end;
-//     gap: 12px;
-// }
+//for small devices, espacially phones
+@media screen and (min-width: 300px) {
 
+    .mat-card {
+        margin-top: 64px;
+    }
+
+    .mainInfo {
+        padding: 18px;
+        width: auto;
+    }
+
+    .infoContainer {
+        gap: 12px;
+    }
+
+    .main-contact-info {
+        h2 {
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 14px;
+        }
+    }
+
+    .material-icons {
+        font-size: 20px;
+    }
+
+    .sideInfo {
+        padding: 18px;
+        width: auto;
+
+                p {
+            font-size: 14px;
+        }
+    }
+}
+
+//for small devices, espacially phones
+@media screen and (min-width: 400px) {
+    .mainInfo {
+        padding: 36px;
+    }
+}
+
+//for small devices, espacially phones
+@media screen and (min-width: 500px) {
+    .main-contact-info {
+        p {
+            font-size: 20px;
+        }
+    }
+
+    .material-icons {
+        font-size: 24px;
+    }
+}
+
+//for small devices, espacially phones
+@media screen and (min-width: 768px) {}
+
+//for small devices, espacially phones
+@media screen and (min-width: 992px) {}
+
+//for small devices, espacially phones
+@media screen and (min-width: 1200px) {}
+
+//for small devices, espacially phones
+@media screen and (min-width: 1400px) {}
+
+//for small devices, espacially phones
+@media screen and (min-height: 900px) {}

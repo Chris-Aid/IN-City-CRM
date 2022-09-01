@@ -215,3 +215,13 @@ $gray: #9b9b9b;
 ::-webkit-scrollbar-track {
     background: rgb(255, 255, 255);
 }
+
+//for small devices, espacially phones
+@media screen and (min-width: 300px) {
+
+    // .ng-star-inserted  {
+    //     width: 100%;
+    // }
+
+}
+

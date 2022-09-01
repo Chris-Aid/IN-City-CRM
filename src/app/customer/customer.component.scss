@@ -154,3 +154,107 @@ $fontColor: 242424c7;
 .status-section {
     color: #565656;
 }
+
+//for small devices, espacially phones
+@media screen and (min-width: 300px) {
+
+    .customer-content {
+        width: 100%;
+    }
+
+    .customer-administration {
+        justify-content: center;
+        width: unset;
+    }
+
+    .mat-drawer-content {
+        width: 100%;
+    }
+
+    .tableDiv {
+        width: 100%;
+    }
+
+    .form__group {
+        flex-direction: column !important;
+        align-items: flex-start;
+    }
+
+    .status-section {
+        flex-direction: column !important;
+    }
+
+    .table-card {
+        width: 100%;
+    }
+
+    .mat-card {
+        padding: 0;
+    }
+}
+
+//for small devices, espacially phones
+@media screen and (min-width: 500px) {
+    .form__group {
+        flex-direction: row !important;
+        align-items: flex-end;
+    }
+
+    .tableDiv {
+        width: 90%;
+    }
+
+}
+
+//for small devices, espacially phones
+@media screen and (min-width: 768px) {
+
+    .tableDiv {
+        width: 80%;
+    }
+
+}
+
+//for small devices, espacially phones
+@media screen and (min-width: 992px) {
+
+    .tableDiv {
+        width: 60%;
+    }
+
+}
+
+//for small devices, espacially phones
+@media screen and (min-width: 1200px) {
+
+    .customer-administration {
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+
+    .status-section {
+        flex-direction: row !important;
+    }
+
+
+}
+
+//for small devices, espacially phones
+@media screen and (min-width: 1400px) {
+
+    .tableDiv {
+        width: 45%;
+    }
+
+
+}
+
+//for small devices, espacially phones
+@media screen and (min-height: 900px) {
+
+    .mat-card {
+        height: 65vh;
+    }
+
+
+}
