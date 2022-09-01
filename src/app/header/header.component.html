@@ -5,9 +5,9 @@
         </div>
 
         <ul class="menu-items">
-            <div routerLink=""><mat-icon>person</mat-icon>Kunden</div>
-            <div routerLink=""><mat-icon>event</mat-icon>Veranstaltungen</div>
-            <div routerLink=""><mat-icon>task_alt</mat-icon>Aufgabenmanagement</div>
+            <div (click)="taskManagement = false; eventSec = false; customerSection = true" [class.set-bgc]="customerSection" routerLink=""><mat-icon>person</mat-icon>Kunden</div>
+            <div (click)="customerSection = false; taskManagement = false; eventSec = true" [class.set-bgc]="eventSec" routerLink=""><mat-icon>event</mat-icon>Veranstaltungen</div>
+            <div (click)="customerSection = false; eventSec = false; taskManagement = true" [class.set-bgc]="taskManagement" routerLink=""><mat-icon>task_alt</mat-icon>Aufgabenmanagement</div>
         </ul>
     </mat-drawer>
 
