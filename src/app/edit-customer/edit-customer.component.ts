@@ -1,6 +1,6 @@
+import { DialogRef } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { MatDialogRef } from '@angular/material/dialog';
 import { CustomersService } from '../customers.service';
 
 @Component({
@@ -13,9 +13,7 @@ export class EditCustomerComponent implements OnInit {
   i: number;
   customersID: string;
 
-
   customer = [];
-
 
   branches: any[] = [];
   selectedBranch: any;
@@ -25,29 +23,33 @@ export class EditCustomerComponent implements OnInit {
   maxDate: any;
   minDate: any;
 
-  membershipFee: any;
-  name: string;
-  company: string;
-  membernumber: string;
-  tel: string;
-  mobile: string;
-  email: string;
-  street: string;
-  postcode: string;
-  town: string;
-  entryDate: string;
-  status: string;
-  terminationDate: string;
-  terminationReason: string;
+  // membershipFee: any;
+  // name: string;
+  // company: string;
+  // membernumber: string;
+  // tel: string;
+  // mobile: string;
+  // email: string;
+  // street: string;
+  // postcode: string;
+  // town: string;
+  // entryDate: string;
+  // status: string;
+  // terminationDate: string;
+  // terminationReason: string;
   // entryDate: any;
 
-  constructor(public cs: CustomersService, public firestore: AngularFirestore) { }
+  constructor(public cs: CustomersService, public firestore: AngularFirestore, private dialogRef: DialogRef<EditCustomerComponent>) { }
 
   ngOnInit(): void {
 
 
 
   }
+
+  // closeDialog() {
+  //   return {};
+  // }
 
 
   // onNoClick(): void {

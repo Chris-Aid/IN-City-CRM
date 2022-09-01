@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -34,6 +34,8 @@ export class CustomerDetailsComponent implements OnInit {
   terminationReason: string;
   town: string;
 
+  dateOfEntry: any;
+
 
   selected: string = "aktiv";
   showTerminationInfo = false;
@@ -49,29 +51,33 @@ export class CustomerDetailsComponent implements OnInit {
   getParamsOfCustomer() {
     this.route.params.subscribe(paramMap => {
       this.customersID = paramMap['id'];
-      console.log(paramMap)
     });
 
     this.getCustomer();
   }
 
   getCustomer() {
-    console.log(this.customersID)
-      this.firestore
-        .collection('Kunden')
-        .doc(this.customersID)
-        .valueChanges()
-        .subscribe((customer: any) => {
-          this.updateCustomerInfos(customer);
-          this.customer = customer;
-        });
+    this.firestore
+      .collection('Kunden')
+      .doc(this.customersID)
+      .valueChanges()
+      .subscribe((customer: any) => {
+        this.updateCustomerInfos(customer);
+        this.customer = customer;
+      });
   }
 
-  updateCustomerInfos(customer) {
+  updateCustomerInfos(customer: any) {
+    if (customer.date instanceof Date) {
+      this.dateOfEntry = customer.entryDate.getDate() + "." + (customer.entryDate.getMonth() + 1) + "." + customer.entryDate.getFullYear();
+    } else {
+      this.dateOfEntry = customer.entryDate;
+    }
+
     this.company = customer.company;
     this.email = customer.email;
-    this.entryDate = customer.entryDate;
     this.member = customer.member;
+    this.entryDate = this.dateOfEntry;
     this.membernumber = customer.membernumber;
     this.membershipFee = customer.membershipFee;
     this.mobile = customer.mobile;
@@ -84,6 +90,8 @@ export class CustomerDetailsComponent implements OnInit {
     this.terminationDate = customer.terminationDate;
     this.terminationReason = customer.terminationReason;
     this.town = customer.town;
+
+    this.checkMembershipStatus();
   }
 
 
@@ -92,9 +100,9 @@ export class CustomerDetailsComponent implements OnInit {
 
     const dialogRef = this.dialog.open(SetTerminationComponent);
     dialogRef.componentInstance.customersID = this.customersID;
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
   }
 
   changeToActive() {
@@ -122,9 +130,8 @@ export class CustomerDetailsComponent implements OnInit {
     editCustomer.afterClosed().subscribe(({
       customer }) => {
 
-        console.log(customer)
-        this.updateCustomerInfos(customer);
-        this.updateFirestore();
+      this.updateCustomerInfos(customer);
+      this.updateFirestore();
 
     });
   }

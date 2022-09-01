@@ -45,7 +45,7 @@
 <mat-card class="sideInfo mg-top-32">
     <div class="side-contact-info">
         <div class="side-infos">
-            <div>
+            <div *ngIf="member ==='member'">
                 <h3>Mitgliedsnummer:</h3>
                 <p>{{membernumber}}</p>
 
@@ -54,6 +54,22 @@
             <div>
                 <h3>Branche:</h3>
                 <p>{{selectedBranch}}</p>
+            </div>
+        </div>
+
+        <div class="side-infos">
+
+            <div *ngIf="member ==='member'">
+                <h3>Mitgliedschaft:</h3>
+                <mat-radio-group [(ngModel)]="selected" aria-label="Select an option">
+                  <mat-radio-button (click)="changeToActive()" value="aktiv">aktiv</mat-radio-button>
+                  <mat-radio-button (click)="changeToTerminated()" value="gekündigt">gekündigt</mat-radio-button>
+                </mat-radio-group>
+              </div>
+
+            <div *ngIf="member ==='member'">
+                <h3>Beitritsdatum:</h3>
+                <p>{{entryDate}}</p>
             </div>
         </div>
 
@@ -71,14 +87,6 @@
             </div>
         </div>
 
-
-        <div *ngIf="member ==='member'">
-            <h3>Mitgliedschaft:</h3>
-            <mat-radio-group [(ngModel)]="selected" aria-label="Select an option">
-              <mat-radio-button (click)="changeToActive()" value="aktiv">aktiv</mat-radio-button>
-              <mat-radio-button (click)="changeToTerminated()" value="gekündigt">gekündigt</mat-radio-button>
-            </mat-radio-group>
-          </div>
 
 
     </div>

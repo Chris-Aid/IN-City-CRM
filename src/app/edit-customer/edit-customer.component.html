@@ -74,17 +74,17 @@
 
 
 
-      <div class="form__group field">
+      <div *ngIf="customer['member'] === 'member'" class="form__group field">
         <!-- <div *ngIf="customers[i].member === 'member'"> -->
         <label class="form__label">Mitgliedsbeitrag</label>
         <input class="form__field" matInput [(ngModel)]="customer['membershipFee']" #membershipFee="ngModel">
         <!-- </div> -->
       </div>
 
-      <!-- <div *ngIf="member === 'member'" class="form__group field">
+      <div *ngIf="customer['member'] === 'member'" class="form__group field">
         <div style="display: flex; flex-direction: column;">
           <label class="form__label">Mitglied seit:</label>
-          <input [min]="minDate" [max]="maxDate" class="form__field" matInput [(ngModel)]="customers[i].entryDate"
+          <input [min]="minDate" [max]="maxDate" class="form__field" matInput [(ngModel)]="customer['entryDate']"
               #entryDate="ngModel" [matDatepicker]="picker">
           <div class="datePicker">
             <mat-hint>MM/DD/YYYY</mat-hint>
@@ -92,13 +92,13 @@
           </div>
           <mat-datepicker #picker></mat-datepicker>
         </div>
-      </div> -->
+      </div>
 
-      <!-- <div *ngIf="customers[i].member === 'member'" class="form__group field">
-        <input type="input" class="form__field" matInput [(ngModel)]="customers[i].membernumber"
+      <div *ngIf="customer['member'] === 'member'" class="form__group field">
+        <input type="input" class="form__field" matInput [(ngModel)]="customer['membernumber']"
           #membernumber="ngModel" />
         <label class="form__label">Mitgliedsnummer</label>
-      </div> -->
+      </div>
     </div>
   </div>
 </div>
