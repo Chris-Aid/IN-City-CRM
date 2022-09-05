@@ -5,8 +5,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-
+    // background-color: ;
 }
 
 .routerContainer {
@@ -29,7 +28,6 @@
     align-items: center;
     height: 63px;
     width: 100%;
-    border-bottom: 1px solid grey;
 
     img {
         height: 40px;
@@ -83,7 +81,7 @@
 }
 
 //for small devices, espacially phones
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
 
     .mat-drawer {
         width: 350px;

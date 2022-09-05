@@ -13,8 +13,8 @@ import { SetTerminationComponent } from '../set-termination/set-termination.comp
 })
 export class CustomerDetailsComponent implements OnInit {
 
-  customersID;
-  customer = [];
+  customersID: string;
+  customer: any;
   hovered: number = 1;
 
   company: string;
@@ -68,7 +68,7 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   updateCustomerInfos(customer: any) {
-    if (customer.date instanceof Date) {
+    if (customer.entryDate instanceof Date) {
       this.dateOfEntry = customer.entryDate.getDate() + "." + (customer.entryDate.getMonth() + 1) + "." + customer.entryDate.getFullYear();
     } else {
       this.dateOfEntry = customer.entryDate;
@@ -125,7 +125,11 @@ export class CustomerDetailsComponent implements OnInit {
 
   editCustomer() {
     const editCustomer = this.dialog.open(EditCustomerComponent, { disableClose: true });
+
+    // transforms string back to date to pass it into editing component and display it in input field of datepicker
+    this.customer.entryDate = new Date(this.customer.entryDate);
     editCustomer.componentInstance.customer = this.customer;
+
 
     editCustomer.afterClosed().subscribe(({
       customer }) => {
