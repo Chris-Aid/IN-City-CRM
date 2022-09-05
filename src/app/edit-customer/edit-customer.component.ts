@@ -13,7 +13,7 @@ export class EditCustomerComponent implements OnInit {
   i: number;
   customersID: string;
 
-  customer = [];
+  customer : any;
 
   branches: any[] = [];
   selectedBranch: any;
@@ -23,28 +23,14 @@ export class EditCustomerComponent implements OnInit {
   maxDate: any;
   minDate: any;
 
-  // membershipFee: any;
-  // name: string;
-  // company: string;
-  // membernumber: string;
-  // tel: string;
-  // mobile: string;
-  // email: string;
-  // street: string;
-  // postcode: string;
-  // town: string;
-  // entryDate: string;
-  // status: string;
-  // terminationDate: string;
-  // terminationReason: string;
-  // entryDate: any;
-
   constructor(public cs: CustomersService, public firestore: AngularFirestore, private dialogRef: DialogRef<EditCustomerComponent>) { }
 
-  ngOnInit(): void {
+  date : any;
 
+  ngOnInit(): void {}
 
-
+  showDate(){
+    console.log(typeof this.date);
   }
 
   // closeDialog() {

@@ -36,11 +36,8 @@ export class CustomerDetailsComponent implements OnInit {
 
   dateOfEntry: any;
 
-
   selected: string = "aktiv";
   showTerminationInfo = false;
-
-
 
   constructor(private route: ActivatedRoute, public firestore: AngularFirestore, public dialog: MatDialog) { }
 
@@ -125,14 +122,16 @@ export class CustomerDetailsComponent implements OnInit {
 
   editCustomer() {
     const editCustomer = this.dialog.open(EditCustomerComponent, { disableClose: true });
+
+    // change date format here
+
     editCustomer.componentInstance.customer = this.customer;
+    console.log(this.customer);
 
     editCustomer.afterClosed().subscribe(({
       customer }) => {
-
       this.updateCustomerInfos(customer);
       this.updateFirestore();
-
     });
   }
 
