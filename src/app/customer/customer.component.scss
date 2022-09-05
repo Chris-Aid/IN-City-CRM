@@ -19,7 +19,7 @@
 
     td {
         height: 60px;
-        
+
 
         &:first-child {
             padding-left: 16px;
@@ -89,7 +89,7 @@
     box-shadow: rgb(0 0 0 / 4%) 0px 3px 5px;
     border-bottom: 0.1px solid lightgrey;
     position: fixed;
-    width:inherit;
+    width: inherit;
     background-color: white;
 
     p {
@@ -126,14 +126,11 @@
     position: absolute;
     right: 32px;
     bottom: 12px;
-    background-color: #af0606cc;
+    background-color: #3f51b5;
 }
 
-
-
 // Inputfield styles are set in style.css, following content are just few differences for customer-administration
-$fontColor: 242424c7;
-
+$fontColor: #242424c7;
 
 .form__group {
     align-items: flex-end;
@@ -144,7 +141,6 @@ $fontColor: 242424c7;
 .form__field {
     color: $fontColor;
 }
-
 
 .form__label {
 
@@ -193,7 +189,7 @@ $fontColor: 242424c7;
     }
 }
 
-//for small devices, espacially phones
+//for medium devices
 @media screen and (min-width: 500px) {
     .form__group {
         flex-direction: row !important;
@@ -203,28 +199,31 @@ $fontColor: 242424c7;
     .tableDiv {
         width: 90%;
     }
-
 }
 
-//for small devices, espacially phones
+//for medium devices
 @media screen and (min-width: 768px) {
+
+    .mat-card {
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-top: 12px;
+    }
 
     .tableDiv {
         width: 80%;
     }
-
 }
 
-//for small devices, espacially phones
+
 @media screen and (min-width: 992px) {
 
     .tableDiv {
         width: 60%;
     }
-
 }
 
-//for small devices, espacially phones
+//for large devices, laptops and screens
 @media screen and (min-width: 1200px) {
 
     .customer-administration {
@@ -235,26 +234,18 @@ $fontColor: 242424c7;
     .status-section {
         flex-direction: row !important;
     }
-
-
 }
 
-//for small devices, espacially phones
+//for extra large devices
 @media screen and (min-width: 1400px) {
-
     .tableDiv {
-        width: 45%;
+        width: 55%;
     }
-
-
 }
 
-//for small devices, espacially phones
-@media screen and (min-height: 900px) {
 
+@media screen and (min-height: 900px) {
     .mat-card {
         height: 65vh;
     }
-
-
 }

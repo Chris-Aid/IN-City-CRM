@@ -22,12 +22,6 @@ import { CustomersService } from '../customers.service';
 
 export class CustomerComponent implements OnInit {
 
-  //   afuConfig = {
-  //     uploadAPI: {
-  //       url:"https://example-file-upload-api"
-  //     }
-  // };
-
   memberStatus: 'gekündigt' | 'aktiv' | 'all' = 'all';
 
   EUdate: any;
@@ -111,22 +105,11 @@ export class CustomerComponent implements OnInit {
     .collection('Kunden')
     .add(this.firma)
     .then((customerInfo: any) => {
-      console.log(customerInfo)
       this.firestore
         .collection('Kunden')
         .doc(customerInfo.id)
         .update({ CustomersID: customerInfo.id });
     });
   }
-
-  // openDialog2(member, customer) {
-  //   const dialogRef = this.dialog.open(CustomerCardDialogComponent);
-  //   let chapterIndex = this.customers.indexOf(customer);
-  //   dialogRef.componentInstance.i = chapterIndex;
-  //   dialogRef.componentInstance.member = member;
-  //   dialogRef.componentInstance.customers = this.customers;
-  // }
-
-
 
 }

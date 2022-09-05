@@ -1,5 +1,4 @@
 .customer-details-component {
-    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -63,10 +62,7 @@
 .side-infos {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    width: 300px;
-
-
+    gap: 24px;
 }
 
 .infoContainer {
@@ -131,8 +127,14 @@
 //for small devices, espacially phones
 @media screen and (min-width: 300px) {
 
+    .customer-details-component {
+        height: auto;
+    }
+
     .mat-card {
-        margin-top: 64px;
+        margin-top: 32px;
+        width: 90vw !important;
+        padding: 15px !important;
     }
 
     .mainInfo {
@@ -141,7 +143,7 @@
     }
 
     .infoContainer {
-        gap: 12px;
+        gap: 6px;
     }
 
     .main-contact-info {
@@ -166,16 +168,36 @@
             font-size: 14px;
         }
     }
-}
 
-//for small devices, espacially phones
-@media screen and (min-width: 400px) {
-    .mainInfo {
-        padding: 36px;
+    .side-contact-info {
+        flex-wrap: wrap;
+        gap: 14px;
     }
 }
 
 //for small devices, espacially phones
+@media screen and (min-width: 360px) {
+    .mainInfo {
+        padding: 36px;
+    }
+
+    .main-contact-info {
+
+        p {
+            font-size: 16px;
+        }
+    }
+
+    .infoContainer {
+        gap: 20px;
+    }
+
+    .side-contact-info {
+        gap: 46px;
+    }
+}
+
+//for medium devices
 @media screen and (min-width: 500px) {
     .main-contact-info {
         p {
@@ -188,17 +210,27 @@
     }
 }
 
-//for small devices, espacially phones
-@media screen and (min-width: 768px) {}
+//for medium devices, tablets etc.
+@media screen and (min-width: 600px) {
 
-//for small devices, espacially phones
-@media screen and (min-width: 992px) {}
+    .infoContainer {
+        gap: 86px;
+    }
 
-//for small devices, espacially phones
-@media screen and (min-width: 1200px) {}
+    .mat-card {
+        width: 80vw !important;
+        padding: 36px !important;
+    }
 
-//for small devices, espacially phones
-@media screen and (min-width: 1400px) {}
+    .side-contact-info {
+       justify-content: space-between;
+    }
+}
 
-//for small devices, espacially phones
-@media screen and (min-height: 900px) {}
+//for medium devices, tablets etc.
+@media screen and (min-width: 768px) {
+    .mat-card {
+        width: 600px !important;
+        margin-top: 64px;
+    }
+}

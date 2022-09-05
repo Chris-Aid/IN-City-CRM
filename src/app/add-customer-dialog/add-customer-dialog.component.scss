@@ -1,0 +1,14 @@
+//for small devices, espacially phones
+@media screen and (min-width: 300px) {
+
+    .mat-select {
+        width: 120px;
+    }
+}
+
+//tablets and medium devices
+@media screen and (min-width: 768px) {
+    .mat-select {
+        width: 180px;
+    }
+}

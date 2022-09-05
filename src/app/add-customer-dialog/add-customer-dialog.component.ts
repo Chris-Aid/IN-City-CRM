@@ -17,8 +17,6 @@ export class AddCustomerDialogComponent implements OnInit {
   //branches are stored in customers service
   branches: any[] = [];
 
-
-
   selectedBranch: any;
   membershipFee: any;
   name: string;
@@ -31,15 +29,13 @@ export class AddCustomerDialogComponent implements OnInit {
   postcode: string;
   town: string;
   entryDate: any;
-  // value: any;
 
   minDate: Date;
   maxDate: Date;
 
-  noSub = true;
+  // noSub = true;
 
   constructor(public dialogRef: MatDialogRef<AddCustomerDialogComponent>, private customerBranches: CustomersService) { }
-
 
   ngOnInit(): void {
     this.branches = this.customerBranches.getBranches();

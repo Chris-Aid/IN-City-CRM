@@ -13,8 +13,8 @@ import { SetTerminationComponent } from '../set-termination/set-termination.comp
 })
 export class CustomerDetailsComponent implements OnInit {
 
-  customersID;
-  customer = [];
+  customersID: string;
+  customer: any;
   hovered: number = 1;
 
   company: string;
@@ -65,7 +65,7 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   updateCustomerInfos(customer: any) {
-    if (customer.date instanceof Date) {
+    if (customer.entryDate instanceof Date) {
       this.dateOfEntry = customer.entryDate.getDate() + "." + (customer.entryDate.getMonth() + 1) + "." + customer.entryDate.getFullYear();
     } else {
       this.dateOfEntry = customer.entryDate;
@@ -97,9 +97,6 @@ export class CustomerDetailsComponent implements OnInit {
 
     const dialogRef = this.dialog.open(SetTerminationComponent);
     dialogRef.componentInstance.customersID = this.customersID;
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`);
-    // });
   }
 
   changeToActive() {
@@ -107,7 +104,6 @@ export class CustomerDetailsComponent implements OnInit {
       .collection('Kunden')
       .doc(this.customersID)
       .update({ status: 'aktiv' })
-    // this.selected = "aktiv";
     this.checkMembershipStatus();
   }
 
@@ -122,12 +118,9 @@ export class CustomerDetailsComponent implements OnInit {
 
   editCustomer() {
     const editCustomer = this.dialog.open(EditCustomerComponent, { disableClose: true });
-
-    // change date format here
-
+    this.customer.entryDate = new Date(this.customer.entryDate);
     editCustomer.componentInstance.customer = this.customer;
-    console.log(this.customer);
-
+    
     editCustomer.afterClosed().subscribe(({
       customer }) => {
       this.updateCustomerInfos(customer);
@@ -152,9 +145,6 @@ export class CustomerDetailsComponent implements OnInit {
         entryDate: this.entryDate,
         selectedBranch: this.selectedBranch,
         membershipFee: this.membershipFee,
-        // terminationDate: '',
-        // terminationReason: '',
-        // status: this.statusOfMembership,
         member: this.member
       });
   }

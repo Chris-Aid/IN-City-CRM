@@ -10,10 +10,8 @@ textarea {
     border: 0;
     border-bottom: 2px solid #9b9b9b;
     font-family: 'Roboto', sans-serif;
-
     background-color: transparent;
     outline: none;
-
 }
 
 textarea:focus {
@@ -88,7 +86,6 @@ textarea:focus {
     border-image-slice: 1;
 }
 
-/* reset input */
 .form__field {
 
     &:required,
