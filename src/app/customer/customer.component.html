@@ -18,14 +18,23 @@
       </div>
     </div>
 
+
     <mat-card class="table-card">
       <div>
         <table class="table-header">
-          <tr>
+          <tr class="subtitles">
             <th>Firma</th>
             <th>Name</th>
             <th>E-Mail</th>
           </tr>
+
+          <div class="btnContainer">
+            <button matTooltip="Add customer" *ngIf="memberStatus != 'gekündigt'" class="add-customer-btn"
+              (click)="openDialog()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+    
+              <mat-icon>add</mat-icon>
+            </button>
+            </div>
 
           <tr *ngFor=" let customer of customers  | filter: searchText; let i = index">
             <td *ngIf="customer.status === memberStatus" routerLink="customer/{{customer.CustomersID}}">
@@ -42,14 +51,11 @@
             <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
               routerLink="customer/{{customer.CustomersID}}">{{customer.email}}</td>
           </tr>
+
+
         </table>
+
       </div>
 
-      <div class="btnContainer">
-        <button matTooltip="Add customer" *ngIf="memberStatus != 'gekündigt'" class="add-customer-btn"
-          (click)="openDialog()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
 
-          <mat-icon>add</mat-icon>
-        </button>
-      </div>
     </mat-card>
