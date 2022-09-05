@@ -1,22 +1,15 @@
 .header {
-    // padding-left: 128px;
     padding-right: 128px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // background-color: ;
 }
 
 .routerContainer {
     display: flex;
     justify-content: center;
-    // padding-top: 64px;
 }
-
-// .mat-inner-sidenav {
-//     width: 250px;
-// }
 
 .mat-sidenav {
     height: 100vh;
@@ -80,13 +73,11 @@
     }
 }
 
-//for small devices, espacially phones
+//for medium devices, espacially tablets
 @media screen and (min-width: 992px) {
-
     .mat-drawer {
         width: 350px;
     }
-
 }
 
 

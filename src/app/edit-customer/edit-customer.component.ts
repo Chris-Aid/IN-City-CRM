@@ -1,5 +1,5 @@
 import { DialogRef } from '@angular/cdk/dialog';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { CustomersService } from '../customers.service';
 
@@ -8,7 +8,7 @@ import { CustomersService } from '../customers.service';
   templateUrl: './edit-customer.component.html',
   styleUrls: ['./edit-customer.component.scss']
 })
-export class EditCustomerComponent implements OnInit {
+export class EditCustomerComponent {
 
   i: number;
   customersID: string;
@@ -25,18 +25,4 @@ export class EditCustomerComponent implements OnInit {
 
   constructor(public cs: CustomersService, public firestore: AngularFirestore, private dialogRef: DialogRef<EditCustomerComponent>) { }
 
-  ngOnInit(): void {
-
-
-
-  }
-
-  // closeDialog() {
-  //   return {};
-  // }
-
-
-  // onNoClick(): void {
-  //   this.editCustomer.close();
-  // }
 }

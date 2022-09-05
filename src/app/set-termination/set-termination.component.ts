@@ -25,7 +25,6 @@ export class SetTerminationComponent implements OnInit {
 
   ngOnInit(): void {
     this.customersData = this.cs.getCustomers();
-
     this.setDate();
   }
 

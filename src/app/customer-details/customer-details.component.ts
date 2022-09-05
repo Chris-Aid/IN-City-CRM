@@ -100,9 +100,6 @@ export class CustomerDetailsComponent implements OnInit {
 
     const dialogRef = this.dialog.open(SetTerminationComponent);
     dialogRef.componentInstance.customersID = this.customersID;
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`);
-    // });
   }
 
   changeToActive() {
@@ -110,7 +107,6 @@ export class CustomerDetailsComponent implements OnInit {
       .collection('Kunden')
       .doc(this.customersID)
       .update({ status: 'aktiv' })
-    // this.selected = "aktiv";
     this.checkMembershipStatus();
   }
 
@@ -125,11 +121,8 @@ export class CustomerDetailsComponent implements OnInit {
 
   editCustomer() {
     const editCustomer = this.dialog.open(EditCustomerComponent, { disableClose: true });
-
-    // transforms string back to date to pass it into editing component and display it in input field of datepicker
     this.customer.entryDate = new Date(this.customer.entryDate);
     editCustomer.componentInstance.customer = this.customer;
-
 
     editCustomer.afterClosed().subscribe(({
       customer }) => {
@@ -157,9 +150,6 @@ export class CustomerDetailsComponent implements OnInit {
         entryDate: this.entryDate,
         selectedBranch: this.selectedBranch,
         membershipFee: this.membershipFee,
-        // terminationDate: '',
-        // terminationReason: '',
-        // status: this.statusOfMembership,
         member: this.member
       });
   }

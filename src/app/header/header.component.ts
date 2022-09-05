@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-// import { CustomerComponent } from '../customer/customer.component';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,13 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   customerSection = true;
   eventSec = false;
   taskManagement = false;
-  ngOnInit(): void {
-  }
 
   dontHideSidebar(e) {
     e.stopPropagation();
