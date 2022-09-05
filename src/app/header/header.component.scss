@@ -15,9 +15,9 @@
     // padding-top: 64px;
 }
 
-.mat-inner-sidenav {
-    width: 250px;
-}
+// .mat-inner-sidenav {
+//     width: 250px;
+// }
 
 .mat-sidenav {
     height: 100vh;
@@ -68,6 +68,10 @@
 //for small devices, espacially phones
 @media screen and (min-width: 300px) {
 
+    .mat-drawer {
+        width: 100vw;
+    }
+
     .mat-drawer-content {
         width: 100%;
     }
@@ -77,3 +81,15 @@
         padding: 0;
     }
 }
+
+//for small devices, espacially phones
+@media screen and (min-width: 768px) {
+
+    .mat-drawer {
+        width: 350px;
+    }
+
+}
+
+
+

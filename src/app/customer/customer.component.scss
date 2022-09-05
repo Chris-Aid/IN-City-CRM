@@ -203,7 +203,6 @@ $fontColor: 242424c7;
     .tableDiv {
         width: 90%;
     }
-
 }
 
 //for small devices, espacially phones
@@ -212,7 +211,6 @@ $fontColor: 242424c7;
     .tableDiv {
         width: 80%;
     }
-
 }
 
 //for small devices, espacially phones
@@ -221,7 +219,6 @@ $fontColor: 242424c7;
     .tableDiv {
         width: 60%;
     }
-
 }
 
 //for small devices, espacially phones
@@ -231,30 +228,20 @@ $fontColor: 242424c7;
         justify-content: flex-start;
         align-items: flex-end;
     }
-
     .status-section {
         flex-direction: row !important;
     }
-
-
 }
-
 //for small devices, espacially phones
 @media screen and (min-width: 1400px) {
-
     .tableDiv {
-        width: 45%;
+        width: 55%;
     }
-
-
 }
 
 //for small devices, espacially phones
 @media screen and (min-height: 900px) {
-
     .mat-card {
         height: 65vh;
     }
-
-
 }

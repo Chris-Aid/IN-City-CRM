@@ -9,11 +9,13 @@ import { Component, OnInit } from '@angular/core';
 
 export class HeaderComponent implements OnInit {
 
-customerSection = true;
-eventSec = false;
-taskManagement = false;
+  customerSection = true;
+  eventSec = false;
+  taskManagement = false;
   ngOnInit(): void {
   }
 
-
+  dontHideSidebar(e) {
+    e.stopPropagation();
+  }
 }
