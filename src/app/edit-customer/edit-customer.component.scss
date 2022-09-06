@@ -1,14 +1,42 @@
 //for small devices, espacially phones
 @media screen and (min-width: 300px) {
 
-    .mat-select {
-        width: 120px;
+    .mat-dialog-content {
+        width: 100%;
     }
+
+.mat-select {
+    width: 120px;
+}
 }
 
+
 //for small devices, espacially phones
+@media screen and (min-width: 500px) {
+.status-section {
+    flex-direction: row;
+}
+}
+
+
+//tablets and medium devices
 @media screen and (min-width: 768px) {
-    .mat-select {
-        width: 180px;
-    }
+.mat-select {
+    width: 180px;
+}
+
+.form__field {
+    width: 180px;
+}
+}
+
+//for large devices, screens, laptops etc.
+@media screen and (min-width: 1200px) {
+.mat-dialog-content {
+    width: 860px !important;
+}
+
+.field {
+    margin-top: 40px;
+}
 }

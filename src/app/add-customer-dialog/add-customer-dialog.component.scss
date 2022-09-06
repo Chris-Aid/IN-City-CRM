@@ -1,9 +1,9 @@
 //for small devices, espacially phones
 @media screen and (min-width: 300px) {
 
-    // .mat-dialog-container {
-    //     width: 100vw;
-    // }
+        .mat-dialog-content {
+            width: 100%;
+        }
 
     .mat-select {
         width: 120px;
@@ -21,8 +21,8 @@
 
 //for medium devices, espacially tablets
 // @media screen and (min-width: 600px) {
-//     .mat-dialog-container {
-//         width: 80vw;
+//     .mat-dialog-content {
+//         width: 100%;
 //     }
 // }
 
@@ -39,9 +39,9 @@
 
 //for large devices, screens, laptops etc.
 @media screen and (min-width: 1200px) {
-    // .mat-dialog-container {
-    //     width: 950px !important;
-    // }
+    .mat-dialog-content {
+        width: 860px !important;
+    }
 
     .field {
         margin-top: 40px;

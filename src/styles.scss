@@ -9,7 +9,7 @@ body {
 
 .cdk-overlay-pane {
     width: auto !important;
-    max-width: auto !important;
+    max-width: 100vw !important;
 }
 
 .mat-form-field {
@@ -211,9 +211,9 @@ $gray: #9b9b9b;
 
 //for small devices, espacially phones
 @media screen and (min-width: 320px) {
-    .mat-dialog-container {
-        width: 100vw;
-    }
+    // .mat-dialog-container {
+    //     width: 100vw !important;
+    // }
 }
 
 //for small devices, espacially phones
@@ -225,7 +225,7 @@ $gray: #9b9b9b;
 
 //for medium devices, espacially tablets
 @media screen and (min-width: 600px) {
-    .mat-dialog-container {
+    .cdk-overlay-pane {
         width: 80vw;
     }
 }
@@ -239,8 +239,8 @@ $gray: #9b9b9b;
 
 //for large devices, screens, laptops etc.
 @media screen and (min-width: 1200px) {
-    .mat-dialog-container {
-        width: 950px;
+    .cdk-overlay-pane {
+        max-width: 870px !important;
     }
 
     .field {
@@ -277,7 +277,11 @@ $gray: #9b9b9b;
 }
 
 //for small devices, espacially phones
-@media screen and (min-width: 600px) {}
+@media screen and (min-width: 600px) {
+    .cdk-overlay-pane {
+        max-width: 80vw !important;
+    }
+}
 
 //for small devices, espacially phones
 @media screen and (min-width: 768px) {
