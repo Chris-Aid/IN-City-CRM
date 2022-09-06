@@ -4,7 +4,7 @@ $fontColor: 242424c7;
 $gray: #9b9b9b;
 
 textarea {
-    height: 80px;
+    height: 60px;
     padding-top: 12px;
     resize: none;
     border: 0;
@@ -32,13 +32,13 @@ textarea:focus {
 .form__group {
     position: relative;
     padding: 15px 0 0;
-    margin-top: 55px;
+    margin-top: 18px;
     display: flex;
     flex-direction: column;
 }
 
 .form__field {
-    width: 180px;
+    width: 100%;
     font-family: inherit;
     border: 0;
     border-bottom: 2px solid $gray;
@@ -102,4 +102,23 @@ textarea:focus {
     position: absolute;
     right: 0;
     bottom: -35px;
+}
+
+.mat-dialog-content {
+    height: 270px !important;
+    width: 250px !important;
+    margin: 0;
+    padding: 0;
+}
+
+.termination-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+@media screen and (max-width: 340px) {
+    .mat-dialog-content{
+        width: 210px !important;
+    }
 }

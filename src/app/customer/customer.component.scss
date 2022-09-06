@@ -116,9 +116,11 @@
 }
 
 .btnContainer {
-    position: fixed;
-    // bottom: 0;
-    width: 90%;
+    position: sticky;
+    bottom: 32px;
+    right: 32px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .add-customer-btn {

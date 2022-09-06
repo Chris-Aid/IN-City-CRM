@@ -38,9 +38,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +50,7 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
     CustomerDetailsComponent,
 
   ],
+
   imports: [
     MatSliderModule,
     MatSidenavModule,
