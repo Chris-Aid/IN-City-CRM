@@ -1,10 +1,10 @@
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
-import { DeletingCustomerDialogComponent } from '../deleting-customer-dialog/deleting-customer-dialog.component';
-import { EditCustomerComponent } from '../edit-customer/edit-customer.component';
-import { SetTerminationComponent } from '../set-termination/set-termination.component';
+import { Component, OnInit } from "@angular/core";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { MatDialog } from "@angular/material/dialog";
+import { ActivatedRoute } from "@angular/router";
+import { DeletingCustomerDialogComponent } from "../deleting-customer-dialog/deleting-customer-dialog.component";
+import { EditCustomerComponent } from "../edit-customer/edit-customer.component";
+import { SetTerminationComponent } from "../set-termination/set-termination.component";
 
 @Component({
   selector: 'app-customer-details',

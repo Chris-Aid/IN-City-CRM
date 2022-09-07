@@ -1,11 +1,12 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit, } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { MatDialog, MatDialogRef, } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AddCustomerDialogComponent } from '../add-customer-dialog/add-customer-dialog.component';
-// import { CustomerCardDialogComponent } from '../customer-card-dialog/customer-card-dialog.component';
-import { CustomersService } from '../customers.service';
+import { animate, state, style, transition, trigger } from "@angular/animations";
+import { Component, OnInit } from "@angular/core";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { MatDialog } from "@angular/material/dialog";
+import { ActivatedRoute, Router } from "@angular/router";
+
+import { AddCustomerDialogComponent } from "../add-customer-dialog/add-customer-dialog.component";
+import { CustomersService } from "../customers.service";
+
 
 @Component({
   selector: 'app-customer',
