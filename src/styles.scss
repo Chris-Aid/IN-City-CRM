@@ -205,9 +205,14 @@ $gray: #9b9b9b;
     max-width: 100vw;
 }
 
+.mat-radio-inner-circle {
+    background-color: #155bb6 !important;
+}
 
 
-
+.mat-radio-outer-circle {
+    border-color: #1560b6a1 !important;
+}
 
 //for small devices, espacially phones
 @media screen and (min-width: 320px) {

@@ -11,7 +11,7 @@
         font-size: 16px;
         color: #7c7c7c;
         height: 40px;
-        
+
         &:first-child {
             padding-left: 16px;
         }
@@ -19,6 +19,7 @@
 
     td {
         height: 60px;
+        font-size: 11px;
 
 
         &:first-child {
@@ -195,6 +196,17 @@ $fontColor: #242424c7;
         padding: 0;
     }
 }
+
+//for small devices, espacially phones
+@media screen and (min-width: 400px) {
+
+    .table-header {
+        td {
+            font-size: 14px;
+        }
+    }
+}
+
 
 //for medium devices
 @media screen and (min-width: 500px) {
