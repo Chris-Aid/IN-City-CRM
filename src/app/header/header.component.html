@@ -8,7 +8,9 @@
             <div (click)="dontHideSidebar($event)" (click)="taskManagement = false; eventSec = false; customerSection = true" [class.set-bgc]="customerSection" routerLink=""><mat-icon>person</mat-icon>Kunden</div>
             <div (click)="dontHideSidebar($event)" (click)="customerSection = false; taskManagement = false; eventSec = true" [class.set-bgc]="eventSec" routerLink=""><mat-icon>event</mat-icon>Veranstaltungen</div>
             <div (click)="dontHideSidebar($event)" (click)="customerSection = false; eventSec = false; taskManagement = true" [class.set-bgc]="taskManagement" routerLink=""><mat-icon>task_alt</mat-icon>Aufgabenmanagement</div>
+            <div (click)="dontHideSidebar($event)" class="help-button" routerLink="help"><mat-icon>help</mat-icon> help</div>
         </ul>
+
     </mat-drawer>
 
     <div>

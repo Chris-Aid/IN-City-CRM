@@ -37,6 +37,7 @@ import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
+import { HelpSectionComponent } from './help-section/help-section.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
     DeletingCustomerDialogComponent,
     EditCustomerComponent,
     CustomerDetailsComponent,
+    HelpSectionComponent,
 
   ],
 
