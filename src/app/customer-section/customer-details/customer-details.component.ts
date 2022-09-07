@@ -65,6 +65,7 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   updateCustomerInfos(customer: any) {
+    // console.log(customer.entryDate)
     if (customer.entryDate instanceof Date) {
       this.dateOfEntry = customer.entryDate.getDate() + "." + (customer.entryDate.getMonth() + 1) + "." + customer.entryDate.getFullYear();
     } else {

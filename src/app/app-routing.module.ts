@@ -3,12 +3,14 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { CustomerDetailsComponent } from './customer-section/customer-details/customer-details.component';
 import { CustomerComponent } from './customer-section/customer/customer.component';
 import { HelpSectionComponent } from './help-section/help-section.component';
+import { TasksOverviewComponent } from './task-section/tasks-overview/tasks-overview.component';
 
 
 const routes: Routes = [
   { path:'', component: CustomerComponent},
   { path:'customer/:id', component: CustomerDetailsComponent},
-  {path: 'help', component: HelpSectionComponent}
+  {path: 'help', component: HelpSectionComponent},
+  {path: 'tasks', component: TasksOverviewComponent}
 ];
 
 @NgModule({

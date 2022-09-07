@@ -38,6 +38,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { CustomerDetailsComponent } from './customer-section/customer-details/customer-details.component';
 import { HelpSectionComponent } from './help-section/help-section.component';
+import { TasksOverviewComponent } from './task-section/tasks-overview/tasks-overview.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { HelpSectionComponent } from './help-section/help-section.component';
     EditCustomerComponent,
     CustomerDetailsComponent,
     HelpSectionComponent,
+    TasksOverviewComponent,
 
   ],
 
