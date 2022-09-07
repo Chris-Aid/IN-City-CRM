@@ -11,6 +11,7 @@ export class HeaderComponent {
   customerSection = true;
   eventSec = false;
   taskManagement = false;
+  help = false;
 
   dontHideSidebar(e) {
     e.stopPropagation();

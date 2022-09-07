@@ -159,6 +159,15 @@ $fontColor: #242424c7;
     background-color: #FFFF;
 }
 
+.mat-radio-inner-circle {
+    background-color: #155bb6 !important;
+}
+
+
+.mat-radio-outer-circle {
+    border-color: #1560b6a1 !important;
+}
+
 //for small devices, espacially phones
 @media screen and (min-width: 300px) {
 

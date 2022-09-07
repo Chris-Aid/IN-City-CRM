@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { CustomersService } from '../customers.service';
+import { Component, OnInit } from "@angular/core";
+import { FormControl, Validators } from "@angular/forms";
+import { MatDialogRef } from "@angular/material/dialog";
+import { CustomersService } from "../customers.service";
+
 
 @Component({
   selector: 'app-add-customer-dialog',

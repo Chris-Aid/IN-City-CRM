@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { AddCustomerDialogComponent } from './add-customer-dialog/add-customer-dialog.component';
-import { CustomerComponent } from './customer/customer.component';
-import { SetTerminationComponent } from './set-termination/set-termination.component';
+import { Injectable } from "@angular/core";
+import { AddCustomerDialogComponent } from "./add-customer-dialog/add-customer-dialog.component";
+import { CustomerComponent } from "./customer/customer.component";
+import { SetTerminationComponent } from "./set-termination/set-termination.component";
 
 
 @Injectable({

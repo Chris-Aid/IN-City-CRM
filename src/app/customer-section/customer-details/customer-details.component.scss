@@ -27,7 +27,7 @@
     h2 {
         color: rgb(199, 199, 199);
         font-size: 28px;
-        width: 200px;
+        width: 260px;
         padding-bottom: 12px;
         border-bottom: 1px solid white;
     }
@@ -124,6 +124,23 @@
     }
 }
 
+.membershipContainer {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 17px;
+}
+
+.mat-radio-inner-circle {
+    background-color: white !important;
+}
+
+
+.mat-radio-outer-circle {
+    border-color: white !important;
+}
+
 //for small devices, espacially phones
 @media screen and (min-width: 300px) {
 
@@ -152,7 +169,7 @@
         }
 
         p {
-            font-size: 14px;
+            font-size: 12px;
         }
     }
 
@@ -173,10 +190,14 @@
         flex-wrap: wrap;
         gap: 14px;
     }
+
+    .mat-radio-group {
+        flex-direction: column;
+    }
 }
 
 //for small devices, espacially phones
-@media screen and (min-width: 360px) {
+@media screen and (min-width: 400px) {
     .mainInfo {
         padding: 36px;
     }
@@ -194,6 +215,10 @@
 
     .side-contact-info {
         gap: 46px;
+    }
+
+    .mat-radio-group {
+        flex-direction: row;
     }
 }
 
@@ -223,8 +248,7 @@
     }
 
     .side-contact-info {
-        gap: 75px;
-    //    justify-content: space-between;
+        gap: 50px;
     }
 }
 
