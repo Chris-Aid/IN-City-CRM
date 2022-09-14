@@ -1,0 +1,154 @@
+// .customerInfos {
+//   h1 {
+//     font-size: 14px;
+//     font-weight: bold;
+//   }
+// }
+
+p {
+  font-size: 16px;
+}
+
+.dashboardContent {
+  display: flex;
+  gap: 64px;
+
+  h2 {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.dashboard {
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.infoCard {
+  width: 80%;
+}
+
+.active {
+  color: rgb(3, 179, 3);
+  font-weight: bold;
+}
+
+.inactive {
+  color: rgb(179, 59, 3);
+  font-weight: bold;
+}
+
+.fees {
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
+}
+
+// .terminationInfos {
+//   max-height: 50vh;
+//   margin-top: 32px;
+//   width: 80%;
+// }
+
+.terminatedCustomers {
+  padding-top: 12px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.showInfos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.close {
+  position: absolute;
+  cursor: pointer;
+  right: 32px;
+  top: 32px;
+}
+
+@media screen and (min-width: 280px) {
+
+  .dashboard {
+    padding: 0;
+    padding-top: 18px;
+    padding-bottom: 32px;
+
+  }
+
+  .infoCard {
+    width: 90%;
+  }
+
+  .dashboardContent {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .showInfos {
+    width: 150px;
+  }
+
+  .terminationInfos {
+    max-height: 35vh;
+    margin-top: 18px;
+    width: 90%;
+
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+  .infoCard {
+    width: 75%;
+  }
+
+  .terminationInfos {
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+
+  .dashboardContent {
+    flex-direction: row;
+    gap: 64px;
+  }
+
+  .terminationInfos {
+    max-height: 55vh;
+  }
+
+}
+
+@media screen and (min-width: 1400px) {
+
+  .dashboard {
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+  }
+
+  .dashboardContent {
+    flex-direction: row;
+    gap: 85px;
+  }
+
+}
+
+@media screen and (max-height: 450px) and (orientation: landscape) {
+
+  .dashboardContent {
+    flex-direction: row;
+    gap: 80px;
+  }
+
+}

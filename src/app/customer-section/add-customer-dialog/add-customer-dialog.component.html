@@ -82,7 +82,7 @@
     <!-- Input field for membership fee-->
     <div *ngIf="member === 'member'" class="form__group field">
       <label class="form__label">Mitgliedsbeitrag</label>
-      <input class="form__field" matInput [(ngModel)]="membershipFee">
+      <input type="number" class="form__field" matInput [(ngModel)]="membershipFee">
 
     </div>
 
