@@ -5,10 +5,11 @@
         </div>
 
         <ul class="menu-items">
-            <div (click)="dontHideSidebar($event)" (click)="taskManagement = false; eventSec = false; customerSection = true; help = false" [class.set-bgc]="customerSection" routerLink=""><mat-icon>person</mat-icon>Kunden</div>
-            <div (click)="dontHideSidebar($event)" (click)="customerSection = false; taskManagement = false; eventSec = true; help = false" [class.set-bgc]="eventSec" routerLink="tasks"><mat-icon>event</mat-icon>Veranstaltungen</div>
-            <div (click)="dontHideSidebar($event)" (click)="customerSection = false; eventSec = false; taskManagement = true; help = false" [class.set-bgc]="taskManagement" routerLink="tasks"><mat-icon>task_alt</mat-icon>Aufgabenmanagement</div>
-            <div (click)="dontHideSidebar($event)" (click)="customerSection = false; eventSec = false; taskManagement = false; help = true" [class.set-bgc]="help" class="help-button" routerLink="help" ><mat-icon>help</mat-icon> help</div>
+            <div (click)="dontHideSidebar($event)" (click)="taskManagement = false; eventSec = false; customerSection = false; help = false; dashboard = true" [class.set-bgc]="dashboard" routerLink="dashboard"><mat-icon>insights</mat-icon>Dashboard</div>
+            <div (click)="dontHideSidebar($event)" (click)="taskManagement = false; eventSec = false; customerSection = true; help = false; dashboard = false" [class.set-bgc]="customerSection" routerLink=""><mat-icon>person</mat-icon>Kunden</div>
+            <div (click)="dontHideSidebar($event)" (click)="customerSection = false; taskManagement = false; eventSec = true; help = false; dashboard = false" [class.set-bgc]="eventSec" routerLink="tasks"><mat-icon>event</mat-icon>Veranstaltungen</div>
+            <div (click)="dontHideSidebar($event)" (click)="customerSection = false; eventSec = false; taskManagement = true; help = false; dashboard = false" [class.set-bgc]="taskManagement" routerLink="tasks"><mat-icon>task_alt</mat-icon>Aufgabenmanagement</div>
+            <div (click)="dontHideSidebar($event)" (click)="customerSection = false; eventSec = false; taskManagement = false; help = true; dashboard = false" [class.set-bgc]="help" class="help-button" routerLink="help" ><mat-icon>help</mat-icon> help</div>
         </ul>
 
     </mat-drawer>

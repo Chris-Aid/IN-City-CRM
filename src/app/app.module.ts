@@ -39,6 +39,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { CustomerDetailsComponent } from './customer-section/customer-details/customer-details.component';
 import { HelpSectionComponent } from './help-section/help-section.component';
 import { TasksOverviewComponent } from './task-section/tasks-overview/tasks-overview.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { TasksOverviewComponent } from './task-section/tasks-overview/tasks-over
     CustomerDetailsComponent,
     HelpSectionComponent,
     TasksOverviewComponent,
+    DashboardComponent,
 
   ],
 

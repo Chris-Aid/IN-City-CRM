@@ -12,6 +12,7 @@ export class HeaderComponent {
   eventSec = false;
   taskManagement = false;
   help = false;
+  dashboard = false;
 
   dontHideSidebar(e) {
     e.stopPropagation();
