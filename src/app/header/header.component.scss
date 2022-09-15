@@ -46,13 +46,19 @@
         padding-left: 36px;
 
         &:hover {
-            background-color: aliceblue;
+            background-color: rgb(240, 233, 233);
+            color: black;
         }
     }
 }
 
+.help-button {
+    margin-bottom: 32px;
+}
+
+
 .set-bgc {
-    background-color: rgba(123, 255, 255, 0.363) !important;
+    background-color: rgba(123, 255, 255, 0.363);
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 

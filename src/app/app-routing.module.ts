@@ -1,14 +1,20 @@
-import { NgModule } from '@angular/core';
+import { Input, NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { CustomerDetailsComponent } from './customer-details/customer-details.component';
-import { CustomerComponent } from './customer/customer.component';
-// import { CustomerComponent } from './customer/customer.component';
+import { CustomerDetailsComponent } from './customer-section/customer-details/customer-details.component';
+import { CustomerComponent } from './customer-section/customer/customer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { EventsComponent } from './event-section/events/events.component';
+import { HelpSectionComponent } from './help-section/help-section.component';
+import { TasksOverviewComponent } from './task-section/tasks-overview/tasks-overview.component';
+
 
 const routes: Routes = [
-  // { path:'', component: AppComponent},
   { path:'', component: CustomerComponent},
-  { path:'customer/:id', component: CustomerDetailsComponent}
+  { path:'customer/:id', component: CustomerDetailsComponent},
+  {path: 'help', component: HelpSectionComponent},
+  {path: 'tasks', component: TasksOverviewComponent},
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'events', component: EventsComponent}
 ];
 
 @NgModule({
@@ -17,4 +23,5 @@ const routes: Routes = [
 })
 export class AppRoutingModule { 
   constructor(public router: Router) {}
+
 }

@@ -1,0 +1,59 @@
+<div class="customer-content">
+  <div class="tableDiv">
+    <div class="customer-administration">
+
+      <div class="form__group field">
+        <input matInput type="input" class="form__field" matInput name="search" type="text" [(ngModel)]="searchText"
+          placeholder="Kundensuche" id='name' required />
+        <label [class.darkmodeFont]="settings.darkmode" for="name" class="form__label">Kundensuche</label>
+
+        <section [class.darkmodeFont]="settings.darkmode" class="status-section">
+          <label>Mitgliedsstatus:</label>
+          <mat-radio-group [(ngModel)]="memberStatus">
+            <mat-radio-button value="all">Alle</mat-radio-button>
+            <mat-radio-button value="aktiv">aktiv</mat-radio-button>
+            <mat-radio-button value="gekündigt">gekündigt</mat-radio-button>
+          </mat-radio-group>
+        </section>
+      </div>
+    </div>
+
+
+    <mat-card [class.darkmodeContent]="settings.darkmode" class="table-card">
+      <div>
+        <table class="table-header">
+          <tr [class.darkmodeContent]="settings.darkmode" class="subtitles">
+            <th>Firma</th>
+            <th>Name</th>
+            <th>E-Mail</th>
+          </tr>
+
+          <tr *ngFor=" let customer of customers  | filter: searchText; let i = index">
+            <td *ngIf="customer.status === memberStatus" routerLink="customer/{{customer.CustomersID}}">
+              {{customer.company}}</td>
+            <td *ngIf="customer.status === memberStatus" routerLink="customer/{{customer.CustomersID}}">
+              {{customer.name}}</td>
+            <td *ngIf="customer.status === memberStatus" routerLink="customer/{{customer.CustomersID}}">
+              {{customer.email}}</td>
+
+            <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
+              routerLink="customer/{{customer.CustomersID}}">{{customer.company}}</td>
+            <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
+              routerLink="customer/{{customer.CustomersID}}">{{customer.name}}</td>
+            <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
+              routerLink="customer/{{customer.CustomersID}}">{{customer.email}}</td>
+          </tr>
+
+
+        </table>
+        <div class="btnContainer">
+          <button [class.btn-darkmode]="settings.darkmode" matTooltip="Add customer" *ngIf="memberStatus != 'gekündigt'" class="add-customer-btn"
+            (click)="openDialog()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+
+
+    </mat-card>

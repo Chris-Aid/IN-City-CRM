@@ -1,22 +1,27 @@
-<mat-drawer-container (click)="drawer.toggle()" class="mat-sidenav" autosize>
-    <mat-drawer opened="true" #drawer class="mat-inner-sidenav" mode="side">
+<mat-drawer-container [class.darkmodeContent]="settings.darkmode" (click)="drawer.toggle()" class="mat-sidenav" autosize>
+    <mat-drawer [class.darkmodeSidenav]="settings.darkmode" opened="true" #drawer class="mat-inner-sidenav" mode="side">
         <div class="logo-container">
-            <img src="/assets/img/logo.png" alt="">
+            <img [class.imgDarkmode]="settings.darkmode" src="/assets/img/logo.png" alt="">
         </div>
 
         <ul class="menu-items">
-            <div (click)="dontHideSidebar($event)" (click)="taskManagement = false; eventSec = false; customerSection = true" [class.set-bgc]="customerSection" routerLink=""><mat-icon>person</mat-icon>Kunden</div>
-            <div (click)="dontHideSidebar($event)" (click)="customerSection = false; taskManagement = false; eventSec = true" [class.set-bgc]="eventSec" routerLink=""><mat-icon>event</mat-icon>Veranstaltungen</div>
-            <div (click)="dontHideSidebar($event)" (click)="customerSection = false; eventSec = false; taskManagement = true" [class.set-bgc]="taskManagement" routerLink=""><mat-icon>task_alt</mat-icon>Aufgabenmanagement</div>
+            <div (click)="dontHideSidebar($event)" (click)="taskManagement = false; eventSec = false; customerSection = false; help = false; dashboard = true" [class.darkmodeLinks]="settings.darkmode && dashboard" [class.set-bgc]="dashboard" routerLink="dashboard"><mat-icon>insights</mat-icon>Dashboard</div>
+            <div (click)="dontHideSidebar($event)" (click)="taskManagement = false; eventSec = false; customerSection = true; help = false; dashboard = false" [class.darkmodeLinks]="settings.darkmode && customerSection" [class.set-bgc]="customerSection" routerLink=""><mat-icon>person</mat-icon>Kunden</div>
+            <div (click)="dontHideSidebar($event)" (click)="customerSection = false; taskManagement = false; eventSec = true; help = false; dashboard = false" [class.darkmodeLinks]="settings.darkmode && eventSec" [class.set-bgc]="eventSec" routerLink="events"><mat-icon>event</mat-icon>Veranstaltungen</div>
+            <div (click)="dontHideSidebar($event)" (click)="customerSection = false; eventSec = false; taskManagement = true; help = false; dashboard = false" [class.darkmodeLinks]="settings.darkmode && taskManagement" [class.set-bgc]="taskManagement" routerLink="tasks"><mat-icon>task_alt</mat-icon>Aufgabenmanagement</div>
+            <div (click)="dontHideSidebar($event)" (click)="customerSection = false; eventSec = false; taskManagement = false; help = true; dashboard = false" [class.darkmodeLinks]="settings.darkmode && help" [class.set-bgc]="help" class="help-button" routerLink="help" ><mat-icon>help</mat-icon> help</div>
         </ul>
+
     </mat-drawer>
 
     <div>
-        <mat-toolbar class="header" color="primary">
+        <mat-toolbar [class.darkmodeSidenav]="settings.darkmode" class="header" color="primary">
             <button mat-icon-button class="example-icon"
                 aria-label="Example icon-button with menu icon">
                 <mat-icon>menu</mat-icon>
             </button>
+
+            <mat-slide-toggle (click)="dontHideSidebar($event)" [(ngModel)]="settings.darkmode" (click)="saveToLocalStorage()"><mat-icon>dark_mode</mat-icon></mat-slide-toggle>
 
         </mat-toolbar>
     </div>

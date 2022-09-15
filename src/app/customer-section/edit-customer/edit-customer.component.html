@@ -1,0 +1,105 @@
+<div class="dialog-Content" mat-dialog-content>
+  <h1 mat-dialog-title>Kundendaten ändern:</h1>
+
+  <section class="status-section">
+    <label>Mitgliedsstatus:</label>
+    <mat-radio-group [(ngModel)]="customer['member']">
+      <mat-radio-button value="member">Mitglied</mat-radio-button>
+      <mat-radio-button value="contact">Kontakt</mat-radio-button>
+    </mat-radio-group>
+  </section>
+
+  <div class="input-content">
+    <!-- Input field for company name -->
+    <div class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="customer['company']" #company="ngModel" />
+      <label class="form__label">Firma</label>
+    </div>
+
+    <!-- Input field for responsible person-->
+    <div class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="customer['name']" #name="ngModel" />
+      <label class="form__label">Ansprechpartner</label>
+    </div>
+
+    <!-- Input field for telefone number-->
+    <div class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="customer['mobile']" #mobile="ngModel" />
+      <label class="form__label">Mobil</label>
+    </div>
+
+    <!-- Input field for mobilephone number-->
+    <div class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="customer['tel']" #tel="ngModel" />
+      <label class="form__label">Tel</label>
+    </div>
+
+    <!-- Input field for email address-->
+    <div class="form__group field">
+      <input type="input" class="form__field" type="email" matInput [(ngModel)]="customer['email']" #email="ngModel"
+        placeholder="Ex. pat@example.com" />
+      <label class="form__label">Email</label>
+    </div>
+
+    <!-- Input field for street name-->
+    <div class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="customer['street']" #street="ngModel" type="text" />
+      <label class="form__label">Straße</label>
+    </div>
+
+    <!-- Input field for postcode-->
+    <div class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="customer['postcode']" #postcode="ngModel"
+        type="text" />
+      <label class="form__label">Postleitzahl</label>
+    </div>
+
+    <!-- Input field for town-->
+    <div class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="customer['town']" #town="ngModel" type="text" />
+      <label class="form__label">Stadt</label>
+    </div>
+
+    <!-- Input field for branch-->
+    <div class="form__group field">
+      <label class="form__label">Branche</label>
+      <mat-select [(ngModel)]="customer['selectedBranch']">
+        <mat-option *ngFor="let branch of cs.branches" [value]="branch.value">
+          {{branch.viewValue}}
+        </mat-option>
+      </mat-select>
+    </div>
+
+    <!-- Input field for membership fee-->
+    <div *ngIf="customer['member'] === 'member'" class="form__group field">
+      <label class="form__label">Mitgliedsbeitrag</label>
+      <input type="number" class="form__field" matInput [(ngModel)]="customer['membershipFee']"
+        #membershipFee="ngModel">
+    </div>
+
+    <!-- Input field for membership fee-->
+    <div *ngIf="customer['member'] === 'member'" class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="customer['membernumber']" #membernumber="ngModel" />
+      <label class="form__label">Mitgliedsnummer</label>
+    </div>
+
+    <!-- Input field for entrydate name-->
+    <div *ngIf="customer['member'] === 'member'" class="form__group field">
+      <div style="display: flex; flex-direction: column;">
+        <label class="form__label">Mitglied seit:</label>
+        <input [min]="minDate" [max]="maxDate" class="form__field" matInput [(ngModel)]="customer['entryDate']"
+          #entryDate="ngModel" [matDatepicker]="picker">
+        <div class="datePicker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        </div>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Abbrechen</button>
+  <button mat-button [mat-dialog-close]="{customer}" cdkFocusInitial>Speichern</button>
+</div>

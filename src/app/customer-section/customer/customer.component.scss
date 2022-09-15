@@ -1,0 +1,282 @@
+.table-card {
+    height: 60vh;
+}
+
+.table-header {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+        text-align: start;
+        font-size: 16px;
+        color: #7c7c7c;
+        height: 40px;
+
+        &:first-child {
+            padding-left: 16px;
+        }
+    }
+
+    td {
+        height: 60px;
+        font-size: 11px;
+
+
+        &:first-child {
+            padding-left: 16px;
+        }
+
+    }
+
+    tr {
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+
+        &:first-child {
+
+            &:hover {
+                cursor: unset;
+                background-color: unset;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(209, 209, 209, 0.04);
+        }
+    }
+}
+
+.table-content {
+    width: 100%;
+}
+
+.customer-content {
+    display: flex;
+    flex-direction: column;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.customer-administration {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 12px;
+    width: 50vw;
+    padding: 12px;
+}
+
+.customers-field {
+    width: 50vw;
+    height: 60vh;
+    padding-left: 32px;
+}
+
+.card-container {
+    margin-top: 32px;
+}
+
+.dont-show {
+    display: none;
+}
+
+.customer-info {
+    display: flex;
+    align-items: center;
+    margin-top: -16px !important;
+    height: 50px;
+    box-shadow: rgb(0 0 0 / 4%) 0px 3px 5px;
+    border-bottom: 0.1px solid lightgrey;
+    position: fixed;
+    width: inherit;
+    background-color: white;
+
+    p {
+        font-size: 14px;
+        font-weight: 700;
+        width: 200px;
+    }
+}
+
+.customer-card {
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+    height: 70px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(231, 231, 231, 0.082)
+    }
+
+    p {
+        width: 200px;
+    }
+}
+
+.btnContainer {
+    position: sticky;
+    bottom: 32px;
+    right: 32px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-customer-btn {
+    // position: absolute;
+    // bottom: 32px;
+    // right: 32px;
+    background-color: #3f51b5;
+}
+
+// Inputfield styles are set in style.css, following content are just few differences for customer-administration
+$fontColor: #242424c7;
+
+.form__group {
+    align-items: flex-end;
+    gap: 32px;
+    flex-direction: row !important;
+}
+
+.form__field {
+    color: $fontColor;
+}
+
+.form__label {
+
+    color: #565656;
+}
+
+.status-section {
+    color: #565656;
+}
+
+.subtitles {
+    position: sticky;
+    top: 0;
+    background-color: #FFFF;
+}
+
+.mat-radio-inner-circle {
+    background-color: #155bb6 !important;
+}
+
+
+.mat-radio-outer-circle {
+    border-color: #1560b6a1 !important;
+}
+
+//for small devices, espacially phones
+@media screen and (min-width: 300px) {
+
+    .customer-content {
+        width: 100%;
+    }
+
+    .customer-administration {
+        justify-content: center;
+        width: unset;
+    }
+
+    .mat-drawer-content {
+        width: 100%;
+    }
+
+    .tableDiv {
+        width: 100%;
+    }
+
+    .form__group {
+        flex-direction: column !important;
+        align-items: flex-start;
+    }
+
+    .status-section {
+        flex-direction: column !important;
+    }
+
+    .table-card {
+        width: 100%;
+    }
+
+    .mat-card {
+        padding: 0;
+    }
+}
+
+//for small devices, espacially phones
+@media screen and (min-width: 400px) {
+
+    .table-header {
+        td {
+            font-size: 14px;
+        }
+    }
+}
+
+
+//for medium devices
+@media screen and (min-width: 500px) {
+    .form__group {
+        flex-direction: row !important;
+        align-items: flex-end;
+    }
+
+    .tableDiv {
+        width: 90%;
+    }
+}
+
+//for medium devices
+@media screen and (min-width: 768px) {
+
+    .mat-card {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .tableDiv {
+        width: 80%;
+    }
+}
+
+
+@media screen and (min-width: 992px) {
+
+    .tableDiv {
+        width: 60%;
+    }
+}
+
+//for large devices, laptops and screens
+@media screen and (min-width: 1200px) {
+
+    .customer-administration {
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+
+    .status-section {
+        flex-direction: row !important;
+    }
+
+    .btnContainer {
+        width: 95%;
+    }
+}
+
+//for extra large devices
+@media screen and (min-width: 1400px) {
+    .tableDiv {
+        width: 55%;
+    }
+}
+
+
+@media screen and (min-height: 900px) {
+    .mat-card {
+        height: 65vh;
+    }
+}

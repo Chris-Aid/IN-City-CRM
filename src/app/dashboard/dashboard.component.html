@@ -1,0 +1,46 @@
+<div class="dashboard">
+
+  <mat-card [class.darkmodeContent]="settings.darkmode" class="infoCard">
+    <h1>Mitgliederauswertung:</h1>
+    <div class="dashboardContent">
+      <div class="customerIncome">
+        <h2>Mitgliederbeiträge:</h2>
+        <div class="fees">
+          <p>monatlich:</p>
+          <p> {{sum}} €</p>
+        </div>
+        <div class="fees">
+          <p>jährlich:</p>
+          <p> {{sum * 12}} €</p>
+        </div>
+
+      </div>
+      <div>
+        <h2>Aktive Mitglieder:</h2>
+        <div class="showInfos">
+          <p class="active">{{amountOfCustomers}}</p>
+        </div>
+      </div>
+      <div>
+        <h2>Gekündigte Mitglieder:</h2>
+        <div class="showInfos">
+          <p class="inactive">{{amountOfTerminatedCustomers}}</p>
+          <section class="example-section">
+            <mat-slide-toggle [(ngModel)]="isChecked">
+              Mehr infos!
+            </mat-slide-toggle>
+          </section>
+        </div>
+
+      </div>
+    </div>
+  </mat-card>
+  <mat-card [class.darkmodeContent]="settings.darkmode" *ngIf="isChecked" class="terminationInfos">
+    <mat-icon (click)="isChecked = false" class="close">close</mat-icon>
+    <div class="terminatedCustomers" *ngFor="let tc of terminatedCustomer; let i = index">
+      <p style="font-weight: 500">{{tc.name}}</p>
+      <p>{{tc.reason}}</p>
+      <p>{{tc.date}}</p>
+    </div>
+  </mat-card>
+</div>

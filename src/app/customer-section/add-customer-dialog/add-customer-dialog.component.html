@@ -1,0 +1,117 @@
+<div class="dialog-Content" mat-dialog-content>
+  <h1 mat-dialog-title>Neuen Kunden anlegen:</h1>
+
+  <section class="status-section">
+    <label>Mitgliedsstatus:</label>
+    <mat-radio-group [(ngModel)]="member">
+      <mat-radio-button value="member">Mitglied</mat-radio-button>
+      <mat-radio-button value="contact">Kontakt</mat-radio-button>
+    </mat-radio-group>
+  </section>
+
+  <div class="input-content">
+    <!-- Input field for company name -->
+    <div class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="company" type="text" />
+      <label class="form__label">Firma</label>
+    </div>
+
+    <!-- Input field for responsible person-->
+    <div class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="name" type="text" />
+      <label class="form__label">Ansprechpartner</label>
+    </div>
+
+
+
+    <!-- Input field for telefone number-->
+    <div class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="tel" type="text" />
+      <label class="form__label">Tel</label>
+    </div>
+
+    <!-- Input field for mobilephone number-->
+    <div class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="mobile" type="text" />
+      <label class="form__label">Mobil</label>
+    </div>
+
+    <!-- Input field for email address-->
+    <form class="example-form">
+      <div class="form__group field">
+        <input type="input" class="form__field" [(ngModel)]="email" type="email" matInput
+          [formControl]="emailFormControl" placeholder="Ex. pat@example.com" />
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Email ungültig!
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email wird <strong>benötigt</strong>
+        </mat-error>
+        <label class="form__label">Email</label>
+      </div>
+    </form>
+
+    <!-- Input field for street name-->
+    <div class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="street" type="text" />
+      <label class="form__label">Straße</label>
+    </div>
+
+    <!-- Input field for postcode-->
+    <div class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="postcode" type="text" />
+      <label class="form__label">Postleitzahl</label>
+    </div>
+
+    <!-- Input field for town-->
+    <div class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="town" type="text" />
+      <label class="form__label">Stadt</label>
+    </div>
+
+    <!-- Input field for branch-->
+    <div class="form__group field">
+      <label class="form__label">Branche</label>
+      <mat-select [(ngModel)]="selectedBranch">
+        <mat-option *ngFor="let branch of branches" [value]="branch.value">
+          {{branch.viewValue}}
+        </mat-option>
+      </mat-select>
+    </div>
+
+    <!-- Input field for membership fee-->
+    <div *ngIf="member === 'member'" class="form__group field">
+      <label class="form__label">Mitgliedsbeitrag</label>
+      <input type="number" class="form__field" matInput [(ngModel)]="membershipFee">
+
+    </div>
+
+    <!-- Input field for membership fee-->
+    <div *ngIf="member === 'member'" class="form__group field">
+      <input type="input" class="form__field" matInput [(ngModel)]="membernumber" />
+      <label class="form__label">Mitgliedsnummer</label>
+    </div>
+
+    <!-- Input field for entrydate name-->
+    <div *ngIf="member === 'member'" class="form__group field">
+      <div style="display: flex; flex-direction: column;">
+        <label class="form__label">Mitglied seit:</label>
+        <input [min]="minDate" [max]="maxDate" class="form__field" matInput [(ngModel)]="entryDate"
+          [matDatepicker]="picker">
+        <div class="datePicker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        </div>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Abbrechen</button>
+  <button mat-button
+    [mat-dialog-close]="{name, company, membernumber, tel, mobile, email, postcode, street, town, entryDate, selectedBranch, membershipFee, member}"
+    cdkFocusInitial>Hinzufügen</button>
+</div>
