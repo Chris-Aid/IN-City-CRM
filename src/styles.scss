@@ -189,11 +189,12 @@ $gray: #9b9b9b;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #666666;
+    background: #d3d3d3;
+
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #d3d3d3;
+    background: #666666;
 }
 
 ::-webkit-scrollbar-track {
@@ -217,7 +218,7 @@ $gray: #9b9b9b;
 .darkmodeContent {
     background-color: #363636 !important;
     box-shadow: rgb(255 255 255 / 27%) 0px 3px 8px !important;
-    color: white;
+    color: white !important;
 }
 
 .darkmodeSidenav {
@@ -250,10 +251,17 @@ $gray: #9b9b9b;
     }
 }
 
-// .darkmode-inner-circle {
-//     background-color: #ff4081 !important;
-// }
+.dialogHight {
+    .mat-dialog-content {
+        height: 80px !important;
+    }
+}
 
+// this class is for the btn in event section
+.mat-button-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+}
 
 //for small devices, espacially phones
 @media screen and (min-width: 320px) {

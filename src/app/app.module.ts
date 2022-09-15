@@ -41,6 +41,8 @@ import { HelpSectionComponent } from './help-section/help-section.component';
 import { TasksOverviewComponent } from './task-section/tasks-overview/tasks-overview.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { EventsComponent } from './event-section/events/events.component';
+import { AddEventComponent } from './event-section/add-event/add-event.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     HelpSectionComponent,
     TasksOverviewComponent,
     DashboardComponent,
+    EventsComponent,
+    AddEventComponent,
   ],
 
   imports: [
