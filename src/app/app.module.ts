@@ -55,7 +55,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     HelpSectionComponent,
     TasksOverviewComponent,
     DashboardComponent,
-
   ],
 
   imports: [

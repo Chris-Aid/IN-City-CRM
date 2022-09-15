@@ -22,13 +22,10 @@ export class DashboardComponent implements OnInit {
   }
 
   fees = [];
-  sum = 0;
+  sum: number = 0;
   show: boolean = false;
   amountOfCustomers: number = 0;
   amountOfTerminatedCustomers: number = 0;
-
-
-
   terminatedCustomer = [];
 
   ngOnInit(): void {
@@ -48,13 +45,16 @@ export class DashboardComponent implements OnInit {
   getMembershipFees(customer) {
     for (let i = 0; i < customer.length; i++) {
       if (customer[i].status == 'aktiv' && customer[i].member == 'member') {
-        this.fees.push(customer[i].membershipFee);
+        // summs up all membershipFees
         this.sum += +customer[i].membershipFee;
 
         // findes out how many custermers the company has
         this.amountOfCustomers++;
       }
     }
+    //formatts the sum
+    let moneyFromCustomer = +this.sum.toFixed(2);
+    this.sum = moneyFromCustomer;
   }
 
   getTerminatedCustomer(customer) {
@@ -72,5 +72,4 @@ export class DashboardComponent implements OnInit {
       }
     }
   }
-
 }

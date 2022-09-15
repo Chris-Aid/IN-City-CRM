@@ -189,11 +189,13 @@ $gray: #9b9b9b;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #2d15b6;;
+    background: #2d15b6;
+    ;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #725af8;;
+    background: #725af8;
+    ;
 }
 
 ::-webkit-scrollbar-track {
@@ -244,6 +246,11 @@ $gray: #9b9b9b;
 
 //for large devices, screens, laptops etc.
 @media screen and (min-width: 1200px) {
+
+    .mat-card {
+        padding: 0 !important;
+    }
+
     .cdk-overlay-pane {
         max-width: 870px !important;
     }
@@ -313,4 +320,3 @@ $gray: #9b9b9b;
         height: 65vh;
     }
 }
-

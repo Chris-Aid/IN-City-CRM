@@ -118,6 +118,10 @@ p {
 
 @media screen and (min-width: 1200px) {
 
+  .infoCard {
+    padding: 32px !important;
+  }
+
   .dashboardContent {
     flex-direction: row;
     gap: 64px;
@@ -125,6 +129,7 @@ p {
 
   .terminationInfos {
     max-height: 55vh;
+    padding: 32px !important;
   }
 
 }
