@@ -1,5 +1,5 @@
 <div class="customer-details-component">
-    <mat-card class="mainInfo">
+    <mat-card [class.darkmodeContent]="settings.darkmode" class="mainInfo">
         <div class="cusotmer-icons">
             <img mat-raised-button (click)="openDialog()" (mouseenter)="hovered = 2" (mouseleave)="hovered = 1"
                 class="trash-bin" src="/assets/img/trash-{{hovered}}.png" alt="">
@@ -53,7 +53,7 @@
     </mat-card>
 
 
-    <mat-card class="sideInfo mg-top-32">
+    <mat-card [class.darkmodeContent]="settings.darkmode" class="sideInfo mg-top-32">
         <div class="side-contact-info">
             <div class="side-infos">
                 <div *ngIf="member ==='member'">

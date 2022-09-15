@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute } from "@angular/router";
+import { SharedService } from "src/app/shared.service";
 import { DeletingCustomerDialogComponent } from "../deleting-customer-dialog/deleting-customer-dialog.component";
 import { EditCustomerComponent } from "../edit-customer/edit-customer.component";
 import { SetTerminationComponent } from "../set-termination/set-termination.component";
@@ -39,7 +40,7 @@ export class CustomerDetailsComponent implements OnInit {
   selected: string = "aktiv";
   showTerminationInfo = false;
 
-  constructor(private route: ActivatedRoute, public firestore: AngularFirestore, public dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute, public firestore: AngularFirestore, public dialog: MatDialog, public settings: SharedService) { }
 
   ngOnInit(): void {
     this.getParamsOfCustomer();

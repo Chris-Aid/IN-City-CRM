@@ -5,9 +5,9 @@
       <div class="form__group field">
         <input matInput type="input" class="form__field" matInput name="search" type="text" [(ngModel)]="searchText"
           placeholder="Kundensuche" id='name' required />
-        <label for="name" class="form__label">Kundensuche</label>
+        <label [class.darkmodeFont]="settings.darkmode" for="name" class="form__label">Kundensuche</label>
 
-        <section class="status-section">
+        <section [class.darkmodeFont]="settings.darkmode" class="status-section">
           <label>Mitgliedsstatus:</label>
           <mat-radio-group [(ngModel)]="memberStatus">
             <mat-radio-button value="all">Alle</mat-radio-button>
@@ -19,10 +19,10 @@
     </div>
 
 
-    <mat-card class="table-card">
+    <mat-card [class.darkmodeContent]="settings.darkmode" class="table-card">
       <div>
         <table class="table-header">
-          <tr class="subtitles">
+          <tr [class.darkmodeContent]="settings.darkmode" class="subtitles">
             <th>Firma</th>
             <th>Name</th>
             <th>E-Mail</th>
@@ -47,7 +47,7 @@
 
         </table>
         <div class="btnContainer">
-          <button matTooltip="Add customer" *ngIf="memberStatus != 'gekündigt'" class="add-customer-btn"
+          <button [class.btn-darkmode]="settings.darkmode" matTooltip="Add customer" *ngIf="memberStatus != 'gekündigt'" class="add-customer-btn"
             (click)="openDialog()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
 
             <mat-icon>add</mat-icon>

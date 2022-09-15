@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 // import { Router, Routes } from '@angular/router';
 // import { CustomerComponent } from './customer/customer.component';
 
@@ -9,13 +9,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  // constructor(private router: Router) {}
 
-  // routes: Routes = [
-  //   { path:'/customer', component: CustomerComponent},
-
-  // ];
   title = 'in-city-crm';
   showFiller = false;
+
 }
 

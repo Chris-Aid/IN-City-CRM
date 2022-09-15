@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, Validators } from "@angular/forms";
 import { MatDialogRef } from "@angular/material/dialog";
+import { SharedService } from "src/app/shared.service";
 import { CustomersService } from "../customers.service";
 
 
@@ -36,7 +37,7 @@ export class AddCustomerDialogComponent implements OnInit {
 
   // noSub = true;
 
-  constructor(public dialogRef: MatDialogRef<AddCustomerDialogComponent>, private customerBranches: CustomersService) { }
+  constructor(public dialogRef: MatDialogRef<AddCustomerDialogComponent>, private customerBranches: CustomersService, public settings: SharedService) { }
 
   ngOnInit(): void {
     this.branches = this.customerBranches.getBranches();

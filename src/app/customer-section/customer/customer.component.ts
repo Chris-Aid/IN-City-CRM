@@ -1,8 +1,9 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute, Router } from "@angular/router";
+import { SharedService } from "src/app/shared.service";
 
 import { AddCustomerDialogComponent } from "../add-customer-dialog/add-customer-dialog.component";
 import { CustomersService } from "../customers.service";
@@ -36,7 +37,7 @@ export class CustomerComponent implements OnInit {
   public customers: any[] = [];
   firma: { name: any; company: any; membernumber: any; tel: any; mobile: any; email: any; street: any; postcode: any; town: any; entryDate: any; selectedBranch: any; membershipFee: any; terminationDate: any; terminationReason: any; status: any; member: any; };
 
-  constructor(private router: Router, public dialog: MatDialog, public firestore: AngularFirestore, private route: ActivatedRoute, private customerInfo: CustomersService,) { }
+  constructor(private router: Router, public dialog: MatDialog, public firestore: AngularFirestore, private route: ActivatedRoute, private customerInfo: CustomersService, public settings: SharedService) { }
 
   async ngOnInit(): Promise<void> {
     this.getCustomer();
@@ -54,7 +55,9 @@ export class CustomerComponent implements OnInit {
 
   openDialog(): void {
 
-    const dialogRef = this.dialog.open(AddCustomerDialogComponent, { disableClose: true });
+    const dialogRef = this.dialog.open(AddCustomerDialogComponent, { 
+      disableClose: true,
+      panelClass: "darkmodeDialog", });
 
     dialogRef.afterClosed().subscribe(({
       name, company, membernumber, tel, mobile, email, street, postcode, town, entryDate, selectedBranch, membershipFee, member }) => {

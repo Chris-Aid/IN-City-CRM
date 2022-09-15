@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, Validators } from '@angular/forms';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public firestore: AngularFirestore, private _formBuilder: FormBuilder) { }
+  constructor(public firestore: AngularFirestore, private _formBuilder: FormBuilder, public settings: SharedService) { }
 
   isChecked = false;
   formGroup = this._formBuilder.group({

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Input, NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { CustomerDetailsComponent } from './customer-section/customer-details/customer-details.component';
 import { CustomerComponent } from './customer-section/customer/customer.component';
@@ -21,4 +21,5 @@ const routes: Routes = [
 })
 export class AppRoutingModule { 
   constructor(public router: Router) {}
+
 }
