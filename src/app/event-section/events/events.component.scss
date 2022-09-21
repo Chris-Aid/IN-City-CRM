@@ -14,3 +14,24 @@
     top: 120px;
 }
 
+.event-content {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding-top: 64px;
+}
+
+.event-card {
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    width: 150px;
+    padding-top: 24px !important;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(226, 226, 226);
+    }
+}
+

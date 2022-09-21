@@ -1,10 +1,20 @@
 <div class="event-section">
-    <h1>Veranstaltungen</h1>
+  <h1>Veranstaltungen</h1>
 
-    <div>
-        <button class="addEventBtn" (click)="addEvent()" mat-fab color="accent">
-          <mat-icon>add</mat-icon>
-        </button>
-      </div>
+  <div>
+    <button class="addEventBtn" (click)="addEvent()" mat-fab color="accent">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+<div class="event-content">
+  <mat-card routerLink="event/{{e.eventID}}" class="event-card" *ngFor="let e of service.events; let i = index;">
+    <div >
+      <h1>{{e.name}}</h1>
+    </div>
+  </mat-card>
 </div>
 
+  <!-- <div class="task-content">
+        <h1>Dieses feature wurden noch nicht entwickelt, schau gerne später nochmal vorbei :)</h1>
+    </div> -->
+</div>

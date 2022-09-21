@@ -43,6 +43,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EventsComponent } from './event-section/events/events.component';
 import { AddEventComponent } from './event-section/add-event/add-event.component';
+import { EventoverviewComponent } from './event-section/eventoverview/eventoverview.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { AddEventComponent } from './event-section/add-event/add-event.component
     DashboardComponent,
     EventsComponent,
     AddEventComponent,
+    EventoverviewComponent,
   ],
 
   imports: [

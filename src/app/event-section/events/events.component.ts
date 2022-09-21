@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEventComponent } from '../add-event/add-event.component';
+import { EventsService } from '../events.service';
 
 @Component({
   selector: 'app-events',
@@ -10,9 +11,11 @@ import { AddEventComponent } from '../add-event/add-event.component';
 })
 export class EventsComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, public firestore: AngularFirestore) { }
+
+  constructor(public dialog: MatDialog, public firestore: AngularFirestore, public service: EventsService) { }
 
   ngOnInit(): void {
+    this.getEventsFromFiresore();
   }
 
   addEvent() {
@@ -42,4 +45,13 @@ export class EventsComponent implements OnInit {
       });
   }
 
+  getEventsFromFiresore() {
+    this.firestore
+    .collection('events')
+    .valueChanges()
+    .subscribe((event: any) => {
+      this.service.events = event;
+
+    });
+  }
 }
