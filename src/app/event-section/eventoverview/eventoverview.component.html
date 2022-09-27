@@ -1,26 +1,4 @@
 <div class="eventOverview">
   <h1 *ngIf="dataLoaded">{{eventInfo.name}}</h1>
 
-  <section class="example-container mat-elevation-z8" tabindex="0">
-    <table mat-table>
-      <!-- Item Column -->
-      <ng-container matColumnDef="item">
-        <th mat-header-cell *matHeaderCellDef> Item </th>
-        <td mat-cell *matCellDef="let transaction"> {{transaction.item}} </td>
-        <td mat-footer-cell *matFooterCellDef> Total </td>
-      </ng-container>
-  
-      <!-- Cost Column -->
-      <ng-container matColumnDef="cost">
-        <th mat-header-cell *matHeaderCellDef> Cost </th>
-        <td mat-cell *matCellDef="let transaction"> {{transaction.cost | currency}} </td>
-        <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </td>
-      </ng-container>
-  
-      <tr mat-header-row>233</tr>
-      <tr mat-row>2323</tr>
-      <tr mat-footer-row></tr>
-    </table>
-  </section>
 </div>
-

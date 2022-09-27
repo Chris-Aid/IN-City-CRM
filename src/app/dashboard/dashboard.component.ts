@@ -1,7 +1,61 @@
+import { formatNumber } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, Validators } from '@angular/forms';
+import {
+  Chart,
+  ArcElement,
+  LineElement,
+  BarElement,
+  PointElement,
+  BarController,
+  BubbleController,
+  DoughnutController,
+  LineController,
+  PieController,
+  PolarAreaController,
+  RadarController,
+  ScatterController,
+  CategoryScale,
+  LinearScale,
+  LogarithmicScale,
+  RadialLinearScale,
+  TimeScale,
+  TimeSeriesScale,
+  Decimation,
+  Filler,
+  Legend,
+  Title,
+  Tooltip
+} from 'chart.js';
+import { first } from 'rxjs';
 import { SharedService } from '../shared.service';
+
+Chart.register(
+  ArcElement,
+  LineElement,
+  BarElement,
+  PointElement,
+  BarController,
+  BubbleController,
+  DoughnutController,
+  LineController,
+  PieController,
+  PolarAreaController,
+  RadarController,
+  ScatterController,
+  CategoryScale,
+  LinearScale,
+  LogarithmicScale,
+  RadialLinearScale,
+  TimeScale,
+  TimeSeriesScale,
+  Decimation,
+  Filler,
+  Legend,
+  Title,
+  Tooltip
+);
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +63,8 @@ import { SharedService } from '../shared.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+  customers2021 = [];
 
   constructor(public firestore: AngularFirestore, private _formBuilder: FormBuilder, public settings: SharedService) { }
 
@@ -24,6 +80,7 @@ export class DashboardComponent implements OnInit {
 
   fees = [];
   sum: number = 0;
+  formattedSum;
   show: boolean = false;
   amountOfCustomers: number = 0;
   amountOfTerminatedCustomers: number = 0;
@@ -31,6 +88,50 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDataFromFirebase();
+    this.loadChart();
+  }
+
+  loadChart() {
+    let ctx: any = document.getElementById('myChart');
+    let myCtx = ctx.getContext('2d');
+    let myChart = new Chart(myCtx, {
+      type: 'line',
+      data: {
+        labels: ['2017', '2018', '2019', '2020', '2021', '2022'],
+        datasets: [{
+          label: 'Verlauf der Migliederzahlen',
+          data: [203, 200, 190, 230, 202, 200],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            max: 240,
+            min: 180,
+            ticks: {
+              stepSize: 10
+            }
+          }
+        }
+      }
+    });
   }
 
   getDataFromFirebase() {
@@ -38,9 +139,37 @@ export class DashboardComponent implements OnInit {
       .collection('Kunden')
       .valueChanges()
       .subscribe((customer: any) => {
+
         this.getMembershipFees(customer);
         this.getTerminatedCustomer(customer);
+        this.sortCustomerByEntryDate(customer);
       });
+  }
+
+  sortCustomerByEntryDate(customer) {
+    let firstYear = 0;
+    let secondYear = 0;
+    let thirdYear = 0;
+
+    for (let i = 0; i < customer.length; i++) {
+      let entryYear = customer[i].entryDate.slice(-4);
+      console.log(entryYear)
+      let exitYear = customer[i].terminationDate.slice(-4);
+      let status = customer[i].status;
+      console.log(status)
+      if (entryYear < 2012 && status == 'aktiv' || exitYear > 2012) {
+        firstYear++;
+      }
+      if (entryYear < 2016 && status == 'aktiv' || exitYear > 2016) {
+        secondYear++;
+      }
+      if (entryYear < 2019 && status == 'aktiv' || exitYear > 2019) {
+        thirdYear++;
+      }
+    }
+    console.log(firstYear)
+    console.log(secondYear)
+    console.log(thirdYear)
   }
 
   getMembershipFees(customer) {
@@ -53,9 +182,9 @@ export class DashboardComponent implements OnInit {
         this.amountOfCustomers++;
       }
     }
-    //formatts the sum
-    let moneyFromCustomer = +this.sum.toFixed(2);
-    this.sum = moneyFromCustomer;
+
+    let sumOfYear = this.sum * 12;
+    this.formattedSum = sumOfYear.toLocaleString("es-ES", { minimumFractionDigits: 2 })
   }
 
   getTerminatedCustomer(customer) {

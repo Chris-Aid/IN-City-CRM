@@ -105,7 +105,11 @@ export class CustomerDetailsComponent implements OnInit {
     this.firestore
       .collection('Kunden')
       .doc(this.customersID)
-      .update({ status: 'aktiv' })
+      .update({
+        status: 'aktiv',
+        terminationDate: '',
+        terminationReason: ''
+      })
     this.checkMembershipStatus();
   }
 
@@ -122,7 +126,7 @@ export class CustomerDetailsComponent implements OnInit {
     const editCustomer = this.dialog.open(EditCustomerComponent, { disableClose: true });
     this.customer.entryDate = new Date(this.customer.entryDate);
     editCustomer.componentInstance.customer = this.customer;
-    
+
     editCustomer.afterClosed().subscribe(({
       customer }) => {
       this.updateCustomerInfos(customer);
