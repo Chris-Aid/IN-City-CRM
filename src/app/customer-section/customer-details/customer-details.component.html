@@ -38,13 +38,12 @@
 
                     <div *ngIf="member ==='member'">
                         <div class="membershipContainer">
-                                <mat-icon>contact_page</mat-icon>
-                                <mat-radio-group [(ngModel)]="selected"
-                                    aria-label="Select an option">
-                                    <mat-radio-button (click)="changeToActive()" value="aktiv">aktiv</mat-radio-button>
-                                    <mat-radio-button (click)="changeToTerminated()" value="gekündigt">gekündigt
-                                    </mat-radio-button>
-                                </mat-radio-group>
+                            <mat-icon>contact_page</mat-icon>
+                            <mat-radio-group [(ngModel)]="selected" aria-label="Select an option">
+                                <mat-radio-button (click)="changeToActive()" value="aktiv">aktiv</mat-radio-button>
+                                <mat-radio-button (click)="changeToTerminated()" value="gekündigt">gekündigt
+                                </mat-radio-button>
+                            </mat-radio-group>
                         </div>
                     </div>
                 </div>
@@ -79,7 +78,11 @@
 
                 <div *ngIf="member ==='member'">
                     <h3>Mitgliedsbeitrag:</h3>
-                    <p>{{membershipFee}}</p>
+                    <div style="display: flex;">
+                        <p>{{membershipFee}}</p>
+                        <p style="margin-left: 5px;">€</p>
+                    </div>
+
                 </div>
             </div>
 

@@ -1,5 +1,4 @@
 .header {
-    padding-right: 128px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     display: flex;
     justify-content: space-between;
@@ -86,5 +85,14 @@
     }
 }
 
+//for large devices, espacially tablets
+@media screen and (min-width: 1200px) {
 
+    .header {
+        padding-right: 128px;
+    }
 
+    .mat-drawer {
+        width: 350px;
+    }
+}
