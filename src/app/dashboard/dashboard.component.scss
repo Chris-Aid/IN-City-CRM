@@ -39,6 +39,12 @@ p {
   justify-content: space-between;
 }
 
+.charts {
+  display: flex;
+  margin-top: 32px;
+  gap: 64px;
+}
+
 .chartContainer {
   width: 400px;
 }
@@ -94,6 +100,24 @@ p {
     width: 90%;
 
   }
+
+  .charts {
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+  }
+
+  .chartContainer {
+    width: 310px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+
+  .chartContainer {
+    width: 420px;
+  }
+
 }
 
 @media screen and (min-width: 768px) {
@@ -105,6 +129,8 @@ p {
   .terminationInfos {
     width: 75%;
   }
+
+
 }
 
 @media screen and (min-width: 1200px) {
@@ -123,6 +149,16 @@ p {
     padding: 32px !important;
   }
 
+  .charts {
+    flex-direction: row;
+    gap: 64px;
+  }
+
+
+  .chartContainer {
+    width: 380px;
+  }
+
 }
 
 @media screen and (min-width: 1400px) {
@@ -136,6 +172,10 @@ p {
   .dashboardContent {
     flex-direction: row;
     gap: 85px;
+  }
+
+  .chartContainer {
+    width: 420px;
   }
 
 }

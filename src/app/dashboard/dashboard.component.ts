@@ -64,7 +64,12 @@ Chart.register(
 })
 export class DashboardComponent implements OnInit {
 
-  customers2021 = [];
+  firstYear = [];
+  secondYear = [];
+  thirdYear = [];
+  fourthYear = [];
+  fifthYear = [];
+  sixthYear = [];
 
   constructor(public firestore: AngularFirestore, private _formBuilder: FormBuilder, public settings: SharedService) { }
 
@@ -88,19 +93,31 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDataFromFirebase();
-    this.loadChart();
+    setTimeout(() => {
+      this.loadMemberChart();
+      this.loadIncomeChart();
+      console.log(this.firstYear)
+    }, 500)
+
   }
 
-  loadChart() {
-    let ctx: any = document.getElementById('myChart');
+  loadMemberChart() {
+    let ctx: any = document.getElementById('memberChart');
     let myCtx = ctx.getContext('2d');
     let myChart = new Chart(myCtx, {
-      type: 'line',
+      type: 'bar',
       data: {
         labels: ['2017', '2018', '2019', '2020', '2021', '2022'],
         datasets: [{
-          label: 'Verlauf der Migliederzahlen',
-          data: [203, 200, 190, 230, 202, 200],
+          label: 'Migliederzahlen',
+          data: [
+            this.firstYear.length,
+            this.secondYear.length,
+            this.thirdYear.length,
+            this.fourthYear.length,
+            this.fifthYear.length,
+            this.sixthYear.length
+          ],
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -123,15 +140,73 @@ export class DashboardComponent implements OnInit {
       options: {
         scales: {
           y: {
-            max: 240,
-            min: 180,
+            max: 15,
+            min: 5,
             ticks: {
-              stepSize: 10
+              stepSize: 2
             }
           }
         }
       }
     });
+  }
+
+  loadIncomeChart() {
+    let ctx: any = document.getElementById('incomeChart');
+    let myCtx = ctx.getContext('2d');
+    let myChart = new Chart(myCtx, {
+      type: 'line',
+      data: {
+        labels: ['2017', '2018', '2019', '2020', '2021', '2022'],
+        datasets: [{
+          label: 'Einnahmen durch Mitgliedsbeiträge',
+          data: [
+            this.getIncome(this.firstYear),
+            this.getIncome(this.secondYear),
+            this.getIncome(this.thirdYear),
+            this.getIncome(this.fourthYear),
+            this.getIncome(this.fifthYear),
+            this.getIncome(this.sixthYear)
+          ],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            max: 1000,
+            min: 100,
+            ticks: {
+              stepSize: 100
+            }
+          }
+        }
+      }
+    });
+  }
+
+  getIncome(year) {
+    let income = 0;
+    for (let i = 0; i < year.length; i++) {
+      income += +year[i].membershipFee;
+    }
+    return income
   }
 
   getDataFromFirebase() {
@@ -147,44 +222,28 @@ export class DashboardComponent implements OnInit {
   }
 
   sortCustomerByEntryDate(customer) {
-    let firstYear = 0;
-    let secondYear = 0;
-    let thirdYear = 0;
-    let fourthYear = 0;
-    let fifthYear = 0;
-    let sixthYear = 0;
-
     for (let i = 0; i < customer.length; i++) {
       let entryYear = customer[i].entryDate.slice(-4);
-      console.log(entryYear)
       let exitYear = customer[i].terminationDate.slice(-4);
-      let status = customer[i].status;
-      console.log(status)
-      if (entryYear !== "" && entryYear < 2017 && customer[i].status == 'aktiv') {
-        firstYear++;
+      if (entryYear !== "" && entryYear <= 2017 && exitYear == "" || exitYear > 2017) {
+        this.firstYear.push(customer[i])
       }
-      if (entryYear !== "" && entryYear < 2018 && customer[i].status == 'aktiv') {
-        secondYear++;
+      if (entryYear !== "" && entryYear <= 2018 && exitYear == "" || exitYear > 2018) {
+        this.secondYear.push(customer[i])
       }
-      if (entryYear !== "" && entryYear < 2019 && customer[i].status == 'aktiv') {
-        thirdYear++;
+      if (entryYear !== "" && entryYear <= 2019 && exitYear == "" || exitYear > 2019) {
+        this.thirdYear.push(customer[i])
       }
-      if (entryYear !== "" && entryYear < 2020 && customer[i].status == 'aktiv') {
-        fourthYear++;
+      if (entryYear !== "" && entryYear <= 2020 && exitYear == "" || exitYear > 2020) {
+        this.fourthYear.push(customer[i])
       }
-      if (entryYear !== "" && entryYear < 2021 && customer[i].status == 'aktiv') {
-        fifthYear++;
+      if (entryYear !== "" && entryYear <= 2021 && exitYear == "" || exitYear > 2021) {
+        this.fifthYear.push(customer[i])
       }
-      if (entryYear !== "" && entryYear < 2022 && customer[i].status == 'aktiv') {
-        sixthYear++;
+      if (entryYear !== "" && entryYear <= 2022 && exitYear == "" || exitYear > 2022) {
+        this.sixthYear.push(customer[i])
       }
     }
-    console.log(firstYear)
-    console.log(secondYear)
-    console.log(thirdYear)
-    console.log(fourthYear)
-    console.log(fifthYear)
-    console.log(sixthYear)
   }
 
   getMembershipFees(customer) {
