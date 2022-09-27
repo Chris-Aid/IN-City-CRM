@@ -29,26 +29,27 @@
           </tr>
 
           <tr *ngFor=" let customer of customers  | filter: searchText; let i = index">
-            <td *ngIf="customer.status === memberStatus" routerLink="customer/{{customer.CustomersID}}">
+            <td *ngIf="customer.status === memberStatus" routerLink="../customer/{{customer.CustomersID}}">
               {{customer.company}}</td>
-            <td *ngIf="customer.status === memberStatus" routerLink="customer/{{customer.CustomersID}}">
+            <td *ngIf="customer.status === memberStatus" routerLink="../customer/{{customer.CustomersID}}">
               {{customer.name}}</td>
-            <td *ngIf="customer.status === memberStatus" routerLink="customer/{{customer.CustomersID}}">
+            <td *ngIf="customer.status === memberStatus" routerLink="../customer/{{customer.CustomersID}}">
               {{customer.email}}</td>
 
             <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
-              routerLink="customer/{{customer.CustomersID}}">{{customer.company}}</td>
+              routerLink="../customer/{{customer.CustomersID}}">{{customer.company}}</td>
             <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
-              routerLink="customer/{{customer.CustomersID}}">{{customer.name}}</td>
+              routerLink="../customer/{{customer.CustomersID}}">{{customer.name}}</td>
             <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
-              routerLink="customer/{{customer.CustomersID}}">{{customer.email}}</td>
+              routerLink="../customer/{{customer.CustomersID}}">{{customer.email}}</td>
           </tr>
 
 
         </table>
         <div class="btnContainer">
-          <button [class.btn-darkmode]="settings.darkmode" matTooltip="Add customer" *ngIf="memberStatus != 'gekündigt'" class="add-customer-btn"
-            (click)="openDialog()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+          <button [class.btn-darkmode]="settings.darkmode" matTooltip="Add customer" *ngIf="memberStatus != 'gekündigt'"
+            class="add-customer-btn" (click)="openDialog()" mat-mini-fab color="primary"
+            aria-label="Example icon button with a menu icon">
 
             <mat-icon>add</mat-icon>
           </button>

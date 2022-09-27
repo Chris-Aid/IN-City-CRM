@@ -8,21 +8,20 @@
         <ul class="menu-items">
             <div (click)="dontHideSidebar($event)"
                 (click)="taskManagement = false; eventSec = false; customerSection = false; help = false; dashboard = true"
-                [class.darkmodeLinks]="settings.darkmode && dashboard" [class.set-bgc]="dashboard"
-                routerLink="dashboard">
+                [class.darkmodeLinks]="settings.darkmode && dashboard" [class.set-bgc]="dashboard" routerLink="">
                 <mat-icon>insights</mat-icon>Dashboard
             </div>
             <div (click)="dontHideSidebar($event)"
                 (click)="taskManagement = false; eventSec = false; customerSection = true; help = false; dashboard = false"
                 [class.darkmodeLinks]="settings.darkmode && customerSection" [class.set-bgc]="customerSection"
-                routerLink="">
+                routerLink="customers">
                 <mat-icon>person</mat-icon>Kunden
             </div>
-            <div (click)="dontHideSidebar($event)"
+            <!-- <div (click)="dontHideSidebar($event)"
                 (click)="customerSection = false; taskManagement = false; eventSec = true; help = false; dashboard = false"
                 [class.darkmodeLinks]="settings.darkmode && eventSec" [class.set-bgc]="eventSec" routerLink="events">
                 <mat-icon>event</mat-icon>Veranstaltungen
-            </div>
+            </div> -->
             <div (click)="dontHideSidebar($event)"
                 (click)="customerSection = false; eventSec = false; taskManagement = true; help = false; dashboard = false"
                 [class.darkmodeLinks]="settings.darkmode && taskManagement" [class.set-bgc]="taskManagement"

@@ -78,7 +78,6 @@ p {
     padding: 0;
     padding-top: 18px;
     padding-bottom: 32px;
-
   }
 
   .infoCard {
@@ -98,7 +97,6 @@ p {
     max-height: 35vh;
     margin-top: 18px;
     width: 90%;
-
   }
 
   .charts {
@@ -117,7 +115,6 @@ p {
   .chartContainer {
     width: 420px;
   }
-
 }
 
 @media screen and (min-width: 768px) {
@@ -129,8 +126,6 @@ p {
   .terminationInfos {
     width: 75%;
   }
-
-
 }
 
 @media screen and (min-width: 1200px) {
@@ -158,7 +153,6 @@ p {
   .chartContainer {
     width: 380px;
   }
-
 }
 
 @media screen and (min-width: 1400px) {
@@ -175,9 +169,8 @@ p {
   }
 
   .chartContainer {
-    width: 420px;
+    width: 500px;
   }
-
 }
 
 @media screen and (max-height: 450px) and (orientation: landscape) {
@@ -186,5 +179,4 @@ p {
     flex-direction: row;
     gap: 80px;
   }
-
 }

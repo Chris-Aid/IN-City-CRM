@@ -10,20 +10,20 @@ import { TasksOverviewComponent } from './task-section/tasks-overview/tasks-over
 
 
 const routes: Routes = [
-  { path:'', component: CustomerComponent},
-  { path:'customer/:id', component: CustomerDetailsComponent},
-  {path: 'help', component: HelpSectionComponent},
-  {path: 'tasks', component: TasksOverviewComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'events', component: EventsComponent},
-  {path: 'events/event/:id', component: EventoverviewComponent},
+  { path: 'customers', component: CustomerComponent },
+  { path: 'customer/:id', component: CustomerDetailsComponent },
+  { path: 'help', component: HelpSectionComponent },
+  { path: 'tasks', component: TasksOverviewComponent },
+  { path: '', component: DashboardComponent },
+  { path: 'events', component: EventsComponent },
+  { path: 'events/event/:id', component: EventoverviewComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
-  constructor(public router: Router) {}
+export class AppRoutingModule {
+  constructor(public router: Router) { }
 
 }

@@ -71,9 +71,28 @@ export class DashboardComponent implements OnInit {
   fifthYear = [];
   sixthYear = [];
 
+  backgroundColorChart = [
+    'rgba(255, 99, 132, 0.2)',
+    'rgba(54, 162, 235, 0.2)',
+    'rgba(255, 206, 86, 0.2)',
+    'rgba(75, 192, 192, 0.2)',
+    'rgba(153, 102, 255, 0.2)',
+    'rgba(255, 159, 64, 0.2)'
+  ];
+
+  borderColorChart = [
+    'rgba(255, 99, 132, 1)',
+    'rgba(54, 162, 235, 1)',
+    'rgba(255, 206, 86, 1)',
+    'rgba(75, 192, 192, 1)',
+    'rgba(153, 102, 255, 1)',
+    'rgba(255, 159, 64, 1)'
+  ];
+
   constructor(public firestore: AngularFirestore, private _formBuilder: FormBuilder, public settings: SharedService) { }
 
   isChecked = false;
+
   formGroup = this._formBuilder.group({
     enableWifi: '',
     acceptTerms: ['', Validators.requiredTrue],
@@ -93,12 +112,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDataFromFirebase();
+    // loads Charts, takes few ms to get data ready
     setTimeout(() => {
       this.loadMemberChart();
       this.loadIncomeChart();
-      console.log(this.firstYear)
     }, 500)
-
   }
 
   loadMemberChart() {
@@ -109,7 +127,6 @@ export class DashboardComponent implements OnInit {
       data: {
         labels: ['2017', '2018', '2019', '2020', '2021', '2022'],
         datasets: [{
-          label: 'Migliederzahlen',
           data: [
             this.firstYear.length,
             this.secondYear.length,
@@ -118,26 +135,21 @@ export class DashboardComponent implements OnInit {
             this.fifthYear.length,
             this.sixthYear.length
           ],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
+          backgroundColor: this.backgroundColorChart,
+          borderColor: this.borderColorChart,
+          borderWidth: 1.5
         }]
       },
       options: {
+        plugins: {
+          title: {
+            display: true,
+            text: 'Verlauf der Mitgliederzahlen'
+          },
+          legend: {
+            display: false
+          }
+        },
         scales: {
           y: {
             max: 15,
@@ -159,7 +171,6 @@ export class DashboardComponent implements OnInit {
       data: {
         labels: ['2017', '2018', '2019', '2020', '2021', '2022'],
         datasets: [{
-          label: 'Einnahmen durch Mitgliedsbeiträge',
           data: [
             this.getIncome(this.firstYear),
             this.getIncome(this.secondYear),
@@ -168,32 +179,28 @@ export class DashboardComponent implements OnInit {
             this.getIncome(this.fifthYear),
             this.getIncome(this.sixthYear)
           ],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
+          backgroundColor: this.backgroundColorChart,
+          borderColor: this.borderColorChart,
+          borderWidth: 1.5
         }]
       },
       options: {
+        plugins: {
+
+          title: {
+            display: true,
+            text: 'Einnahmen durch Mitgliedsbeiträge'
+          },
+          legend: {
+            display: false
+          }
+        },
         scales: {
           y: {
-            max: 1000,
-            min: 100,
+            max: 10000,
+            min: 1000,
             ticks: {
-              stepSize: 100
+              stepSize: 1000
             }
           }
         }
@@ -206,7 +213,8 @@ export class DashboardComponent implements OnInit {
     for (let i = 0; i < year.length; i++) {
       income += +year[i].membershipFee;
     }
-    return income
+    console.log(income * 12)
+    return income * 12
   }
 
   getDataFromFirebase() {
@@ -221,6 +229,7 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+  // each array stands for a certain year to display the last 5 years in chartsJS. Customers that were active in certain years are push to the arrays
   sortCustomerByEntryDate(customer) {
     for (let i = 0; i < customer.length; i++) {
       let entryYear = customer[i].entryDate.slice(-4);
