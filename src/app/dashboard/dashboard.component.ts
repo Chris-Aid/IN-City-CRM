@@ -1,4 +1,4 @@
-import { formatNumber } from '@angular/common';
+import { CurrencyPipe, formatNumber } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -64,6 +64,8 @@ Chart.register(
 })
 export class DashboardComponent implements OnInit {
 
+  currentYear: number;
+
   firstYear = [];
   secondYear = [];
   thirdYear = [];
@@ -112,11 +114,30 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDataFromFirebase();
+    this.getCurrentYear();
     // loads Charts, takes few ms to get data ready
     setTimeout(() => {
       this.loadMemberChart();
       this.loadIncomeChart();
     }, 500)
+  }
+
+  getDataFromFirebase() {
+    this.firestore
+      .collection('Kunden')
+      .valueChanges()
+      .subscribe((customer: any) => {
+
+        this.getMembershipFees(customer);
+        this.getTerminatedCustomer(customer);
+        this.sortCustomerByEntryDate(customer);
+      });
+  }
+
+  getCurrentYear() {
+    let currentDate = new Date;
+    let year = currentDate.getFullYear();
+    this.currentYear = year;
   }
 
   loadMemberChart() {
@@ -125,7 +146,7 @@ export class DashboardComponent implements OnInit {
     let myChart = new Chart(myCtx, {
       type: 'bar',
       data: {
-        labels: ['2017', '2018', '2019', '2020', '2021', '2022'],
+        labels: [this.currentYear - 5, this.currentYear - 4, this.currentYear - 3, this.currentYear - 2, this.currentYear - 1, this.currentYear],
         datasets: [{
           data: [
             this.firstYear.length,
@@ -169,7 +190,7 @@ export class DashboardComponent implements OnInit {
     let myChart = new Chart(myCtx, {
       type: 'line',
       data: {
-        labels: ['2017', '2018', '2019', '2020', '2021', '2022'],
+        labels: [this.currentYear - 5, this.currentYear - 4, this.currentYear - 3, this.currentYear - 2, this.currentYear - 1, this.currentYear],
         datasets: [{
           data: [
             this.getIncome(this.firstYear),
@@ -192,7 +213,10 @@ export class DashboardComponent implements OnInit {
             text: 'Einnahmen durch Mitgliedsbeiträge'
           },
           legend: {
-            display: false
+            display: false,
+            labels: {
+              color: 'white'
+            }
           }
         },
         scales: {
@@ -200,6 +224,7 @@ export class DashboardComponent implements OnInit {
             max: 10000,
             min: 1000,
             ticks: {
+              // color: 'white',
               stepSize: 1000
             }
           }
@@ -217,39 +242,27 @@ export class DashboardComponent implements OnInit {
     return income * 12
   }
 
-  getDataFromFirebase() {
-    this.firestore
-      .collection('Kunden')
-      .valueChanges()
-      .subscribe((customer: any) => {
-
-        this.getMembershipFees(customer);
-        this.getTerminatedCustomer(customer);
-        this.sortCustomerByEntryDate(customer);
-      });
-  }
-
   // each array stands for a certain year to display the last 5 years in chartsJS. Customers that were active in certain years are push to the arrays
   sortCustomerByEntryDate(customer) {
     for (let i = 0; i < customer.length; i++) {
       let entryYear = customer[i].entryDate.slice(-4);
       let exitYear = customer[i].terminationDate.slice(-4);
-      if (entryYear !== "" && entryYear <= 2017 && exitYear == "" || exitYear > 2017) {
+      if (entryYear !== "" && entryYear <= this.currentYear - 5 && exitYear == "" || exitYear > this.currentYear - 5) {
         this.firstYear.push(customer[i])
       }
-      if (entryYear !== "" && entryYear <= 2018 && exitYear == "" || exitYear > 2018) {
+      if (entryYear !== "" && entryYear <= this.currentYear - 4 && exitYear == "" || exitYear > this.currentYear - 4) {
         this.secondYear.push(customer[i])
       }
-      if (entryYear !== "" && entryYear <= 2019 && exitYear == "" || exitYear > 2019) {
+      if (entryYear !== "" && entryYear <= this.currentYear - 3 && exitYear == "" || exitYear > this.currentYear - 3) {
         this.thirdYear.push(customer[i])
       }
-      if (entryYear !== "" && entryYear <= 2020 && exitYear == "" || exitYear > 2020) {
+      if (entryYear !== "" && entryYear <= this.currentYear - 2 && exitYear == "" || exitYear > this.currentYear - 2) {
         this.fourthYear.push(customer[i])
       }
-      if (entryYear !== "" && entryYear <= 2021 && exitYear == "" || exitYear > 2021) {
+      if (entryYear !== "" && entryYear <= this.currentYear - 1 && exitYear == "" || exitYear > this.currentYear - 1) {
         this.fifthYear.push(customer[i])
       }
-      if (entryYear !== "" && entryYear <= 2022 && exitYear == "" || exitYear > 2022) {
+      if (entryYear !== "" && entryYear <= this.currentYear && exitYear == "" || exitYear > this.currentYear) {
         this.sixthYear.push(customer[i])
       }
     }

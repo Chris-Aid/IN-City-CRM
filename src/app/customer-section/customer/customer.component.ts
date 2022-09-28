@@ -49,7 +49,11 @@ export class CustomerComponent implements OnInit {
       .valueChanges()
       .subscribe((customer: any) => {
         this.customerInfo.customers = customer;
-        this.customers = customer;
+        
+        let sortedCustomer = customer.sort(function(a,b) {
+          return a.company > b.company ? 1 : (a.company === b.company ? 0 : -1 );
+        })
+        this.customers = sortedCustomer;
       });
   }
 
