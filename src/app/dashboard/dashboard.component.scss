@@ -96,6 +96,20 @@ p {
     max-height: 35vh;
     margin-top: 18px;
     width: 90%;
+
+    animation: slideIn 500ms ease-in-out;
+  }
+
+  @keyframes slideIn {
+    0% {
+      transform: translateY(300px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
   }
 
   .charts {

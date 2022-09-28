@@ -23,6 +23,10 @@
     .mat-select-value {
         color: white;
     }
+
+    .status-section {
+        color: white;
+    }
 }
 
 .lightMode {
@@ -121,8 +125,8 @@ body {
 }
 
 // following styles are for add customer dialog and edit customer dialog
-$primary: #2d15b6;
-$secondary: #3e81fd;
+$primary: #b61578;
+$secondary: #fd3e4e;
 $fontColor: 242424c7;
 $gray: #9b9b9b;
 
@@ -210,11 +214,6 @@ $gray: #9b9b9b;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-//this class is for the input design of the components
-.field {
-    margin-top: 20px;
 }
 
 ::-webkit-scrollbar {
@@ -336,9 +335,9 @@ $gray: #9b9b9b;
         max-width: 870px !important;
     }
 
-    .field {
-        margin-top: 40px;
-    }
+    // .field {
+    //     margin-top: 40px;
+    // }
 }
 
 //for small devices, espacially phones

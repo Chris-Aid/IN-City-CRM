@@ -36,7 +36,7 @@
     </div>
   </mat-card>
 
-  <mat-card [class.darkmodeContent]="settings.darkmode" *ngIf="isChecked" class="terminationInfos">
+  <mat-card [class.darkmodeContent]="settings.darkmode" *ngIf="isChecked" [class.terminationInfos]="isChecked">
     <mat-icon (click)="isChecked = false" class="close">close</mat-icon>
     <div class="terminatedCustomers" *ngFor="let tc of terminatedCustomer; let i = index">
       <p style="font-weight: 500">{{tc.name}}</p>

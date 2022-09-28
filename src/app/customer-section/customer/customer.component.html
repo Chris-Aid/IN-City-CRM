@@ -26,6 +26,7 @@
             <th>Firma</th>
             <th>Name</th>
             <th>E-Mail</th>
+            <th *ngIf="!dontShowAddress">Adresse</th>
           </tr>
 
           <tr *ngFor=" let customer of customers  | filter: searchText; let i = index">
@@ -35,6 +36,9 @@
               {{customer.name}}</td>
             <td *ngIf="customer.status === memberStatus" routerLink="../customer/{{customer.CustomersID}}">
               {{customer.email}}</td>
+            <td *ngIf="customer.status === memberStatus && !dontShowAddress"
+              routerLink="../customer/{{customer.CustomersID}}">
+              {{customer.street}}, {{customer.postcode}} {{customer.town}}</td>
 
             <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
               routerLink="../customer/{{customer.CustomersID}}">{{customer.company}}</td>
@@ -42,6 +46,9 @@
               routerLink="../customer/{{customer.CustomersID}}">{{customer.name}}</td>
             <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt'"
               routerLink="../customer/{{customer.CustomersID}}">{{customer.email}}</td>
+            <td *ngIf="memberStatus === 'all' && customer.status !== 'gekündigt' && !dontShowAddress"
+              routerLink="../customer/{{customer.CustomersID}}">{{customer.street}}, {{customer.postcode}}
+              {{customer.town}}</td>
           </tr>
 
 

@@ -1,10 +1,9 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, HostListener } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute, Router } from "@angular/router";
 import { SharedService } from "src/app/shared.service";
-
 import { AddCustomerDialogComponent } from "../add-customer-dialog/add-customer-dialog.component";
 import { CustomersService } from "../customers.service";
 
@@ -29,6 +28,7 @@ export class CustomerComponent implements OnInit {
   EUdate: any;
   member: string;
   statusOfMembership: string;
+  dontShowAddress: boolean;
 
   customersID: any;
   searchedCustomer: any;
@@ -41,6 +41,26 @@ export class CustomerComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.getCustomer();
+    this.checkSize();
+  }
+
+  checkSize() {
+    if (window.innerWidth < 768) {
+      this.dontShowAddress = true;
+    }
+    if (window.innerWidth > 768) {
+      this.dontShowAddress = false;
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    if (event.target.innerWidth < 768 || window.innerWidth < 768) {
+      this.dontShowAddress = true;
+    }
+    if (event.target.innerWidth > 768 || window.innerWidth > 768) {
+      this.dontShowAddress = false;
+    }
   }
 
   async getCustomer() {
