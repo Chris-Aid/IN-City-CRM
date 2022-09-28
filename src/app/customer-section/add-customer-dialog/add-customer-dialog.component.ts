@@ -41,18 +41,24 @@ export class AddCustomerDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.branches = this.customerBranches.getBranches();
-
     this.setDate();
+    // this.setColor();
   }
 
-  onNoClick(): void {
-   console.log('true')
-  }
+  // onNoClick(): void {
+  //   console.log('true')
+  // }
 
   setDate() {
     const currentYear = new Date().getFullYear();
-    this.minDate = new Date(currentYear - 26, 0 , 1);
+    this.minDate = new Date(currentYear - 26, 0, 1);
     this.maxDate = new Date(currentYear + 1, 0, 0);
   }
- 
+
+  // setColor() {
+  //   if (this.settings.darkmode) {
+  //     document.getElementById('mat-dialog-0').style.backgroundColor = 'black';
+  //   }
+  // }
+
 }

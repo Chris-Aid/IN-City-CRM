@@ -49,9 +49,9 @@ export class CustomerComponent implements OnInit {
       .valueChanges()
       .subscribe((customer: any) => {
         this.customerInfo.customers = customer;
-        
-        let sortedCustomer = customer.sort(function(a,b) {
-          return a.company > b.company ? 1 : (a.company === b.company ? 0 : -1 );
+
+        let sortedCustomer = customer.sort(function (a, b) {
+          return a.company > b.company ? 1 : (a.company === b.company ? 0 : -1);
         })
         this.customers = sortedCustomer;
       });
@@ -59,9 +59,10 @@ export class CustomerComponent implements OnInit {
 
   openDialog(): void {
 
-    const dialogRef = this.dialog.open(AddCustomerDialogComponent, { 
+    const dialogRef = this.dialog.open(AddCustomerDialogComponent, {
       disableClose: true,
-      panelClass: "darkmodeDialog", });
+      panelClass: this.settings.darkmode ? "darkMode" : "lightMode",
+    });
 
     dialogRef.afterClosed().subscribe(({
       name, company, membernumber, tel, mobile, email, street, postcode, town, entryDate, selectedBranch, membershipFee, member }) => {
@@ -110,14 +111,14 @@ export class CustomerComponent implements OnInit {
 
   saveToFirestore() {
     this.firestore
-    .collection('Kunden')
-    .add(this.firma)
-    .then((customerInfo: any) => {
-      this.firestore
-        .collection('Kunden')
-        .doc(customerInfo.id)
-        .update({ CustomersID: customerInfo.id });
-    });
+      .collection('Kunden')
+      .add(this.firma)
+      .then((customerInfo: any) => {
+        this.firestore
+          .collection('Kunden')
+          .doc(customerInfo.id)
+          .update({ CustomersID: customerInfo.id });
+      });
   }
 
 }

@@ -1,3 +1,37 @@
+.darkMode {
+    .mat-dialog-container {
+        background-color: #0c0c0c !important;
+        color: white;
+    }
+
+    .mat-hint {
+        color: white !important;
+    }
+
+    .mat-datepicker-toggle {
+        color: white !important;
+    }
+
+    input {
+        color: white;
+    }
+
+    .mat-error {
+        color: white !important;
+    }
+
+    .mat-select-value {
+        color: white;
+    }
+}
+
+.lightMode {
+    .mat-dialog-container {
+        background-color: white !important;
+        color: black;
+    }
+}
+
 html {
     scrollbar-width: thin;
 }

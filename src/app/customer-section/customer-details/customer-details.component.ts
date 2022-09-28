@@ -123,7 +123,10 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   editCustomer() {
-    const editCustomer = this.dialog.open(EditCustomerComponent, { disableClose: true });
+    const editCustomer = this.dialog.open(EditCustomerComponent, {
+      disableClose: true,
+      panelClass: this.settings.darkmode ? "darkMode" : "lightMode"
+    });
     this.customer.entryDate = new Date(this.customer.entryDate);
     editCustomer.componentInstance.customer = this.customer;
 
