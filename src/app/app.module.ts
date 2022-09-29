@@ -44,6 +44,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EventsComponent } from './event-section/events/events.component';
 import { AddEventComponent } from './event-section/add-event/add-event.component';
 import { EventoverviewComponent } from './event-section/eventoverview/eventoverview.component';
+import { AddNoteComponent } from './customer-section/add-note/add-note.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,7 @@ import { EventoverviewComponent } from './event-section/eventoverview/eventoverv
     EventsComponent,
     AddEventComponent,
     EventoverviewComponent,
+    AddNoteComponent,
   ],
 
   imports: [
@@ -89,6 +92,7 @@ import { EventoverviewComponent } from './event-section/eventoverview/eventoverv
     MatToolbarModule,
     MatTooltipModule,
     MatSlideToggleModule,
+    MatStepperModule,
     AngularFireModule.initializeApp(environment.firebase), // compat API
 
     provideFirebaseApp(() => initializeApp(environment.firebase)),

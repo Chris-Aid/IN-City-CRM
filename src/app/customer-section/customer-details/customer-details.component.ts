@@ -3,6 +3,7 @@ import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute } from "@angular/router";
 import { SharedService } from "src/app/shared.service";
+import { AddNoteComponent } from "../add-note/add-note.component";
 import { DeletingCustomerDialogComponent } from "../deleting-customer-dialog/deleting-customer-dialog.component";
 import { EditCustomerComponent } from "../edit-customer/edit-customer.component";
 import { SetTerminationComponent } from "../set-termination/set-termination.component";
@@ -169,5 +170,29 @@ export class CustomerDetailsComponent implements OnInit {
           .delete();
       }
     });
+  }
+
+  openNoteDialog() {
+    console.log('true')
+    let noteDialog = this.dialog.open(AddNoteComponent);
+
+    noteDialog.afterClosed().subscribe((notes) => {
+    console.log(notes)
+    this.saveToFirestore(notes);
+    });
+    
+  }
+
+  
+  saveToFirestore(notes) {
+    this.firestore
+      .collection('projects')
+      .add(notes)
+      .then((projectInfo: any) => {
+        this.firestore
+          .collection('projects')
+          .doc(projectInfo.id)
+          .update({ CustomersID: projectInfo.id });
+      });
   }
 }
