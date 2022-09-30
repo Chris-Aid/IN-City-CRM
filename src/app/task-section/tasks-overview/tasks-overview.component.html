@@ -1,3 +1,12 @@
 <div class="task-content">
-    <h1>Dieses feature wurden noch nicht entwickelt, schau gerne später nochmal vorbei :)</h1>
+    <h1>Aufgabenmanagementnt</h1>
+
+    <div class="project-container">
+        <mat-card class="project" *ngFor="let p of myProjects; let i = index" routerLink="task/{{p.projectID}}">
+            <h3>{{p.project}}</h3>
+        </mat-card>
+    </div>
+
+
+
 </div>

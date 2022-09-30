@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventoverviewComponent } from './event-section/eventoverview/eventoverview.component';
 import { EventsComponent } from './event-section/events/events.component';
 import { HelpSectionComponent } from './help-section/help-section.component';
+import { EventComponent } from './task-section/event/event.component';
 import { TasksOverviewComponent } from './task-section/tasks-overview/tasks-overview.component';
 
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'events', component: EventsComponent },
   { path: 'events/event/:id', component: EventoverviewComponent },
+  { path: 'tasks/task/:id', component: EventComponent },
 ];
 
 @NgModule({

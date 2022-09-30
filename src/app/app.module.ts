@@ -46,6 +46,7 @@ import { AddEventComponent } from './event-section/add-event/add-event.component
 import { EventoverviewComponent } from './event-section/eventoverview/eventoverview.component';
 import { AddNoteComponent } from './customer-section/add-note/add-note.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { EventComponent } from './task-section/event/event.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     AddEventComponent,
     EventoverviewComponent,
     AddNoteComponent,
+    EventComponent,
   ],
 
   imports: [

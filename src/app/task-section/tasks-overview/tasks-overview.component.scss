@@ -1,9 +1,26 @@
 .task-content {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding-top: 64px;
     padding-left: 12px;
     padding-right: 12px;
+}
+
+.project-container {
+    display: flex;
+    padding: 12px;
+    flex-wrap: wrap;
+    gap: 32px;
+    width: 80%;
+}
+
+.project {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 200px;
 }
 
 @media screen and (min-width: 320px) {
@@ -11,7 +28,7 @@
     h1 {
         font-size: 16px;
     }
-    
+
 }
 
 @media screen and (min-width: 768px) {
@@ -19,5 +36,5 @@
     h1 {
         font-size: 20px;
     }
-    
+
 }

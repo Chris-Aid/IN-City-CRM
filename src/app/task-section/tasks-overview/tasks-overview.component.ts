@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-tasks-overview',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksOverviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(public firestore: AngularFirestore) { }
+
+  myProjects;
 
   ngOnInit(): void {
+    this.getProjectsFromFirestore();
   }
 
+  getProjectsFromFirestore() {
+    this.firestore
+      .collection('projects')
+      .valueChanges()
+      .subscribe((projects: any) => {
+        console.log(this.myProjects)
+        this.myProjects = projects;
+      });
+  }
 }

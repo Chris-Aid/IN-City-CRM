@@ -1,54 +1,55 @@
-<h1 mat-dialog-title>Neues Notiz hinzufügen</h1>
+<h2 mat-dialog-title>Neue Notiz hinzufügen</h2>
 <div mat-dialog-content>
-    <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
         {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
       </button> -->
-      <mat-stepper orientation="vertical" #stepper>
-        <mat-step [stepControl]="firstFormGroup">
-          <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Name des Projektes</ng-template>
+  <mat-stepper orientation="vertical" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Name des Projektes</ng-template>
 
-  
-              <input class="form__field"  autofocus placeholder="Name des Projektes" [(ngModel)]="project" formControlName="firstCtrl" required>
 
-            <div>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup">
-          <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Mitarbeiter</ng-template>
-            <!-- <mat-form-field appearance="fill"> -->
-              <!-- <mat-label>Mitarbeiter</mat-label> -->
-              <input class="form__field" autofocus formControlName="secondCtrl" placeholder="Dein Name" [(ngModel)]="employee"
-                     required>
-            <!-- </mat-form-field> -->
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup">
-            <form [formGroup]="secondFormGroup">
-              <ng-template matStepLabel>Notiz</ng-template>
-                <input class="form__field" autofocus formControlName="secondCtrl" placeholder="Deine Notiz" [(ngModel)]="note"
-                       required>
-              <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
-              </div>
-            </form>
-          </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          <p>Du bist fertig!</p>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button [mat-dialog-close]="{project, employee, note}">Speichern</button>
-          </div>
-        </mat-step>
-      </mat-stepper>
- 
+        <input class="form__field" autofocus placeholder="Name des Projektes" [(ngModel)]="project"
+          formControlName="firstCtrl" required>
+
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Mitarbeiter</ng-template>
+        <!-- <mat-form-field appearance="fill"> -->
+        <!-- <mat-label>Mitarbeiter</mat-label> -->
+        <input class="form__field" autofocus formControlName="secondCtrl" placeholder="Dein Name" [(ngModel)]="employee"
+          required>
+        <!-- </mat-form-field> -->
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Notiz</ng-template>
+        <textarea class="form__field" autofocus formControlName="secondCtrl" placeholder="Deine Notiz"
+          [(ngModel)]="note" required></textarea>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>Du bist fertig!</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button [mat-dialog-close]="{project, employee, note}">Speichern</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+
 </div>

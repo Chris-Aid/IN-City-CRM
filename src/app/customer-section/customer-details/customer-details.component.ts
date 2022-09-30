@@ -177,13 +177,13 @@ export class CustomerDetailsComponent implements OnInit {
     let noteDialog = this.dialog.open(AddNoteComponent);
 
     noteDialog.afterClosed().subscribe((notes) => {
-    console.log(notes)
-    this.saveToFirestore(notes);
+      console.log(notes)
+      this.saveToFirestore(notes);
     });
-    
+
   }
 
-  
+
   saveToFirestore(notes) {
     this.firestore
       .collection('projects')
@@ -192,7 +192,10 @@ export class CustomerDetailsComponent implements OnInit {
         this.firestore
           .collection('projects')
           .doc(projectInfo.id)
-          .update({ CustomersID: projectInfo.id });
+          .update({
+            projectID: projectInfo.id,
+            customerID: this.customersID
+          });
       });
   }
 }
