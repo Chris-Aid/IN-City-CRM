@@ -41,11 +41,8 @@ import { HelpSectionComponent } from './help-section/help-section.component';
 import { TasksOverviewComponent } from './task-section/tasks-overview/tasks-overview.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { EventsComponent } from './event-section/events/events.component';
-import { AddEventComponent } from './event-section/add-event/add-event.component';
-import { EventoverviewComponent } from './event-section/eventoverview/eventoverview.component';
 import { AddNoteComponent } from './customer-section/add-note/add-note.component';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 import { EventComponent } from './task-section/event/event.component';
 
 @NgModule({
@@ -61,9 +58,6 @@ import { EventComponent } from './task-section/event/event.component';
     HelpSectionComponent,
     TasksOverviewComponent,
     DashboardComponent,
-    EventsComponent,
-    AddEventComponent,
-    EventoverviewComponent,
     AddNoteComponent,
     EventComponent,
   ],

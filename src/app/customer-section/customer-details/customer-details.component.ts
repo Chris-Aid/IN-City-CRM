@@ -180,9 +180,7 @@ export class CustomerDetailsComponent implements OnInit {
       console.log(notes)
       this.saveToFirestore(notes);
     });
-
   }
-
 
   saveToFirestore(notes) {
     this.firestore
@@ -194,7 +192,8 @@ export class CustomerDetailsComponent implements OnInit {
           .doc(projectInfo.id)
           .update({
             projectID: projectInfo.id,
-            customerID: this.customersID
+            customerID: this.customersID,
+            customer: this.customer.company
           });
       });
   }

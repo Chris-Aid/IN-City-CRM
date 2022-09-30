@@ -18,11 +18,6 @@
                 <mat-icon>person</mat-icon>Kunden
             </div>
             <div (click)="dontHideSidebar($event)"
-                (click)="customerSection = false; taskManagement = false; eventSec = true; help = false; dashboard = false"
-                [class.darkmodeLinks]="settings.darkmode && eventSec" [class.set-bgc]="eventSec" routerLink="events">
-                <mat-icon>event</mat-icon>Veranstaltungen
-            </div>
-            <div (click)="dontHideSidebar($event)"
                 (click)="customerSection = false; eventSec = false; taskManagement = true; help = false; dashboard = false"
                 [class.darkmodeLinks]="settings.darkmode && taskManagement" [class.set-bgc]="taskManagement"
                 routerLink="tasks">
