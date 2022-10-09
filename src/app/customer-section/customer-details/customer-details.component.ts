@@ -174,7 +174,9 @@ export class CustomerDetailsComponent implements OnInit {
 
   openNoteDialog() {
     console.log('true')
-    let noteDialog = this.dialog.open(AddNoteComponent);
+    let noteDialog = this.dialog.open(AddNoteComponent, {
+      panelClass: this.shared.darkmode ? "darkMode" : "lightMode",
+    });
 
     noteDialog.afterClosed().subscribe((notes) => {
       console.log(notes)

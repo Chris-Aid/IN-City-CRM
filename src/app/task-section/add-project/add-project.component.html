@@ -1,9 +1,9 @@
 <h2 mat-dialog-title>Neues Projekt anlegen</h2>
-<div mat-dialog-content>
+<div class="addNoteStepper" mat-dialog-content>
   <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
         {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
       </button> -->
-  <mat-stepper orientation="vertical" #stepper>
+  <mat-stepper [class.darkStepper]="shared.darkmode" orientation="vertical" #stepper>
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Name des Projektes</ng-template>

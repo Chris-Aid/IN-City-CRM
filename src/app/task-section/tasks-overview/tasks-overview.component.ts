@@ -20,7 +20,9 @@ export class TasksOverviewComponent implements OnInit {
   }
 
   openAddProjectDialog() {
-    const addProject = this.dialog.open(AddProjectComponent);
+    const addProject = this.dialog.open(AddProjectComponent, {
+      panelClass: this.shared.darkmode ? "darkMode" : "lightMode",
+    });
 
     addProject.afterClosed().subscribe((project) => {
       this.pushProjectToFirestore(project);

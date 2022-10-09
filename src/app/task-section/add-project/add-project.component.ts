@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-add-project',
@@ -8,7 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class AddProjectComponent implements OnInit {
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, public shared: SharedService) { }
 
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],

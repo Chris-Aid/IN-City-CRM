@@ -29,6 +29,30 @@
     }
 }
 
+.darkStepper {
+    background-color: #0c0c0c;
+
+    .mat-step-text-label {
+        color: white;
+    }
+
+    .mat-step-icon {
+        background-color: #ff4081;
+    }
+
+    textarea {
+        color: white;
+    }
+
+    span {
+        color: white;
+    }
+}
+
+.addNoteStepper {
+    height: 350px !important;
+}
+
 .lightMode {
     .mat-dialog-container {
         background-color: white !important;

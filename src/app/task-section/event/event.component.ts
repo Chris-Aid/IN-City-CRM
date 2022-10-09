@@ -64,8 +64,9 @@ export class EventComponent implements OnInit {
 
   openNoteDialog() {
 
-    let noteDialog = this.dialog.open(NewNoteComponent);
-
+    let noteDialog = this.dialog.open(NewNoteComponent, {
+      panelClass: this.shared.darkmode ? "darkMode" : "lightMode",
+    });
 
     noteDialog.afterClosed().subscribe((notes) => {
       console.log(notes)
