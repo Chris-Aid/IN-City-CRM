@@ -17,10 +17,25 @@
 
 .project {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100px;
     width: 200px;
+
+    &:hover {
+        cursor: pointer !important;
+    }
+
+    &:hover {
+        cursor: pointer !important;
+    }
+}
+
+.projectButton {
+    position: absolute;
+    right: 96px;
+    bottom: 96px;
 }
 
 @media screen and (min-width: 320px) {

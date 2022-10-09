@@ -1,4 +1,32 @@
 <div class="eventOverview">
-  <h1>hallo</h1>
+  <div class="subject">
+    <h1>{{event?.projectName}}</h1>
+    <p>am {{event?.date}}</p>
+  </div>
+  <div class="noteContainer">
+    <mat-card [class.darkmodeContent]="shared.darkmode" *ngFor="let n of myNotes; let i = index" class="note">
+      <div class="noteInfos">
+        <div class="creatorInfos">
+          <h3>von:</h3>
+          <p class="dateAndEmployee">{{n.employee}}</p>
+        </div>
+        <div class="creatorInfos">
+          <h3>am:</h3>
+          <p class="dateAndEmployee">{{n.date}}</p>
+        </div>
+        <div class="creatorInfos" *ngIf="n.customer">
+          <h3>betrifft:</h3>
+          <p class="dateAndEmployee">{{n.customer}}</p>
+        </div>
+      </div>
+
+      <div class="myNote">
+        <p>{{n.note}}</p>
+      </div>
+    </mat-card>
+    <img *ngIf="!shared.darkmode" src="assets/img/add-note1.png" class="addNote" (click)="openNoteDialog()">
+    <img *ngIf="shared.darkmode" src="assets/img/add-note2.png" class="addNote" (click)="openNoteDialog()">
+  </div>
+
 
 </div>

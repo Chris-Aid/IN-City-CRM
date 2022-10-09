@@ -42,8 +42,11 @@ import { TasksOverviewComponent } from './task-section/tasks-overview/tasks-over
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AddNoteComponent } from './customer-section/add-note/add-note.component';
-import { MatStepperModule } from '@angular/material/stepper';
 import { EventComponent } from './task-section/event/event.component';
+import { AddProjectComponent } from './task-section/add-project/add-project.component';
+// import { MatStepperModule } from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
+import { NewNoteComponent } from './task-section/new-note/new-note.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,8 @@ import { EventComponent } from './task-section/event/event.component';
     DashboardComponent,
     AddNoteComponent,
     EventComponent,
+    AddProjectComponent,
+    NewNoteComponent,
   ],
 
   imports: [

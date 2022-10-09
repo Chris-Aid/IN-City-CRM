@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>Neues Projekt anlegen</h2>
+<div mat-dialog-content>
+  <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+        {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+      </button> -->
+  <mat-stepper orientation="vertical" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Name des Projektes</ng-template>
+
+        <input class="form__field" autofocus placeholder="Name des Projektes" [(ngModel)]="projectName"
+          formControlName="firstCtrl" required>
+
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Datum</ng-template>
+        <div class="form__group field">
+          <div style="display: flex; flex-direction: column;">
+            <label class="form__label">Mitglied seit:</label>
+            <input formControlName="secondCtrl" class="form__field" matInput [(ngModel)]="projectDate"
+              [matDatepicker]="picker">
+            <div class="datePicker">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            </div>
+            <mat-datepicker #picker></mat-datepicker>
+          </div>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>Möchtest du das Projekt anlegen?</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button [mat-dialog-close]="{projectName, projectDate}">Yes!</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+
+</div>

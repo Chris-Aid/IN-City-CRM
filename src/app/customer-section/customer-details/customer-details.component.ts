@@ -41,7 +41,7 @@ export class CustomerDetailsComponent implements OnInit {
   selected: string = "aktiv";
   showTerminationInfo = false;
 
-  constructor(private route: ActivatedRoute, public firestore: AngularFirestore, public dialog: MatDialog, public settings: SharedService) { }
+  constructor(private route: ActivatedRoute, public firestore: AngularFirestore, public dialog: MatDialog, public shared: SharedService) { }
 
   ngOnInit(): void {
     this.getParamsOfCustomer();
@@ -126,7 +126,7 @@ export class CustomerDetailsComponent implements OnInit {
   editCustomer() {
     const editCustomer = this.dialog.open(EditCustomerComponent, {
       disableClose: true,
-      panelClass: this.settings.darkmode ? "darkMode" : "lightMode"
+      panelClass: this.shared.darkmode ? "darkMode" : "lightMode"
     });
     this.customer.entryDate = new Date(this.customer.entryDate);
     editCustomer.componentInstance.customer = this.customer;
@@ -183,18 +183,17 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   saveToFirestore(notes) {
+
+    let date = new Date;
+    let formattedDate = date.toLocaleDateString()
     this.firestore
-      .collection('projects')
-      .add(notes)
-      .then((projectInfo: any) => {
-        this.firestore
-          .collection('projects')
-          .doc(projectInfo.id)
-          .update({
-            projectID: projectInfo.id,
-            customerID: this.customersID,
-            customer: this.customer.company
-          });
-      });
+      .collection('notes')
+      .add({
+        customer: this.company,
+        employee: notes.employee,
+        note: notes.note,
+        project: notes.project,
+        date: formattedDate
+      })
   }
 }

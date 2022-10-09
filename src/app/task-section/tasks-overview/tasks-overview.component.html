@@ -1,12 +1,17 @@
 <div class="task-content">
-    <h1>Aufgabenmanagementnt</h1>
+    <h1>Aufgabenmanagement</h1>
 
     <div class="project-container">
-        <mat-card class="project" *ngFor="let p of myProjects; let i = index" routerLink="task/{{p.projectID}}">
-            <h3>{{p.project}}</h3>
+        <mat-card [class.darkmodeContent]="shared.darkmode" class="project" *ngFor="let p of myProjects ; let i = index"
+            routerLink="/tasks/task/{{p.projectID}}">
+            <h2>{{p.projectName}}</h2>
+            <h3>{{p.date}}</h3>
         </mat-card>
     </div>
 
 
-
+    <button [class.btn-darkmode]="shared.darkmode" class="eventButton" (click)="openAddProjectDialog()" color="primary"
+        class="projectButton" mat-mini-fab aria-label="Example icon button with a menu icon">
+        <mat-icon>add</mat-icon>
+    </button>
 </div>

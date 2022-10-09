@@ -1,3 +1,82 @@
+h3 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+p {
+  font-size: 15px;
+  margin: 0;
+}
+
+.noteInfos {
+  margin-bottom: 8px;
+}
+
+.creatorInfos {
+  display: flex;
+  align-items: center;
+  width: 96px;
+  justify-content: space-between;
+
+}
+
+.dateAndEmployee {
+  width: 50px;
+}
+
+.myNote {
+  box-shadow: rgb(0 0 0 / 21%) 1px 1px 4px 0px inset, rgb(255 255 255 / 4%) -3px -3px 6px 1px inset;
+  padding: 8px;
+  // width: 100%;
+  min-height: 50px;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+}
+
 .eventOverview {
   padding: 64px;
 }
+
+.subject {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.noteContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.note {
+
+  padding: 8px !important;
+  width: 200px;
+  min-height: 170px;
+
+  &:hover {
+    cursor: pointer !important;
+  }
+}
+
+.addNote {
+  height: 40px;
+  margin-left: 24px;
+  opacity: 0.4;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+
+// .eventButton {
+//   position: absolute;
+//   right: 96px;
+//   bottom: 96px;
+// }
