@@ -224,7 +224,6 @@ export class DashboardComponent implements OnInit {
             max: 10000,
             min: 1000,
             ticks: {
-              // color: 'white',
               stepSize: 1000
             }
           }
@@ -238,7 +237,6 @@ export class DashboardComponent implements OnInit {
     for (let i = 0; i < year.length; i++) {
       income += +year[i].membershipFee;
     }
-    console.log(income * 12)
     return income * 12
   }
 

@@ -72,7 +72,6 @@ export class EventComponent implements OnInit {
   }
 
   saveToFirestore(notes) {
-
     let date = new Date;
     let formattedDate = date.toLocaleDateString()
     this.firestore
@@ -81,7 +80,9 @@ export class EventComponent implements OnInit {
         employee: notes.employee,
         note: notes.note,
         project: this.ts.event.projectName,
-        date: formattedDate
+        date: formattedDate,
+        archive: false,
+        trash: false
       })
       .then((noteInfo: any) => {
         this.firestore
@@ -92,10 +93,16 @@ export class EventComponent implements OnInit {
   }
 
   moveToArchive(ID) {
-    console.log(ID)
     this.firestore
       .collection('notes')
       .doc(ID)
       .update({ archive: true });
+  }
+
+  moveToTrash(ID) {
+    this.firestore
+      .collection('notes')
+      .doc(ID)
+      .update({ trash: true });
   }
 }

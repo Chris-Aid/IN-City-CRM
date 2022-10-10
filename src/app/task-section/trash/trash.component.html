@@ -1,1 +1,28 @@
-<p>trash works!</p>
+<div class="eventOverview">
+    <div class="subject">
+      <h1>{{ts.event?.projectName}} Papierkorb</h1>
+    </div>
+    <div class="noteContainer">
+      <div *ngFor="let n of ts.myNotes; let i = index">
+        <mat-card [class.darkmodeContent]="shared.darkmode" *ngIf="n.trash" class="note board">
+          <div class="noteInfos">
+            <div class="creatorInfos">
+              <h3>von:</h3>
+              <p class="dateAndEmployee">{{n.employee}}</p>
+            </div>
+            <div class="creatorInfos">
+              <h3>am:</h3>
+              <p class="dateAndEmployee">{{n.date}}</p>
+            </div>
+            <div class="creatorInfos" *ngIf="n.customer">
+              <h3>betrifft:</h3>
+              <p class="dateAndEmployee">{{n.customer}}</p>
+            </div>
+          </div>
+  
+          <div class="myNote">
+            <p>{{n.note}}</p>
+          </div>
+        </mat-card>
+      </div>
+    </div>

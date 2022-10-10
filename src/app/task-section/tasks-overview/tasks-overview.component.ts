@@ -44,7 +44,6 @@ export class TasksOverviewComponent implements OnInit {
           .doc(ID)
           .delete();
       }
-
     });
   }
 

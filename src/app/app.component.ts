@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from './shared.service';
-// import { Router, Routes } from '@angular/router';
-// import { CustomerComponent } from './customer/customer.component';
 
 
 @Component({
@@ -19,14 +17,6 @@ export class AppComponent implements OnInit {
   showFiller = false;
 
   ngOnInit() {
-    // this.setColor();
   }
-
-  // setColor() {
-  //   if (this.settings.darkmode) {
-  //     document.getElementById('mat-dialog-0').style.backgroundColor = 'black';
-  //   }
-  // }
-
 }
 

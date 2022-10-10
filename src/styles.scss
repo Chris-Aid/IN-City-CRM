@@ -428,3 +428,125 @@ $gray: #9b9b9b;
         height: 65vh;
     }
 }
+
+
+// following content is for the whole task management section
+
+.noteInfos {
+    margin: 12px !important;
+}
+
+.creatorInfos {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    justify-content: space-between;
+}
+
+.dateAndEmployee {
+    width: 120px;
+}
+
+.myNote {
+    padding: 0px;
+    margin: 12px;
+    margin-right: 32px;
+    margin-bottom: 8px;
+    margin-bottom: 8px;
+    min-height: 50px;
+    position: absolute;
+    top: 100px;
+    left: 8px;
+    right: 8px;
+}
+
+.eventOverview {
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subject {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+
+    h1 {
+        margin: 0;
+    }
+}
+
+.noteContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 32px;
+}
+
+.note {
+    font-family: 'Kalam', cursive;
+    height: 190px;
+    width: 273px;
+    padding: 10px !important;
+    // width: 200px;
+    // min-height: 170px;
+
+    &:hover {
+        cursor: pointer !important;
+    }
+}
+
+.addNote {
+    height: 40px;
+    margin-left: 24px;
+    opacity: 0.4;
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+    }
+}
+
+.trashAndArchive {
+    display: flex;
+    position: absolute;
+    bottom: 32px;
+    right: 64px;
+    gap: 24px;
+}
+
+.storeIcons {
+    height: 60px;
+
+    &:hover {
+        cursor: pointer;
+        filter: invert(0.4);
+    }
+}
+
+.checkIcon {
+    position: absolute;
+    height: 25px;
+    right: 20px;
+    top: 20px;
+
+    &:hover {
+        cursor: pointer;
+        filter: invert(0.4);
+    }
+}
+
+.trashIcon {
+    position: absolute;
+    height: 25px;
+    right: 20px;
+    bottom: 20px;
+    z-index: 33333;
+
+    &:hover {
+        cursor: pointer;
+        filter: invert(0.4);
+    }
+}

@@ -4,30 +4,37 @@
     <p>am {{ts.event?.date}}</p>
   </div>
   <div class="noteContainer">
-    <mat-card [class.darkmodeContent]="shared.darkmode" *ngFor="let n of ts.myNotes; let i = index" class="note">
-      <img *ngIf="!shared.darkmode" src="assets/img/check1.png" class="checkIcon"
-        (click)="moveToArchive(ts.myNotes[i].noteID)">
-      <img *ngIf="shared.darkmode" src="assets/img/check2.png" class="checkIcon"
-        (click)="moveToArchive(ts.myNotes[i].noteID)">
-      <div class="noteInfos">
-        <div class="creatorInfos">
-          <h3>von:</h3>
-          <p class="dateAndEmployee">{{n.employee}}</p>
+    <div *ngFor="let n of ts.myNotes; let i = index" >
+      <mat-card [class.darkmodeContent]="shared.darkmode" *ngIf="!n.archive && !n.trash" class="note board">
+        <!-- <img *ngIf="!shared.darkmode" src="assets/img/check1.png" class="checkIcon"
+          (click)="moveToArchive(ts.myNotes[i].noteID)"> -->
+        <img src="assets/img/check2.png" class="checkIcon"
+          (click)="moveToArchive(ts.myNotes[i].noteID)">
+        <!-- <img *ngIf="!shared.darkmode" src="assets/img/trash1.png" class="trashIcon"
+          (click)="moveToTrash(ts.myNotes[i].noteID)"> -->
+        <img src="assets/img/trash2.png" class="trashIcon"
+          (click)="moveToTrash(ts.myNotes[i].noteID)">
+        <div class="noteInfos">
+          <div class="creatorInfos">
+            <h3>von:</h3>
+            <p class="dateAndEmployee">{{n.employee}}</p>
+          </div>
+          <div class="creatorInfos">
+            <h3>am:</h3>
+            <p class="dateAndEmployee">{{n.date}}</p>
+          </div>
+          <div class="creatorInfos" *ngIf="n.customer">
+            <h3>betrifft:</h3>
+            <p class="dateAndEmployee">{{n.customer}}</p>
+          </div>
         </div>
-        <div class="creatorInfos">
-          <h3>am:</h3>
-          <p class="dateAndEmployee">{{n.date}}</p>
-        </div>
-        <div class="creatorInfos" *ngIf="n.customer">
-          <h3>betrifft:</h3>
-          <p class="dateAndEmployee">{{n.customer}}</p>
-        </div>
-      </div>
 
-      <div class="myNote">
-        <p>{{n.note}}</p>
-      </div>
-    </mat-card>
+        <div class="myNote">
+          <p>{{n.note}}</p>
+        </div>
+      </mat-card>
+    </div>
+
     <img *ngIf="!shared.darkmode" src="assets/img/add-note1.png" class="addNote" (click)="openNoteDialog()">
     <img *ngIf="shared.darkmode" src="assets/img/add-note2.png" class="addNote" (click)="openNoteDialog()">
   </div>
@@ -36,8 +43,8 @@
     <img *ngIf="!shared.darkmode" src="assets/img/archive1.png" class="storeIcons" routerLink="archive">
     <img *ngIf="shared.darkmode" src="assets/img/archive2.png" class="storeIcons" routerLink="archive">
 
-    <img *ngIf="!shared.darkmode" src="assets/img/trash1.png" class="storeIcons">
-    <img *ngIf="shared.darkmode" src="assets/img/trash2.png" class="storeIcons">
+    <img *ngIf="!shared.darkmode" src="assets/img/trash1.png" class="storeIcons" routerLink="trash">
+    <img *ngIf="shared.darkmode" src="assets/img/trash2.png" class="storeIcons" routerLink="trash">
   </div>
 
 </div>

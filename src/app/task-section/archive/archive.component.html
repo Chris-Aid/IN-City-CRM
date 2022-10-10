@@ -1,11 +1,14 @@
 <div class="eventOverview">
   <div class="subject">
-    <h1>{{ts.event?.projectName}}</h1>
-    <p>am {{ts.event?.date}}</p>
+    <h1>{{ts.event?.projectName}} Archiv</h1>
   </div>
   <div class="noteContainer">
     <div *ngFor="let n of ts.myNotes; let i = index">
-      <mat-card [class.darkmodeContent]="shared.darkmode" *ngIf="n.archive" class="note">
+      <mat-card [class.darkmodeContent]="shared.darkmode" *ngIf="n.archive" class="note board">
+        <!-- <img *ngIf="!shared.darkmode" src="assets/img/restore1.png" class="archiveIcon"
+          (click)="restore(ts.myNotes[i].noteID)"> -->
+        <img src="assets/img/restore2.png" class="archiveIcon"
+          (click)="restoreNote(ts.myNotes[i].noteID)">
         <div class="noteInfos">
           <div class="creatorInfos">
             <h3>von:</h3>

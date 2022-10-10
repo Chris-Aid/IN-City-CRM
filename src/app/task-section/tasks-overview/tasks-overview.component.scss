@@ -1,3 +1,13 @@
+
+.board {
+    color: white !important;
+    font-family: 'Shadows Into Light', cursive;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../../../assets/img/board6.png');
+  }
+  
+
 .task-content {
     display: flex;
     flex-direction: column;
@@ -21,7 +31,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 145px;
     width: 200px;
 
     &:hover {
@@ -40,11 +50,15 @@
 }
 
 .trashIcon {
-    // height: 30px;
-    width: 20px;
+    width: 17px;
     position: absolute;
     bottom: 8px;
-    right: 8px;
+    right: 12px;
+
+    &:hover {
+        cursor: pointer;
+        filter: invert(0.4);
+      }
 }
 
 @media screen and (min-width: 320px) {
@@ -58,7 +72,8 @@
 @media screen and (min-width: 768px) {
 
     h1 {
-        font-size: 20px;
+        font-size: 22px;
+        font-weight: 500;
     }
 
 }

@@ -179,7 +179,6 @@ export class CustomerDetailsComponent implements OnInit {
     });
 
     noteDialog.afterClosed().subscribe((notes) => {
-      console.log(notes)
       this.saveToFirestore(notes);
     });
   }
@@ -195,7 +194,15 @@ export class CustomerDetailsComponent implements OnInit {
         employee: notes.employee,
         note: notes.note,
         project: notes.project,
-        date: formattedDate
+        date: formattedDate,
+        archive: false,
+        trash: false
       })
+      .then((noteInfo: any) => {
+        this.firestore
+          .collection('notes')
+          .doc(noteInfo.id)
+          .update({ noteID: noteInfo.id });
+      });
   }
 }
