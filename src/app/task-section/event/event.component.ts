@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Route } from '@angular/router';
 import { SharedService } from 'src/app/shared.service';
 import { NewNoteComponent } from '../new-note/new-note.component';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-event',
@@ -12,10 +13,10 @@ import { NewNoteComponent } from '../new-note/new-note.component';
 })
 export class EventComponent implements OnInit {
 
-  event;
-  myNotes: any = [];
+  // event;
+  // myNotes: any = [];
   eventID;
-  constructor(private route: ActivatedRoute, public firestore: AngularFirestore, public dialog: MatDialog, public shared: SharedService) { }
+  constructor(private route: ActivatedRoute, public firestore: AngularFirestore, public dialog: MatDialog, public shared: SharedService, public ts: TaskService) { }
 
   ngOnInit(): void {
     this.getParamsOfEvent();
@@ -35,7 +36,7 @@ export class EventComponent implements OnInit {
       .doc(this.eventID)
       .valueChanges()
       .subscribe((event: any) => {
-        this.event = event;
+        this.ts.event = event;
       });
   }
 
@@ -44,22 +45,19 @@ export class EventComponent implements OnInit {
       .collection('notes')
       .valueChanges()
       .subscribe((notes: any) => {
-        this.myNotes = notes;
+        this.ts.myNotes = notes;
         this.filterProjects(notes);
       });
   }
 
   filterProjects(notes) {
-    this.myNotes = [];
+    this.ts.myNotes = [];
     for (let i = 0; i < notes.length; i++) {
       const note = notes[i];
-      if (note.project == this.event.projectName) {
-        this.myNotes.push(notes[i]);
-        console.log(notes[i])
+      if (note.project == this.ts.event.projectName) {
+        this.ts.myNotes.push(notes[i]);
       }
     }
-
-    console.log(this.myNotes)
   }
 
   openNoteDialog() {
@@ -69,7 +67,6 @@ export class EventComponent implements OnInit {
     });
 
     noteDialog.afterClosed().subscribe((notes) => {
-      console.log(notes)
       this.saveToFirestore(notes);
     });
   }
@@ -83,8 +80,22 @@ export class EventComponent implements OnInit {
       .add({
         employee: notes.employee,
         note: notes.note,
-        project: this.event.projectName,
+        project: this.ts.event.projectName,
         date: formattedDate
       })
+      .then((noteInfo: any) => {
+        this.firestore
+          .collection('notes')
+          .doc(noteInfo.id)
+          .update({ noteID: noteInfo.id });
+      });
+  }
+
+  moveToArchive(ID) {
+    console.log(ID)
+    this.firestore
+      .collection('notes')
+      .doc(ID)
+      .update({ archive: true });
   }
 }

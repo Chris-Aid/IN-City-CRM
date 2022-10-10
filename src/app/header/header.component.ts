@@ -9,22 +9,20 @@ import { SharedService } from '../shared.service';
 
 export class HeaderComponent {
 
-mode: boolean;
+  mode: boolean;
 
-  constructor(public settings: SharedService){}
+  constructor(public settings: SharedService) { }
 
   ngOnInit(): void {
-
     const mode = JSON.parse(localStorage.getItem('darkmode'));
     this.settings.darkmode = mode;
-    console.log(this.settings.darkmode)
   }
 
-  customerSection = true;
+  customerSection = false;
   eventSec = false;
   taskManagement = false;
   help = false;
-  dashboard = false;
+  dashboard = true;
 
   dontHideSidebar(e) {
     e.stopPropagation();
@@ -33,7 +31,6 @@ mode: boolean;
   saveToLocalStorage() {
     setTimeout(() => {
       localStorage.setItem('darkmode', JSON.stringify(this.settings.darkmode));
-      console.log(this.settings.darkmode) 
     }, 200);
   }
 }

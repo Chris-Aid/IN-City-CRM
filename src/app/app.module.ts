@@ -47,6 +47,9 @@ import { AddProjectComponent } from './task-section/add-project/add-project.comp
 // import { MatStepperModule } from '@angular/material/stepper';
 import { MatStepperModule } from '@angular/material/stepper';
 import { NewNoteComponent } from './task-section/new-note/new-note.component';
+import { DeleteProjectComponent } from './task-section/delete-project/delete-project.component';
+import { TrashComponent } from './task-section/trash/trash.component';
+import { ArchiveComponent } from './task-section/archive/archive.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +68,9 @@ import { NewNoteComponent } from './task-section/new-note/new-note.component';
     EventComponent,
     AddProjectComponent,
     NewNoteComponent,
+    DeleteProjectComponent,
+    TrashComponent,
+    ArchiveComponent,
   ],
 
   imports: [

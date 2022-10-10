@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddNoteComponent } from 'src/app/customer-section/add-note/add-note.component';
 import { SharedService } from 'src/app/shared.service';
 import { AddProjectComponent } from '../add-project/add-project.component';
+import { DeleteProjectComponent } from '../delete-project/delete-project.component';
 
 @Component({
   selector: 'app-tasks-overview',
@@ -30,6 +31,23 @@ export class TasksOverviewComponent implements OnInit {
     });
   }
 
+  openDeleteProjectDialog(ID) {
+    const deleteProject = this.dialog.open(DeleteProjectComponent, {
+      panelClass: this.shared.darkmode ? "darkMode" : "lightMode",
+    });
+
+    deleteProject.afterClosed().subscribe((result) => {
+      console.log(result)
+      if (result) {
+        this.firestore
+          .collection('projects')
+          .doc(ID)
+          .delete();
+      }
+
+    });
+  }
+
   pushProjectToFirestore(project) {
     let name = project.projectName;
     let date = project.projectDate.toLocaleDateString();
@@ -52,6 +70,10 @@ export class TasksOverviewComponent implements OnInit {
       .subscribe((projects: any) => {
         this.myProjects = projects;
       });
+  }
+
+  dontViewEvent(e) {
+    e.stopPropagation();
   }
 
 }

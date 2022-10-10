@@ -1,10 +1,14 @@
 <div class="eventOverview">
   <div class="subject">
-    <h1>{{event?.projectName}}</h1>
-    <p>am {{event?.date}}</p>
+    <h1>{{ts.event?.projectName}}</h1>
+    <p>am {{ts.event?.date}}</p>
   </div>
   <div class="noteContainer">
-    <mat-card [class.darkmodeContent]="shared.darkmode" *ngFor="let n of myNotes; let i = index" class="note">
+    <mat-card [class.darkmodeContent]="shared.darkmode" *ngFor="let n of ts.myNotes; let i = index" class="note">
+      <img *ngIf="!shared.darkmode" src="assets/img/check1.png" class="checkIcon"
+        (click)="moveToArchive(ts.myNotes[i].noteID)">
+      <img *ngIf="shared.darkmode" src="assets/img/check2.png" class="checkIcon"
+        (click)="moveToArchive(ts.myNotes[i].noteID)">
       <div class="noteInfos">
         <div class="creatorInfos">
           <h3>von:</h3>
@@ -28,5 +32,12 @@
     <img *ngIf="shared.darkmode" src="assets/img/add-note2.png" class="addNote" (click)="openNoteDialog()">
   </div>
 
+  <div class="trashAndArchive">
+    <img *ngIf="!shared.darkmode" src="assets/img/archive1.png" class="storeIcons" routerLink="archive">
+    <img *ngIf="shared.darkmode" src="assets/img/archive2.png" class="storeIcons" routerLink="archive">
+
+    <img *ngIf="!shared.darkmode" src="assets/img/trash1.png" class="storeIcons">
+    <img *ngIf="shared.darkmode" src="assets/img/trash2.png" class="storeIcons">
+  </div>
 
 </div>

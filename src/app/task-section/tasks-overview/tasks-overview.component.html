@@ -6,6 +6,8 @@
             routerLink="/tasks/task/{{p.projectID}}">
             <h2>{{p.projectName}}</h2>
             <h3>{{p.date}}</h3>
+            <img (click)="dontViewEvent($event)" (click)="openDeleteProjectDialog(p.projectID)" class="trashIcon"
+                src="assets/img/trash-1.png" alt="">
         </mat-card>
     </div>
 
