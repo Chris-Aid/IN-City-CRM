@@ -19,8 +19,8 @@ export class ArchiveComponent implements OnInit {
 
   restoreNote(ID) {
     this.firestore
-    .collection('notes')
-    .doc(ID)
-    .update({ archive: false });
+      .collection('notes')
+      .doc(ID)
+      .update({ archive: false });
   }
 }

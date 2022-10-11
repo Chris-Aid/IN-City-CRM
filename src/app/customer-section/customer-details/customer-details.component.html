@@ -1,9 +1,9 @@
 <div class="customer-details-component">
     <mat-card [class.darkmodeContent]="shared.darkmode" class="mainInfo">
         <div class="cusotmer-icons">
-            <img mat-raised-button (click)="openDialog()" (mouseenter)="hovered = 2" (mouseleave)="hovered = 1"
-                class="trash-bin" src="/assets/img/trash-{{hovered}}.png" alt="">
-            <mat-icon (click)="editCustomer()" class="edit-icon">more_vert</mat-icon>
+            <img mat-raised-button matTooltip="Kunden löschen" (click)="openDialog()" (mouseenter)="hovered = 2"
+                (mouseleave)="hovered = 1" class="trash-bin" src="/assets/img/trash-{{hovered}}.png" alt="">
+            <mat-icon matTooltip="Kunden bearbeiten" (click)="editCustomer()" class="edit-icon">more_vert</mat-icon>
         </div>
 
         <div class="main-contact-info">
@@ -99,9 +99,13 @@
 
                 </div>
             </div>
-            <div (click)="openNoteDialog()">
+            <img *ngIf="!shared.darkmode" src="assets/img/add-note1.png" (click)="openNoteDialog()" class="addNote"
+                matTooltip="Notiz hinzufügen" alt="add note">
+            <img *ngIf="shared.darkmode" src="assets/img/add-note2.png" (click)="openNoteDialog()" class="addNote"
+                matTooltip="Notiz hinzufügen" alt="add note">
+            <!-- <div (click)="openNoteDialog()">
                 <mat-icon class="addNote">add_box</mat-icon>
-            </div>
+            </div> -->
         </div>
     </mat-card>
 </div>

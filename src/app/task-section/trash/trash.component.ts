@@ -17,4 +17,8 @@ export class TrashComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  emptyTrash(project) {
+    console.log(project)
+  }
+
 }

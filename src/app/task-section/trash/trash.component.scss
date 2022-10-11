@@ -1,4 +1,3 @@
-
 .board {
   color: white !important;
   background-position: center;
@@ -18,20 +17,18 @@ p {
   font-size: 15px;
   margin: 0;
 }
- 
- .trashAndArchive {
-    display: flex;
-    position: absolute;
-    bottom: 32px;
-    right: 64px;
-    gap: 24px;
-  }
-  
-  .storeIcons {
-    height: 60px;
-  
-    &:hover {
-      cursor: pointer;
-      filter: invert(0.4);
-    }
-  }
+
+.trashAndArchive {
+  display: flex;
+  position: absolute;
+  bottom: 32px;
+  right: 64px;
+  gap: 24px;
+}
+
+.trashIcon {
+  height: 60px;
+  position: absolute;
+  right: 128px;
+  bottom: 64px;
+}

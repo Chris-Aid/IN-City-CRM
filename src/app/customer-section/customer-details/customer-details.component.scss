@@ -142,6 +142,9 @@
 }
 
 .addNote {
+    position: absolute;
+    right: 32px;
+    bottom: 32px;
     cursor: pointer;
 }
 
@@ -185,7 +188,7 @@
         padding: 18px;
         width: auto;
 
-                p {
+        p {
             font-size: 14px;
         }
     }

@@ -2,21 +2,22 @@
     <h1>Aufgabenmanagement</h1>
 
     <div class="project-container">
-            <mat-card [class.darkmodeContent]="shared.darkmode" class="project board" *ngFor="let p of myProjects ; let i = index"
-            routerLink="/tasks/task/{{p.projectID}}">
+        <mat-card [class.darkmodeContent]="shared.darkmode" class="project board"
+            *ngFor="let p of myProjects ; let i = index" routerLink="/tasks/task/{{p.projectID}}">
             <h2>{{p.projectName}}</h2>
             <h3>{{p.date}}</h3>
             <!-- <img (click)="dontViewEvent($event)" (click)="openDeleteProjectDialog(p.projectID)" class="trashIcon"
                 src="assets/img/trash-1.png" alt=""> -->
-                <!-- <img (click)="dontViewEvent($event)" (click)="openDeleteProjectDialog(p.projectID)" class="trashIcon" *ngIf="!shared.darkmode" src="assets/img/trash1.png"> -->
-                <img (click)="dontViewEvent($event)" (click)="openDeleteProjectDialog(p.projectID)" class="trashIcon" src="assets/img/trash2.png">
+            <!-- <img (click)="dontViewEvent($event)" (click)="openDeleteProjectDialog(p.projectID)" class="trashIcon" *ngIf="!shared.darkmode" src="assets/img/trash1.png"> -->
+            <img (click)="dontViewEvent($event)" (click)="openDeleteProjectDialog(p.projectID)" class="trashIcon"
+                src="assets/img/trash2.png">
         </mat-card>
-    
+
     </div>
 
-
-    <button [class.btn-darkmode]="shared.darkmode" class="eventButton" (click)="openAddProjectDialog()" color="primary"
-        class="projectButton" mat-mini-fab aria-label="Example icon button with a menu icon">
+    <button matTooltip="Projekt hinzufügen" [class.btn-darkmode]="shared.darkmode" class="eventButton"
+        (click)="openAddProjectDialog()" color="primary" class="projectButton" mat-mini-fab
+        aria-label="Example icon button with a menu icon">
         <mat-icon>add</mat-icon>
     </button>
 </div>
