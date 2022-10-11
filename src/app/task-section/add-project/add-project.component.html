@@ -8,7 +8,7 @@
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Name des Projektes</ng-template>
 
-        <input class="form__field" autofocus placeholder="Name des Projektes" [(ngModel)]="projectName"
+        <input autofocus class="form__field" autofocus placeholder="Name des Projektes" [(ngModel)]="projectName"
           formControlName="firstCtrl" required>
 
         <div>
@@ -31,7 +31,7 @@
             <mat-datepicker #picker></mat-datepicker>
           </div>
         </div>
-        <div>
+        <div style="margin-top: 24px;">
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </div>

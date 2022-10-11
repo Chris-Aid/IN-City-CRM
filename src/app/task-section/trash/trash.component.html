@@ -3,8 +3,8 @@
     <h1>{{ts.event?.projectName}} Papierkorb</h1>
   </div>
   <div class="noteContainer">
-    <div *ngFor="let n of ts.myNotes; let i = index">
-      <mat-card [class.darkmodeContent]="shared.darkmode" *ngIf="n.trash" class="note board">
+    <div *ngFor="let n of trashNotes; let i = index">
+      <mat-card [class.darkmodeContent]="shared.darkmode" *ngIf="n.trash && n.project == ts.event.projectName" class="note board">
         <div class="noteInfos">
           <div class="creatorInfos">
             <h3>von:</h3>
@@ -27,7 +27,7 @@
     </div>
 
     <img (click)="emptyTrash(ts.event.projectName)" *ngIf="!shared.darkmode" src="assets/img/trash1.png"
-      class="trashIcon" routerLink="trash">
+      class="trashIcon">
     <img (click)="emptyTrash(ts.event.projectName)" *ngIf="shared.darkmode" src="assets/img/trash2.png"
-      class="trashIcon" routerLink="trash">
+      class="trashIcon">
   </div>

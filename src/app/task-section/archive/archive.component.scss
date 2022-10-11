@@ -47,3 +47,9 @@ p {
     filter: invert(0.4);
   }
 }
+
+.myNote {
+  margin-right: 12px !important;
+  max-height: 100px;
+  overflow: auto;
+}

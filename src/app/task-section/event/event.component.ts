@@ -13,14 +13,26 @@ import { TaskService } from '../task.service';
 })
 export class EventComponent implements OnInit {
 
-  // event;
-  // myNotes: any = [];
+  activeNotes = [];
   eventID;
   constructor(private route: ActivatedRoute, public firestore: AngularFirestore, public dialog: MatDialog, public shared: SharedService, public ts: TaskService) { }
 
   ngOnInit(): void {
     this.getParamsOfEvent();
     this.getNotesFromFirestore();
+  }
+
+  getActiveEvents() {
+    this.activeNotes = [];
+    for (let i = 0; i < this.ts.myNotes.length; i++) {
+      const element = this.ts.myNotes[i];
+      if (this.ts.myNotes[i].project == this.ts.event.projectName
+        && !this.ts.myNotes[i].archive
+        && !this.ts.myNotes[i].trash) {
+        this.activeNotes.push(element)
+      }
+    }
+    console.log(this.activeNotes)
   }
 
   getParamsOfEvent() {
@@ -48,6 +60,10 @@ export class EventComponent implements OnInit {
         this.ts.myNotes = notes;
         this.filterProjects(notes);
       });
+    setTimeout(() => {
+      this.getActiveEvents();
+    }, 300);
+
   }
 
   filterProjects(notes) {
@@ -97,6 +113,8 @@ export class EventComponent implements OnInit {
       .collection('notes')
       .doc(ID)
       .update({ archive: true });
+
+    this.reloadNotes();
   }
 
   moveToTrash(ID) {
@@ -104,5 +122,13 @@ export class EventComponent implements OnInit {
       .collection('notes')
       .doc(ID)
       .update({ trash: true });
+
+    this.reloadNotes();
+  }
+
+  reloadNotes() {
+    setTimeout(() => {
+      this.getActiveEvents()
+    }, 200);
   }
 }

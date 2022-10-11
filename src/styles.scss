@@ -47,6 +47,10 @@
     span {
         color: white;
     }
+
+    .mat-stepper-vertical-line::before {
+        border-left-color: rgba(255, 255, 255, 0.295);
+    }
 }
 
 .addNoteStepper {
@@ -512,7 +516,7 @@ $gray: #9b9b9b;
 .trashAndArchive {
     display: flex;
     position: absolute;
-    bottom: 32px;
+    bottom: 64px;
     right: 64px;
     gap: 24px;
 }

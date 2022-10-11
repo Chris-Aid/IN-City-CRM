@@ -4,16 +4,16 @@
     <p>am {{ts.event?.date}}</p>
   </div>
   <div class="noteContainer">
-    <div *ngFor="let n of ts.myNotes; let i = index" >
+    <div *ngFor="let n of activeNotes; let i = index" >
       <mat-card [class.darkmodeContent]="shared.darkmode" *ngIf="!n.archive && !n.trash" class="note board">
         <!-- <img *ngIf="!shared.darkmode" src="assets/img/check1.png" class="checkIcon"
           (click)="moveToArchive(ts.myNotes[i].noteID)"> -->
         <img src="assets/img/check2.png" class="checkIcon"
-          (click)="moveToArchive(ts.myNotes[i].noteID)">
+          (click)="moveToArchive(n.noteID)">
         <!-- <img *ngIf="!shared.darkmode" src="assets/img/trash1.png" class="trashIcon"
           (click)="moveToTrash(ts.myNotes[i].noteID)"> -->
         <img src="assets/img/trash2.png" class="trashIcon"
-          (click)="moveToTrash(ts.myNotes[i].noteID)">
+          (click)="moveToTrash(n.noteID)">
         <div class="noteInfos">
           <div class="creatorInfos">
             <h3>von:</h3>

@@ -29,6 +29,13 @@ p {
 .trashIcon {
   height: 60px;
   position: absolute;
-  right: 128px;
+  right: 64px;
   bottom: 64px;
+}
+
+.myNote {
+
+margin-right: 12px !important;
+  max-height: 100px;
+  overflow: auto;
 }
